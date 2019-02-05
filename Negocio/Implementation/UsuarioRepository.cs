@@ -27,7 +27,7 @@ namespace Negocio.Implementation
             Usuario usuario = new Usuario(contexto);
             usuario.Id = 1;
             usuario.nomeUsuario = "Jaderson";
-            //usuario.Senha = "123";
+            usuario.Senha = "123";
             usuario.email = "jaderson_goomes@hotmail.com";
 
             listaUsuarios.Add(usuario);

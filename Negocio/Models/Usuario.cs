@@ -16,7 +16,7 @@ namespace Negocio.Models
 
         public int Id { get; set; }
         public string nomeUsuario { get; set; }
-        //public string Senha { get; set; }
+        public string Senha { get; set; }
         public string email { get; set; }
 
     }

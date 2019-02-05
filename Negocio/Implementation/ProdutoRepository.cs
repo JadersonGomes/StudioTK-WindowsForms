@@ -34,20 +34,29 @@ namespace Negocio.Implementation
         {
             List<Produto> listaProdutos = new List<Produto>();
 
-            /*Endereco endereco = new Endereco(contexto);
+            Endereco endereco = new Endereco(contexto);
             endereco.Id = 1;
             endereco.Cep = "02991040";
             endereco.Estado = "São Paulo";
             endereco.Cidade = "SP";
             endereco.Bairro = "Jardim 1";
             endereco.Rua = "Rua Primeiro de Abril";
-            endereco.Numero = 512;*/
+            endereco.Numero = "512";
+
+            Fornecedor fornecedor = new Fornecedor(contexto);
+            fornecedor.Id = 1;
+            fornecedor.Nome = "Josiel";
+            fornecedor.Telefone = "011978785454";
+            fornecedor.Email = "josiel.joel1@gmail.com";
+            fornecedor.Especialidade = "Produtos de cabelo";
+            fornecedor.Endereco = endereco;
 
             Produto produto = new Produto(contexto);
             produto.Id = 1;
             produto.Descricao = "Shampoo 300ml Desmaia Cabelo";
             produto.Quantidade = 10;
             produto.Valor = 30;
+            produto.Fornecedor = fornecedor;
 
             //fornecedor.Endereco = endereco; Esse campo será excluído quando eu inserir os dados no DataGrid com o LINQ
 
