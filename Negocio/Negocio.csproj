@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{13B95FC7-3C84-4DC0-B316-70FBE52C3ED0}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Negocio</RootNamespace>
+    <AssemblyName>Negocio</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Implementation\AgendarRepository.cs" />
+    <Compile Include="Implementation\CaixaRepository.cs" />
+    <Compile Include="Implementation\ClienteProdutoRepository.cs" />
+    <Compile Include="Implementation\ClienteRepository.cs" />
+    <Compile Include="Implementation\ClienteServicoRepository.cs" />
+    <Compile Include="Implementation\EnderecoRepository.cs" />
+    <Compile Include="Implementation\FornecedorRepository.cs" />
+    <Compile Include="Implementation\FuncionarioRepository.cs" />
+    <Compile Include="Implementation\FuncionarioServicoRepository.cs" />
+    <Compile Include="Implementation\MovimentacaoRepository.cs" />
+    <Compile Include="Implementation\PagamentoRepository.cs" />
+    <Compile Include="Implementation\ProdutoRepository.cs" />
+    <Compile Include="Implementation\ServicoRepository.cs" />
+    <Compile Include="Implementation\UsuarioRepository.cs" />
+    <Compile Include="Implementation\Validacao.cs" />
+    <Compile Include="Interfaces\IAgendarRepository.cs" />
+    <Compile Include="Interfaces\ICaixaRepository.cs" />
+    <Compile Include="Interfaces\IClienteProdutoRepository.cs" />
+    <Compile Include="Interfaces\IClienteRepository.cs" />
+    <Compile Include="Interfaces\IClienteServicoRepository.cs" />
+    <Compile Include="Interfaces\IEnderecoRepository.cs" />
+    <Compile Include="Interfaces\IFornecedorRepository.cs" />
+    <Compile Include="Interfaces\IFuncionarioRepository.cs" />
+    <Compile Include="Interfaces\IFuncionarioServicoRepository.cs" />
+    <Compile Include="Interfaces\IMovimentacaoRepository.cs" />
+    <Compile Include="Interfaces\IPagamentoRepository.cs" />
+    <Compile Include="Interfaces\IProdutoRepository.cs" />
+    <Compile Include="Interfaces\IServicoRepository.cs" />
+    <Compile Include="Interfaces\IUsuarioRepository.cs" />
+    <Compile Include="Interfaces\IValidacao.cs" />
+    <Compile Include="Models\Agendar.cs" />
+    <Compile Include="Models\Caixa.cs" />
+    <Compile Include="Models\Cliente.cs" />
+    <Compile Include="Models\ClienteProduto.cs" />
+    <Compile Include="Models\ClienteServico.cs" />
+    <Compile Include="Models\Endereco.cs" />
+    <Compile Include="Models\Fornecedor.cs" />
+    <Compile Include="Models\Funcionario.cs" />
+    <Compile Include="Models\FuncionarioServico.cs" />
+    <Compile Include="Models\Movimentacao.cs" />
+    <Compile Include="Models\Pagamento.cs" />
+    <Compile Include="Models\Produto.cs" />
+    <Compile Include="Models\Servico.cs" />
+    <Compile Include="Models\Usuario.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AcessoBancoDados\AcessoBancoDados.csproj">
+      <Project>{965dfd9b-1622-4e07-b29a-21850d2ec8f6}</Project>
+      <Name>AcessoBancoDados</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

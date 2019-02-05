@@ -1,0 +1,12 @@
+d:\Users\jvieira\documents\visual studio 2015\Projects\appCabeleireiro\Negocio\bin\Debug\Negocio.dll.config
+d:\Users\jvieira\documents\visual studio 2015\Projects\appCabeleireiro\Negocio\bin\Debug\Negocio.dll
+d:\Users\jvieira\documents\visual studio 2015\Projects\appCabeleireiro\Negocio\bin\Debug\Negocio.pdb
+d:\Users\jvieira\documents\visual studio 2015\Projects\appCabeleireiro\Negocio\bin\Debug\AcessoBancoDados.dll
+d:\Users\jvieira\documents\visual studio 2015\Projects\appCabeleireiro\Negocio\bin\Debug\EntityFramework.dll
+d:\Users\jvieira\documents\visual studio 2015\Projects\appCabeleireiro\Negocio\bin\Debug\EntityFramework.SqlServer.dll
+d:\Users\jvieira\documents\visual studio 2015\Projects\appCabeleireiro\Negocio\bin\Debug\AcessoBancoDados.pdb
+d:\Users\jvieira\documents\visual studio 2015\Projects\appCabeleireiro\Negocio\bin\Debug\EntityFramework.xml
+d:\Users\jvieira\documents\visual studio 2015\Projects\appCabeleireiro\Negocio\bin\Debug\EntityFramework.SqlServer.xml
+d:\Users\jvieira\documents\visual studio 2015\Projects\appCabeleireiro\Negocio\obj\Debug\Negocio.csprojResolveAssemblyReference.cache
+d:\Users\jvieira\documents\visual studio 2015\Projects\appCabeleireiro\Negocio\obj\Debug\Negocio.dll
+d:\Users\jvieira\documents\visual studio 2015\Projects\appCabeleireiro\Negocio\obj\Debug\Negocio.pdb
