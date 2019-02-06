@@ -18,5 +18,10 @@ namespace Negocio.Models
         public int Quantidade { get; set; }
         public Fornecedor Fornecedor { get; set; }
         public double Valor { get; set; }
+
+        public override string ToString()
+        {
+            return this.Descricao;
+        }
     }
 }

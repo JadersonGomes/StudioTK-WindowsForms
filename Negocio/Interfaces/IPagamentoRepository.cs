@@ -21,5 +21,6 @@ namespace Negocio.Interfaces
         IList<Pagamento> ListarFechamentoPeriodo(string funcionario, string dataInicial, string dataFinal);
         double SomarValorTotal(IEnumerable<Pagamento> lista);
         List<Servico> PopulaServico();
+        List<Produto> PopulaProduto();
     }
 }

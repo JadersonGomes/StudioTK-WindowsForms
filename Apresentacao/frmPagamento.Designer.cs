@@ -36,9 +36,9 @@
             this.txtNomeCliente = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cboFormaPagamento = new System.Windows.Forms.ComboBox();
             this.cboFuncionario = new System.Windows.Forms.ComboBox();
             this.txtValor = new System.Windows.Forms.TextBox();
-            this.cboFormaPagamento = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.dtpData = new System.Windows.Forms.DateTimePicker();
             this.lblValor = new System.Windows.Forms.Label();
@@ -48,6 +48,8 @@
             this.label6 = new System.Windows.Forms.Label();
             this.cboProdutos = new System.Windows.Forms.ComboBox();
             this.lblProduto = new System.Windows.Forms.Label();
+            this.txtQntd = new System.Windows.Forms.TextBox();
+            this.lblQntd = new System.Windows.Forms.Label();
             this.fontDialog1 = new System.Windows.Forms.FontDialog();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -65,7 +67,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(799, 388);
             this.panel1.TabIndex = 0;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // btnSalvar
             // 
@@ -110,8 +111,9 @@
             // 
             this.txtNomeCliente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtNomeCliente.Location = new System.Drawing.Point(42, 50);
+            this.txtNomeCliente.Multiline = true;
             this.txtNomeCliente.Name = "txtNomeCliente";
-            this.txtNomeCliente.Size = new System.Drawing.Size(728, 21);
+            this.txtNomeCliente.Size = new System.Drawing.Size(728, 23);
             this.txtNomeCliente.TabIndex = 36;
             // 
             // label1
@@ -129,7 +131,6 @@
             // 
             this.groupBox1.Controls.Add(this.cboFuncionario);
             this.groupBox1.Controls.Add(this.txtValor);
-            this.groupBox1.Controls.Add(this.cboFormaPagamento);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.dtpData);
             this.groupBox1.Controls.Add(this.lblValor);
@@ -139,11 +140,29 @@
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.cboProdutos);
             this.groupBox1.Controls.Add(this.lblProduto);
+            this.groupBox1.Controls.Add(this.txtQntd);
+            this.groupBox1.Controls.Add(this.lblQntd);
+            this.groupBox1.Controls.Add(this.cboFormaPagamento);
             this.groupBox1.Location = new System.Drawing.Point(17, 8);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(765, 293);
             this.groupBox1.TabIndex = 47;
             this.groupBox1.TabStop = false;
+            // 
+            // cboFormaPagamento
+            // 
+            this.cboFormaPagamento.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.cboFormaPagamento.FormattingEnabled = true;
+            this.cboFormaPagamento.Items.AddRange(new object[] {
+            "Dinheiro",
+            "Débito",
+            "Crédito",
+            "Boleto",
+            "Cheque"});
+            this.cboFormaPagamento.Location = new System.Drawing.Point(268, 230);
+            this.cboFormaPagamento.Name = "cboFormaPagamento";
+            this.cboFormaPagamento.Size = new System.Drawing.Size(485, 23);
+            this.cboFormaPagamento.TabIndex = 40;
             // 
             // cboFuncionario
             // 
@@ -161,25 +180,11 @@
             // txtValor
             // 
             this.txtValor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtValor.Location = new System.Drawing.Point(25, 230);
+            this.txtValor.Location = new System.Drawing.Point(23, 230);
+            this.txtValor.Multiline = true;
             this.txtValor.Name = "txtValor";
-            this.txtValor.Size = new System.Drawing.Size(233, 21);
+            this.txtValor.Size = new System.Drawing.Size(227, 23);
             this.txtValor.TabIndex = 41;
-            // 
-            // cboFormaPagamento
-            // 
-            this.cboFormaPagamento.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.cboFormaPagamento.FormattingEnabled = true;
-            this.cboFormaPagamento.Items.AddRange(new object[] {
-            "Dinheiro",
-            "Débito",
-            "Crédito",
-            "Boleto",
-            "Cheque"});
-            this.cboFormaPagamento.Location = new System.Drawing.Point(274, 228);
-            this.cboFormaPagamento.Name = "cboFormaPagamento";
-            this.cboFormaPagamento.Size = new System.Drawing.Size(479, 23);
-            this.cboFormaPagamento.TabIndex = 40;
             // 
             // label2
             // 
@@ -228,7 +233,7 @@
             this.lblForma.AutoSize = true;
             this.lblForma.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblForma.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.lblForma.Location = new System.Drawing.Point(273, 209);
+            this.lblForma.Location = new System.Drawing.Point(265, 212);
             this.lblForma.Name = "lblForma";
             this.lblForma.Size = new System.Drawing.Size(126, 15);
             this.lblForma.TabIndex = 33;
@@ -260,16 +265,11 @@
             // 
             this.cboProdutos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.cboProdutos.FormattingEnabled = true;
-            this.cboProdutos.Items.AddRange(new object[] {
-            "Teste",
-            "Teste",
-            "Teste"});
             this.cboProdutos.Location = new System.Drawing.Point(23, 230);
             this.cboProdutos.Name = "cboProdutos";
-            this.cboProdutos.Size = new System.Drawing.Size(728, 23);
+            this.cboProdutos.Size = new System.Drawing.Size(482, 23);
             this.cboProdutos.TabIndex = 48;
             this.cboProdutos.Visible = false;
-            this.cboProdutos.SelectedIndexChanged += new System.EventHandler(this.cboProdutos_SelectedIndexChanged);
             // 
             // lblProduto
             // 
@@ -280,7 +280,27 @@
             this.lblProduto.TabIndex = 0;
             this.lblProduto.Text = "Produto";
             this.lblProduto.Visible = false;
-            this.lblProduto.Click += new System.EventHandler(this.lblProduto_Click);
+            // 
+            // txtQntd
+            // 
+            this.txtQntd.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtQntd.Location = new System.Drawing.Point(520, 230);
+            this.txtQntd.Multiline = true;
+            this.txtQntd.Name = "txtQntd";
+            this.txtQntd.Size = new System.Drawing.Size(233, 23);
+            this.txtQntd.TabIndex = 49;
+            this.txtQntd.Visible = false;
+            this.txtQntd.TextChanged += new System.EventHandler(this.txtQntd_TextChanged);
+            // 
+            // lblQntd
+            // 
+            this.lblQntd.AutoSize = true;
+            this.lblQntd.Location = new System.Drawing.Point(519, 212);
+            this.lblQntd.Name = "lblQntd";
+            this.lblQntd.Size = new System.Drawing.Size(71, 15);
+            this.lblQntd.TabIndex = 50;
+            this.lblQntd.Text = "Quantidade";
+            this.lblQntd.Visible = false;
             // 
             // frmPagamento
             // 
@@ -325,5 +345,7 @@
         private System.Windows.Forms.FontDialog fontDialog1;
         private System.Windows.Forms.ComboBox cboProdutos;
         private System.Windows.Forms.Label lblProduto;
+        private System.Windows.Forms.Label lblQntd;
+        private System.Windows.Forms.TextBox txtQntd;
     }
 }

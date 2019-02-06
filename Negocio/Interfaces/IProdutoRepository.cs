@@ -13,6 +13,7 @@ namespace Negocio.Interfaces
         IEnumerable<Produto> ListarPorNome(string nomeProduto);
         //IEnumerable<Produto> ListarPorFornecedor(string nomeFornecedor);
         List<Produto> PopulaDataGrid();
+        
 
     }
 }

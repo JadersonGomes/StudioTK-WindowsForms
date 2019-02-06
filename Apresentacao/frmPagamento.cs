@@ -1,5 +1,6 @@
 ﻿using AcessoBancoDados;
 using Negocio.Implementation;
+using Negocio.Interfaces;
 using Negocio.Models;
 using System;
 using System.Collections.Generic;
@@ -18,8 +19,8 @@ namespace Apresentacao
         SalaoContext contexto = new SalaoContext();
         Validacao validacao;
         Pagamento pagamento;
-        PagamentoRepository pagamentoRepository;
-        ProdutoRepository produtoRepository;
+        IPagamentoRepository pagamentoRepository = new PagamentoRepository(new SalaoContext());
+        IProdutoRepository produtoRepository = new ProdutoRepository(new SalaoContext());
 
         public frmPagamento()
         {
@@ -47,8 +48,7 @@ namespace Apresentacao
                 if (!resultadoValidacao)
                 {
                     
-                    pagamento = new Pagamento(contexto);
-                    pagamentoRepository = new PagamentoRepository(contexto);
+                    pagamento = new Pagamento(contexto);                    
 
                     pagamento.NomeCliente = txtNomeCliente.Text;
                     pagamento.NomeFuncionario = cboFuncionario.SelectedText;
@@ -85,12 +85,10 @@ namespace Apresentacao
             //pagamento = new Pagamento(contexto);            
 
             //servico.ListarTodos();
-            pagamentoRepository = new PagamentoRepository(contexto);
-
 
             cboServico.DataSource = pagamentoRepository.PopulaServico();
-            cboServico.Text = "[ Selecione ]";
-            
+            cboProdutos.DataSource = pagamentoRepository.PopulaProduto();
+            //cboServico.Text = "[ Selecione ]";           
 
             
         }
@@ -104,21 +102,7 @@ namespace Apresentacao
             cboServico.SelectedIndex = -1;
             dtpData.Value = DateTime.Today;
         }
-
-        private void lblProduto_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cboProdutos_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
+       
 
         private void cboServico_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -127,8 +111,10 @@ namespace Apresentacao
                 // visible
 
                 cboProdutos.Visible = true;
+                txtQntd.Visible = true;
                 lblProduto.Visible = true;
-
+                lblQntd.Visible = true;
+                
 
                 // size
 
@@ -145,9 +131,9 @@ namespace Apresentacao
                 // LOCATION
 
                 lblValor.Location = new Point(21, 277);
-                lblForma.Location = new Point(270, 275);
+                lblForma.Location = new Point(266, 277);
                 txtValor.Location = new Point(25, 298);
-                cboFormaPagamento.Location = new Point(273, 296);
+                cboFormaPagamento.Location = new Point(269, 298);
                 btnSalvar.Location = new Point(271, 387);
                 btnReagendar.Location = new Point(449, 387);
                 btnCancelar.Location = new Point(627, 387);
@@ -157,7 +143,9 @@ namespace Apresentacao
                 // visible
 
                 cboProdutos.Visible = false;
+                txtQntd.Visible = false;
                 lblProduto.Visible = false;
+                lblQntd.Visible = false;
 
 
                 // size
@@ -175,15 +163,35 @@ namespace Apresentacao
                 // LOCATION
 
                 lblValor.Location = new Point(21, 211);
-                lblForma.Location = new Point(273, 209);
+                lblForma.Location = new Point(265, 212);
                 txtValor.Location = new Point(25, 230);
-                cboFormaPagamento.Location = new Point(274, 228);
+                cboFormaPagamento.Location = new Point(268, 230);
                 btnSalvar.Location = new Point(271, 326);
                 btnReagendar.Location = new Point(449, 326);
                 btnCancelar.Location = new Point(627, 326);
             }
 
 
+        }
+
+        private void txtQntd_TextChanged(object sender, EventArgs e)
+        {
+            if (!cboProdutos.Text.Equals(String.Empty) && !txtQntd.Text.Equals(String.Empty))
+            {
+                double valorProduto = ((Produto)cboProdutos.SelectedItem).Valor;
+                int quantidade = Convert.ToInt32(txtQntd.Text);
+                                
+                txtValor.Text = (valorProduto * quantidade).ToString();
+            }
+            else if(cboProdutos.Text.Equals(String.Empty))
+            {
+                MessageBox.Show("Por gentileza, selecione um produto.", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                txtQntd.Clear();
+            }
+            else
+            {
+                txtValor.Clear();
+            }
         }
     }
 }
