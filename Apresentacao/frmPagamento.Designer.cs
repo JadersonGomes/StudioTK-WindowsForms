@@ -36,7 +36,6 @@
             this.txtNomeCliente = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.cboFormaPagamento = new System.Windows.Forms.ComboBox();
             this.cboFuncionario = new System.Windows.Forms.ComboBox();
             this.txtValor = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -50,7 +49,7 @@
             this.lblProduto = new System.Windows.Forms.Label();
             this.txtQntd = new System.Windows.Forms.TextBox();
             this.lblQntd = new System.Windows.Forms.Label();
-            this.fontDialog1 = new System.Windows.Forms.FontDialog();
+            this.cboFormaPagamento = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -149,21 +148,6 @@
             this.groupBox1.TabIndex = 47;
             this.groupBox1.TabStop = false;
             // 
-            // cboFormaPagamento
-            // 
-            this.cboFormaPagamento.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.cboFormaPagamento.FormattingEnabled = true;
-            this.cboFormaPagamento.Items.AddRange(new object[] {
-            "Dinheiro",
-            "Débito",
-            "Crédito",
-            "Boleto",
-            "Cheque"});
-            this.cboFormaPagamento.Location = new System.Drawing.Point(268, 230);
-            this.cboFormaPagamento.Name = "cboFormaPagamento";
-            this.cboFormaPagamento.Size = new System.Drawing.Size(485, 23);
-            this.cboFormaPagamento.TabIndex = 40;
-            // 
             // cboFuncionario
             // 
             this.cboFuncionario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -185,6 +169,7 @@
             this.txtValor.Name = "txtValor";
             this.txtValor.Size = new System.Drawing.Size(227, 23);
             this.txtValor.TabIndex = 41;
+            this.txtValor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtValor_KeyPress);
             // 
             // label2
             // 
@@ -291,6 +276,7 @@
             this.txtQntd.TabIndex = 49;
             this.txtQntd.Visible = false;
             this.txtQntd.TextChanged += new System.EventHandler(this.txtQntd_TextChanged);
+            this.txtQntd.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtQntd_KeyPress);
             // 
             // lblQntd
             // 
@@ -302,12 +288,27 @@
             this.lblQntd.Text = "Quantidade";
             this.lblQntd.Visible = false;
             // 
+            // cboFormaPagamento
+            // 
+            this.cboFormaPagamento.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.cboFormaPagamento.FormattingEnabled = true;
+            this.cboFormaPagamento.Items.AddRange(new object[] {
+            "Dinheiro",
+            "Débito",
+            "Crédito",
+            "Boleto",
+            "Cheque"});
+            this.cboFormaPagamento.Location = new System.Drawing.Point(268, 230);
+            this.cboFormaPagamento.Name = "cboFormaPagamento";
+            this.cboFormaPagamento.Size = new System.Drawing.Size(485, 23);
+            this.cboFormaPagamento.TabIndex = 40;
+            // 
             // frmPagamento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(829, 420);
+            this.ClientSize = new System.Drawing.Size(827, 457);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
@@ -342,7 +343,6 @@
         private System.Windows.Forms.ComboBox cboFuncionario;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox txtValor;
-        private System.Windows.Forms.FontDialog fontDialog1;
         private System.Windows.Forms.ComboBox cboProdutos;
         private System.Windows.Forms.Label lblProduto;
         private System.Windows.Forms.Label lblQntd;

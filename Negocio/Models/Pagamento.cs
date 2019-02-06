@@ -24,6 +24,7 @@ namespace Negocio.Models
         public double Valor { get; set; }        
         public DateTime DataPagamento { get; set; }
         public Produto Produto { get; set; }
+        public int Quantidade { get; set; }
 
 
 

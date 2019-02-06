@@ -10,3 +10,5 @@ d:\Users\jvieira\documents\visual studio 2015\Projects\appCabeleireiro\Negocio\b
 d:\Users\jvieira\documents\visual studio 2015\Projects\appCabeleireiro\Negocio\obj\Debug\Negocio.csprojResolveAssemblyReference.cache
 d:\Users\jvieira\documents\visual studio 2015\Projects\appCabeleireiro\Negocio\obj\Debug\Negocio.dll
 d:\Users\jvieira\documents\visual studio 2015\Projects\appCabeleireiro\Negocio\obj\Debug\Negocio.pdb
+d:\Users\jvieira\documents\visual studio 2015\Projects\appCabeleireiro\Negocio\bin\Debug\Negocio.dll.CodeAnalysisLog.xml
+d:\Users\jvieira\documents\visual studio 2015\Projects\appCabeleireiro\Negocio\bin\Debug\Negocio.dll.lastcodeanalysissucceeded

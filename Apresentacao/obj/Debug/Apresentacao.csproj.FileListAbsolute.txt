@@ -18,6 +18,12 @@ d:\Users\jvieira\documents\visual studio 2015\Projects\appCabeleireiro\Apresenta
 d:\Users\jvieira\documents\visual studio 2015\Projects\appCabeleireiro\Apresentacao\obj\Debug\Apresentacao.frmCadastrarUsuario.resources
 d:\Users\jvieira\documents\visual studio 2015\Projects\appCabeleireiro\Apresentacao\obj\Debug\Apresentacao.frmCaixa.resources
 d:\Users\jvieira\documents\visual studio 2015\Projects\appCabeleireiro\Apresentacao\obj\Debug\Apresentacao.frmDespesa.resources
+d:\Users\jvieira\documents\visual studio 2015\Projects\appCabeleireiro\Apresentacao\obj\Debug\Apresentacao.frmEditarAgendamento.resources
+d:\Users\jvieira\documents\visual studio 2015\Projects\appCabeleireiro\Apresentacao\obj\Debug\Apresentacao.frmEditarCliente.resources
+d:\Users\jvieira\documents\visual studio 2015\Projects\appCabeleireiro\Apresentacao\obj\Debug\Apresentacao.frmEditarColaborador.resources
+d:\Users\jvieira\documents\visual studio 2015\Projects\appCabeleireiro\Apresentacao\obj\Debug\Apresentacao.frmEditarFornecedor.resources
+d:\Users\jvieira\documents\visual studio 2015\Projects\appCabeleireiro\Apresentacao\obj\Debug\Apresentacao.frmEditarProduto.resources
+d:\Users\jvieira\documents\visual studio 2015\Projects\appCabeleireiro\Apresentacao\obj\Debug\Apresentacao.frmEditarUsuario.resources
 d:\Users\jvieira\documents\visual studio 2015\Projects\appCabeleireiro\Apresentacao\obj\Debug\Apresentacao.frmFechamento.resources
 d:\Users\jvieira\documents\visual studio 2015\Projects\appCabeleireiro\Apresentacao\obj\Debug\Apresentacao.frmFiltrarServico.resources
 d:\Users\jvieira\documents\visual studio 2015\Projects\appCabeleireiro\Apresentacao\obj\Debug\Apresentacao.frmLogin.resources
@@ -32,6 +38,7 @@ d:\Users\jvieira\documents\visual studio 2015\Projects\appCabeleireiro\Apresenta
 d:\Users\jvieira\documents\visual studio 2015\Projects\appCabeleireiro\Apresentacao\obj\Debug\Apresentacao.frmResumo.resources
 d:\Users\jvieira\documents\visual studio 2015\Projects\appCabeleireiro\Apresentacao\obj\Debug\Apresentacao.frmSuprimento.resources
 d:\Users\jvieira\documents\visual studio 2015\Projects\appCabeleireiro\Apresentacao\obj\Debug\Apresentacao.frmVale.resources
+d:\Users\jvieira\documents\visual studio 2015\Projects\appCabeleireiro\Apresentacao\obj\Debug\Apresentacao.frmVisualizarAgenda.resources
 d:\Users\jvieira\documents\visual studio 2015\Projects\appCabeleireiro\Apresentacao\obj\Debug\Apresentacao.Properties.Resources.resources
 d:\Users\jvieira\documents\visual studio 2015\Projects\appCabeleireiro\Apresentacao\obj\Debug\Apresentacao.frmRelatorioVendas.resources
 d:\Users\jvieira\documents\visual studio 2015\Projects\appCabeleireiro\Apresentacao\obj\Debug\Apresentacao.csproj.GenerateResource.Cache
@@ -39,10 +46,3 @@ d:\Users\jvieira\documents\visual studio 2015\Projects\appCabeleireiro\Apresenta
 d:\Users\jvieira\documents\visual studio 2015\Projects\appCabeleireiro\Apresentacao\obj\Debug\RdlCompile.compiled
 d:\Users\jvieira\documents\visual studio 2015\Projects\appCabeleireiro\Apresentacao\obj\Debug\Apresentacao.exe
 d:\Users\jvieira\documents\visual studio 2015\Projects\appCabeleireiro\Apresentacao\obj\Debug\Apresentacao.pdb
-d:\Users\jvieira\documents\visual studio 2015\Projects\appCabeleireiro\Apresentacao\obj\Debug\Apresentacao.frmVisualizarAgenda.resources
-d:\Users\jvieira\documents\visual studio 2015\Projects\appCabeleireiro\Apresentacao\obj\Debug\Apresentacao.frmEditarAgendamento.resources
-d:\Users\jvieira\documents\visual studio 2015\Projects\appCabeleireiro\Apresentacao\obj\Debug\Apresentacao.frmEditarCliente.resources
-d:\Users\jvieira\documents\visual studio 2015\Projects\appCabeleireiro\Apresentacao\obj\Debug\Apresentacao.frmEditarColaborador.resources
-d:\Users\jvieira\documents\visual studio 2015\Projects\appCabeleireiro\Apresentacao\obj\Debug\Apresentacao.frmEditarFornecedor.resources
-d:\Users\jvieira\documents\visual studio 2015\Projects\appCabeleireiro\Apresentacao\obj\Debug\Apresentacao.frmEditarProduto.resources
-d:\Users\jvieira\documents\visual studio 2015\Projects\appCabeleireiro\Apresentacao\obj\Debug\Apresentacao.frmEditarUsuario.resources

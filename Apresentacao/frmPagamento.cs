@@ -87,7 +87,7 @@ namespace Apresentacao
             //servico.ListarTodos();
 
             cboServico.DataSource = pagamentoRepository.PopulaServico();
-            cboProdutos.DataSource = pagamentoRepository.PopulaProduto();
+            //cboProdutos.DataSource = pagamentoRepository.PopulaProduto();
             //cboServico.Text = "[ Selecione ]";           
 
             
@@ -114,15 +114,15 @@ namespace Apresentacao
                 txtQntd.Visible = true;
                 lblProduto.Visible = true;
                 lblQntd.Visible = true;
-                
+
 
                 // size
 
                 groupBox1.Height = 360;
                 groupBox1.Width = 765;
 
-                this.Height = 497;
-                this.Width = 845;
+                //this.Height = 497;
+                //this.Width = 845;
 
                 panel1.Height = 436;
                 panel1.Width = 799;
@@ -153,8 +153,8 @@ namespace Apresentacao
                 groupBox1.Height = 293;
                 groupBox1.Width = 765;
 
-                this.Height = 454;
-                this.Width = 845;
+                //this.Height = 454;
+                //this.Width = 845;
 
                 panel1.Height = 388;
                 panel1.Width = 799;
@@ -176,21 +176,55 @@ namespace Apresentacao
 
         private void txtQntd_TextChanged(object sender, EventArgs e)
         {
-            if (!cboProdutos.Text.Equals(String.Empty) && !txtQntd.Text.Equals(String.Empty))
+
+            try
             {
-                double valorProduto = ((Produto)cboProdutos.SelectedItem).Valor;
-                int quantidade = Convert.ToInt32(txtQntd.Text);
-                                
-                txtValor.Text = (valorProduto * quantidade).ToString();
+                if (!cboProdutos.Text.Equals(String.Empty) && !txtQntd.Text.Equals(String.Empty))
+                {
+                    double valorProduto = ((Produto)cboProdutos.SelectedItem).Valor;
+                    int quantidade = Convert.ToInt32(txtQntd.Text);
+
+                    txtValor.Text = (valorProduto * quantidade).ToString();
+                }
+                else if (cboProdutos.Text.Equals(String.Empty))
+                {
+                    MessageBox.Show("Por gentileza, selecione um produto.", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    txtQntd.Clear();
+                }
+                else
+                {
+                    txtValor.Clear();
+                }
             }
-            else if(cboProdutos.Text.Equals(String.Empty))
+            catch (OverflowException ex)
             {
-                MessageBox.Show("Por gentileza, selecione um produto.", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                txtQntd.Clear();
+                // Cairá nessa exceção caso o número digitado na caixa de texto seja grande demais.
             }
-            else
+            catch (Exception ex)
             {
-                txtValor.Clear();
+                MessageBox.Show("Algo deu errado. Tente novamente ou contate o administrador do sistema. \n\n\nDetalhes: \n" + ex.Message, "ATENÇÃO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            
+        }
+
+        private void txtQntd_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //Se a tecla digitada não for número e se for diferente da tecla "BackSpace"
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != 08)
+            {
+                //Atribui True no Handled para cancelar o evento
+                e.Handled = true;
+            }
+        }
+
+        private void txtValor_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //Se a tecla digitada não for número e se for diferente da tecla "BackSpace"
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != 08)
+            {
+                //Atribui True no Handled para cancelar o evento
+                e.Handled = true;
             }
         }
     }
