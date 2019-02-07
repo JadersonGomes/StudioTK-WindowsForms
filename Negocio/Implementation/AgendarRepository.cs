@@ -39,8 +39,7 @@ namespace Negocio.Implementation
             servico.Id = 1;
             servico.Nome = "Corte Masculino";
             servico.Data = DateTime.Today;
-            servico.Valor = 25;
-            servico.FormaPagamento = "Dinheiro";
+            servico.Valor = 25;            
             servico.Cliente = cliente;
 
             Agendar agenda = new Agendar(contexto);

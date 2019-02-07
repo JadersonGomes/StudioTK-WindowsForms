@@ -27,13 +27,44 @@ namespace Negocio.Implementation
         {
             List<Servico> listaServicos = new List<Servico>();
 
-            Servico servico = new Servico(contexto);
-            Servico servico2 = new Servico(contexto);
-            Servico servico3 = new Servico(contexto);
+            Cliente cliente = new Cliente(contexto);
+            cliente.Id = 1;
+            cliente.Nome = "Jaderson";
+            cliente.Telefone = "011976645381";
+            cliente.Email = "jaderson_goomes@hotmail.com";
 
+            Funcionario funcionario = new Funcionario(contexto);
+            funcionario.Id = 1;
+            funcionario.Nome = "Karol";
+            funcionario.Telefone = "011941474409";
+            funcionario.Comissao = "60%";
+
+            Servico servico = new Servico(contexto);
             servico.Nome = "Corte Masculino";
+            servico.Id = 1;
+            servico.Data = Convert.ToDateTime(DateTime.Today.ToShortDateString());
+            servico.Hora = DateTime.Now.ToShortTimeString();
+            servico.Valor = 30;
+            servico.Cliente = cliente;
+            servico.Funcionario = funcionario;
+
+            Servico servico2 = new Servico(contexto);            
             servico2.Nome = "Unha simples";
+            servico2.Id = 2;
+            servico2.Data = Convert.ToDateTime(DateTime.Today.ToShortDateString());
+            servico2.Hora = DateTime.Now.ToShortTimeString();
+            servico2.Valor = 25;
+            servico2.Cliente = cliente;
+            servico2.Funcionario = funcionario;
+
+            Servico servico3 = new Servico(contexto);
             servico3.Nome = "Venda";
+            servico3.Id = 3;
+            servico3.Data = Convert.ToDateTime(DateTime.Today.ToShortDateString());
+            servico3.Hora = DateTime.Now.ToShortTimeString();
+            servico3.Valor = 30; // Voltar para essa linha depois
+            servico3.Cliente = cliente;
+            servico3.Funcionario = funcionario;
 
             listaServicos.Add(servico);
             listaServicos.Add(servico2);
