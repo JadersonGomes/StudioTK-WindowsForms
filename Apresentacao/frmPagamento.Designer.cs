@@ -41,18 +41,18 @@
             this.ckbDesconto = new System.Windows.Forms.CheckBox();
             this.txtValor = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.dtpData = new System.Windows.Forms.DateTimePicker();
             this.lblValor = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.lblForma = new System.Windows.Forms.Label();
             this.cboServico = new System.Windows.Forms.ComboBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.cboProdutos = new System.Windows.Forms.ComboBox();
             this.lblProduto = new System.Windows.Forms.Label();
             this.txtQntd = new System.Windows.Forms.TextBox();
             this.lblQntd = new System.Windows.Forms.Label();
             this.cboFormaPagamento = new System.Windows.Forms.ComboBox();
             this.cboFuncionario = new System.Windows.Forms.ComboBox();
+            this.dtpData = new System.Windows.Forms.DateTimePicker();
+            this.label6 = new System.Windows.Forms.Label();
+            this.cboProdutos = new System.Windows.Forms.ComboBox();
             this.listViewServicos = new System.Windows.Forms.ListView();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -69,14 +69,14 @@
             this.panel1.Controls.Add(this.groupBox1);
             this.panel1.Location = new System.Drawing.Point(14, 15);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(799, 451);
+            this.panel1.Size = new System.Drawing.Size(799, 493);
             this.panel1.TabIndex = 0;
             // 
             // btnAdicionarNaLista
             // 
             this.btnAdicionarNaLista.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdicionarNaLista.ForeColor = System.Drawing.Color.Gray;
-            this.btnAdicionarNaLista.Location = new System.Drawing.Point(230, 389);
+            this.btnAdicionarNaLista.Location = new System.Drawing.Point(233, 440);
             this.btnAdicionarNaLista.Name = "btnAdicionarNaLista";
             this.btnAdicionarNaLista.Size = new System.Drawing.Size(155, 30);
             this.btnAdicionarNaLista.TabIndex = 51;
@@ -89,7 +89,7 @@
             this.btnSalvar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSalvar.ForeColor = System.Drawing.Color.Gray;
             this.btnSalvar.Image = ((System.Drawing.Image)(resources.GetObject("btnSalvar.Image")));
-            this.btnSalvar.Location = new System.Drawing.Point(47, 389);
+            this.btnSalvar.Location = new System.Drawing.Point(50, 440);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Size = new System.Drawing.Size(155, 30);
             this.btnSalvar.TabIndex = 44;
@@ -103,7 +103,7 @@
             // 
             this.btnReagendar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnReagendar.ForeColor = System.Drawing.Color.Gray;
-            this.btnReagendar.Location = new System.Drawing.Point(413, 389);
+            this.btnReagendar.Location = new System.Drawing.Point(416, 440);
             this.btnReagendar.Name = "btnReagendar";
             this.btnReagendar.Size = new System.Drawing.Size(155, 30);
             this.btnReagendar.TabIndex = 43;
@@ -115,7 +115,7 @@
             // 
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelar.ForeColor = System.Drawing.Color.Gray;
-            this.btnCancelar.Location = new System.Drawing.Point(596, 389);
+            this.btnCancelar.Location = new System.Drawing.Point(599, 440);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(155, 30);
             this.btnCancelar.TabIndex = 42;
@@ -149,21 +149,21 @@
             this.groupBox1.Controls.Add(this.ckbDesconto);
             this.groupBox1.Controls.Add(this.txtValor);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.dtpData);
             this.groupBox1.Controls.Add(this.lblValor);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.lblForma);
             this.groupBox1.Controls.Add(this.cboServico);
-            this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.cboProdutos);
             this.groupBox1.Controls.Add(this.lblProduto);
             this.groupBox1.Controls.Add(this.txtQntd);
             this.groupBox1.Controls.Add(this.lblQntd);
             this.groupBox1.Controls.Add(this.cboFormaPagamento);
             this.groupBox1.Controls.Add(this.cboFuncionario);
+            this.groupBox1.Controls.Add(this.dtpData);
+            this.groupBox1.Controls.Add(this.label6);
+            this.groupBox1.Controls.Add(this.cboProdutos);
             this.groupBox1.Location = new System.Drawing.Point(17, 8);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(765, 351);
+            this.groupBox1.Size = new System.Drawing.Size(765, 410);
             this.groupBox1.TabIndex = 47;
             this.groupBox1.TabStop = false;
             // 
@@ -181,7 +181,7 @@
             "40%",
             "45%",
             "50%"});
-            this.cboDesconto.Location = new System.Drawing.Point(24, 304);
+            this.cboDesconto.Location = new System.Drawing.Point(23, 297);
             this.cboDesconto.Name = "cboDesconto";
             this.cboDesconto.Size = new System.Drawing.Size(377, 23);
             this.cboDesconto.TabIndex = 52;
@@ -191,7 +191,8 @@
             // ckbDesconto
             // 
             this.ckbDesconto.AutoSize = true;
-            this.ckbDesconto.Location = new System.Drawing.Point(23, 279);
+            this.ckbDesconto.ForeColor = System.Drawing.Color.Gray;
+            this.ckbDesconto.Location = new System.Drawing.Point(23, 272);
             this.ckbDesconto.Name = "ckbDesconto";
             this.ckbDesconto.Size = new System.Drawing.Size(117, 19);
             this.ckbDesconto.TabIndex = 51;
@@ -219,15 +220,6 @@
             this.label2.Size = new System.Drawing.Size(76, 15);
             this.label2.TabIndex = 31;
             this.label2.Text = "Colaborador";
-            // 
-            // dtpData
-            // 
-            this.dtpData.CalendarForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.dtpData.CalendarTitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.dtpData.Location = new System.Drawing.Point(520, 230);
-            this.dtpData.Name = "dtpData";
-            this.dtpData.Size = new System.Drawing.Size(233, 21);
-            this.dtpData.TabIndex = 39;
             // 
             // lblValor
             // 
@@ -273,28 +265,6 @@
             this.cboServico.TabIndex = 38;
             this.cboServico.SelectedIndexChanged += new System.EventHandler(this.cboServico_SelectedIndexChanged);
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label6.Location = new System.Drawing.Point(516, 210);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(99, 15);
-            this.label6.TabIndex = 35;
-            this.label6.Text = "Data pagamento";
-            // 
-            // cboProdutos
-            // 
-            this.cboProdutos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.cboProdutos.FormattingEnabled = true;
-            this.cboProdutos.Location = new System.Drawing.Point(23, 230);
-            this.cboProdutos.Name = "cboProdutos";
-            this.cboProdutos.Size = new System.Drawing.Size(482, 23);
-            this.cboProdutos.TabIndex = 48;
-            this.cboProdutos.Visible = false;
-            this.cboProdutos.SelectedIndexChanged += new System.EventHandler(this.cboProdutos_SelectedIndexChanged);
-            // 
             // lblProduto
             // 
             this.lblProduto.AutoSize = true;
@@ -308,22 +278,24 @@
             // txtQntd
             // 
             this.txtQntd.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtQntd.Location = new System.Drawing.Point(519, 170);
+            this.txtQntd.Location = new System.Drawing.Point(520, 230);
             this.txtQntd.Multiline = true;
             this.txtQntd.Name = "txtQntd";
             this.txtQntd.Size = new System.Drawing.Size(233, 23);
             this.txtQntd.TabIndex = 49;
+            this.txtQntd.Visible = false;
             this.txtQntd.TextChanged += new System.EventHandler(this.txtQntd_TextChanged);
             this.txtQntd.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtQntd_KeyPress);
             // 
             // lblQntd
             // 
             this.lblQntd.AutoSize = true;
-            this.lblQntd.Location = new System.Drawing.Point(518, 152);
+            this.lblQntd.Location = new System.Drawing.Point(519, 212);
             this.lblQntd.Name = "lblQntd";
             this.lblQntd.Size = new System.Drawing.Size(71, 15);
             this.lblQntd.TabIndex = 50;
             this.lblQntd.Text = "Quantidade";
+            this.lblQntd.Visible = false;
             // 
             // cboFormaPagamento
             // 
@@ -337,7 +309,7 @@
             "Cheque"});
             this.cboFormaPagamento.Location = new System.Drawing.Point(268, 230);
             this.cboFormaPagamento.Name = "cboFormaPagamento";
-            this.cboFormaPagamento.Size = new System.Drawing.Size(237, 23);
+            this.cboFormaPagamento.Size = new System.Drawing.Size(484, 23);
             this.cboFormaPagamento.TabIndex = 40;
             // 
             // cboFuncionario
@@ -353,12 +325,44 @@
             this.cboFuncionario.Size = new System.Drawing.Size(728, 23);
             this.cboFuncionario.TabIndex = 45;
             // 
+            // dtpData
+            // 
+            this.dtpData.CalendarForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.dtpData.CalendarTitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.dtpData.Location = new System.Drawing.Point(519, 170);
+            this.dtpData.Name = "dtpData";
+            this.dtpData.Size = new System.Drawing.Size(233, 21);
+            this.dtpData.TabIndex = 39;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label6.Location = new System.Drawing.Point(515, 150);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(99, 15);
+            this.label6.TabIndex = 35;
+            this.label6.Text = "Data pagamento";
+            // 
+            // cboProdutos
+            // 
+            this.cboProdutos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.cboProdutos.FormattingEnabled = true;
+            this.cboProdutos.Location = new System.Drawing.Point(25, 230);
+            this.cboProdutos.Name = "cboProdutos";
+            this.cboProdutos.Size = new System.Drawing.Size(482, 23);
+            this.cboProdutos.TabIndex = 48;
+            this.cboProdutos.Visible = false;
+            // 
             // listViewServicos
             // 
             this.listViewServicos.BackColor = System.Drawing.Color.White;
+            this.listViewServicos.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.listViewServicos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.listViewServicos.Location = new System.Drawing.Point(819, 15);
             this.listViewServicos.Name = "listViewServicos";
-            this.listViewServicos.Size = new System.Drawing.Size(371, 451);
+            this.listViewServicos.Size = new System.Drawing.Size(371, 493);
             this.listViewServicos.TabIndex = 1;
             this.listViewServicos.UseCompatibleStateImageBehavior = false;
             this.listViewServicos.View = System.Windows.Forms.View.List;
@@ -368,7 +372,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1202, 492);
+            this.ClientSize = new System.Drawing.Size(1202, 520);
             this.Controls.Add(this.listViewServicos);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
