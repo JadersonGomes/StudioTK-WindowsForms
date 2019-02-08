@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -49,13 +50,13 @@ namespace Apresentacao
 
                 if (!resultadoValidacao)
                 {
-
+                    string valorPagamentoSemFormatacao = RemoverFormatacaoMoeda(txtValor.Text);
                     pagamento.NomeCliente = txtNomeCliente.Text;
                     pagamento.NomeFuncionario = cboFuncionario.SelectedText;
                     pagamento.ServicoRealizado = (Servico)cboServico.SelectedItem;
                     pagamento.FormaPagamento = cboFormaPagamento.SelectedText;
                     pagamento.DataPagamento = Convert.ToDateTime(dtpData.Text);
-                    pagamento.Valor = Convert.ToDouble(txtValor.Text);
+                    pagamento.Valor = Convert.ToDouble(valorPagamentoSemFormatacao);
 
                     // Verifica se o Produto está nulo e recupera o Id do item selecionado e busca na lista de produtos através desse Id, caso não esteja
                     if (((Produto)cboProdutos.SelectedItem) != null)
@@ -130,16 +131,16 @@ namespace Apresentacao
 
                 // size
 
-                groupBox1.Height = 410;
+                groupBox1.Height = 441;
                 groupBox1.Width = 765;
 
-                listViewServicos.Height = 493;
+                listViewServicos.Height = 531;
                 listViewServicos.Width = 371;
 
-                this.Height = 554;
+                this.Height = 592;
                 this.Width = 1218;
 
-                panel1.Height = 493;
+                panel1.Height = 592;
                 panel1.Width = 799;
 
 
@@ -147,14 +148,15 @@ namespace Apresentacao
 
                 cboDesconto.Location = new Point(23, 364);
                 ckbDesconto.Location = new Point(23, 339);
-                lblValor.Location = new Point(21, 277);
+                lblRecebido.Location = new Point(21, 277);
                 lblForma.Location = new Point(266, 277);
-                txtValor.Location = new Point(25, 298);
+                txtRecebido.Location = new Point(25, 298);
+                //txtValor.Location = new Point(527, 297);
                 cboFormaPagamento.Location = new Point(269, 298);
-                btnSalvar.Location = new Point(47, 440);
-                btnAdicionarNaLista.Location = new Point(230, 440);
-                btnReagendar.Location = new Point(413, 440);
-                btnCancelar.Location = new Point(596, 440);
+                btnSalvar.Location = new Point(47, 477);
+                btnAdicionarNaLista.Location = new Point(230, 477);
+                btnReagendar.Location = new Point(413, 477);
+                btnCancelar.Location = new Point(596, 477);
             }
             else
             {
@@ -186,9 +188,9 @@ namespace Apresentacao
 
                 cboDesconto.Location = new Point(23, 297);
                 ckbDesconto.Location = new Point(23, 272);
-                lblValor.Location = new Point(21, 211);
+                lblRecebido.Location = new Point(21, 211);
                 lblForma.Location = new Point(265, 212);
-                txtValor.Location = new Point(25, 230);
+                txtRecebido.Location = new Point(25, 230);
                 cboFormaPagamento.Location = new Point(268, 230);
                 btnSalvar.Location = new Point(47, 385);
                 btnAdicionarNaLista.Location = new Point(230, 385);
@@ -258,13 +260,15 @@ namespace Apresentacao
         {
             Servico servico = ((Servico)cboServico.SelectedItem);
             Produto produto = ((Produto)cboProdutos.SelectedItem);
-            
+
 
 
             if (!servico.Nome.Equals("Venda"))
             {
                 pagamento.Valor += servico.Valor;
-                txtValor.Text = pagamento.Valor.ToString();
+
+                // Converte o valor do pagamento para o formato moeda
+                txtValor.Text = String.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:C}", pagamento.Valor);
 
                 listViewServicos.Items.Add("+  1 " + servico.Nome + "......................." + "R$ " + servico.Valor + ",00");
                 listViewServicos.Items.Add(" ");
@@ -278,7 +282,9 @@ namespace Apresentacao
                     double valorTotalProduto = (produto.Valor * quantidade);
 
                     pagamento.Valor += valorTotalProduto;
-                    txtValor.Text = pagamento.Valor.ToString();
+
+                    // Converte o valor do pagamento para o formato moeda
+                    txtValor.Text = String.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:C}", pagamento.Valor);
 
                     listViewServicos.Items.Add("+  " + txtQntd.Text + " " + produto.Descricao + "......................." + "R$ " + valorTotalProduto + ",00");
                     listViewServicos.Items.Add(" ");
@@ -290,7 +296,7 @@ namespace Apresentacao
                 }
 
             }
-            
+
 
 
 
@@ -305,19 +311,22 @@ namespace Apresentacao
             {
                 cboDesconto.Visible = true;
 
-
             }
             else
             {
                 cboDesconto.Visible = false;
-                txtValor.Text = pagamento.Valor.ToString();
+                // Converte o valor do pagamento para o formato moeda
+                txtValor.Text = String.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:C}", pagamento.Valor);
+
             }
 
         }
 
         private void cboDesconto_SelectedIndexChanged(object sender, EventArgs e)
         {
-            double valor = Convert.ToDouble(txtValor.Text);
+            string valorSemFormatacao = RemoverFormatacaoMoeda(txtValor.Text);
+
+            double valor = Convert.ToDouble((valorSemFormatacao));
             double auxValor = pagamento.Valor;
             double desconto = 0;
 
@@ -328,69 +337,104 @@ namespace Apresentacao
                 case "5%":
                     desconto = auxValor * 0.05;
                     valor = auxValor - desconto;
-                    txtValor.Text = valor.ToString();
+                    txtValor.Text = String.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:C}", valor);
                     break;
 
                 case "10%":
                     desconto = auxValor * 0.10;
                     valor = auxValor - desconto;
-                    txtValor.Text = valor.ToString();
+                    txtValor.Text = String.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:C}", valor);
                     break;
 
                 case "15%":
                     desconto = auxValor * 0.15;
                     valor = auxValor - desconto;
-                    txtValor.Text = valor.ToString();
+                    txtValor.Text = String.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:C}", valor);
                     break;
 
                 case "20%":
                     desconto = auxValor * 0.20;
                     valor = auxValor - desconto;
-                    txtValor.Text = valor.ToString();
+                    txtValor.Text = String.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:C}", valor);
                     break;
 
                 case "25%":
                     desconto = auxValor * 0.25;
                     valor = auxValor - desconto;
-                    txtValor.Text = valor.ToString();
+                    txtValor.Text = String.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:C}", valor);
                     break;
 
                 case "30%":
                     desconto = auxValor * 0.30;
                     valor = auxValor - desconto;
-                    txtValor.Text = valor.ToString();
+                    txtValor.Text = String.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:C}", valor);
                     break;
 
                 case "35%":
                     desconto = auxValor * 0.35;
                     valor = auxValor - desconto;
-                    txtValor.Text = valor.ToString();
+                    txtValor.Text = String.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:C}", valor);
                     break;
 
                 case "40%":
                     desconto = auxValor * 0.40;
                     valor = auxValor - desconto;
-                    txtValor.Text = valor.ToString();
+                    txtValor.Text = String.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:C}", valor);
                     break;
 
                 case "45%":
                     desconto = auxValor * 0.45;
                     valor = auxValor - desconto;
-                    txtValor.Text = valor.ToString();
+                    txtValor.Text = String.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:C}", valor);
                     break;
 
                 case "50%":
                     desconto = auxValor * 0.50;
                     valor = auxValor - desconto;
-                    txtValor.Text = valor.ToString();
+                    txtValor.Text = String.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:C}", valor);
                     break;
 
                 default:
-                    txtValor.Text = valor.ToString();
+                    txtValor.Text = String.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:C}", valor);
                     break;
             }
         }
 
+        private string RemoverFormatacaoMoeda(string texto)
+        {
 
+            texto = texto.Replace("R$", "");
+            texto = texto.Replace(",00", "");
+            texto = texto.Replace(",", ".");
+            //texto = texto.Replace("0", "");
+
+            return texto;
+
+
+        }
+
+        private void txtRecebido_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                double valorPagar = Convert.ToDouble(RemoverFormatacaoMoeda(txtValor.Text));
+                double valorRecebido = Convert.ToDouble(txtRecebido.Text);
+
+                if (Convert.ToDouble(lblValorTroco.Text) > 0)
+                {
+                    lblValorTroco.Visible = true;
+                    lblTextoTroco.Visible = true;
+                    lblValorTroco.Text = (valorRecebido - valorPagar).ToString("C");
+
+                    // VERIFICAR A PARTE DO TROCO
+                }
+                
+            }
+            catch (FormatException ex)
+            {
+                
+            }
+
+        }
     }
 }
