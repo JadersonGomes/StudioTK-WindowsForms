@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using AcessoBancoDados;
 using System.Collections;
+using System.Globalization;
 
 namespace Negocio.Implementation
 {
@@ -198,6 +199,13 @@ namespace Negocio.Implementation
             return entidade.Where(p => p.DataPagamento >= Convert.ToDateTime(dataInicial) && p.DataPagamento <= Convert.ToDateTime(dataFinal)).ToList();
         }
 
+
+        public string calculaDesconto(double auxValor, double valor, double porcentagem)
+        {
+            double desconto = auxValor * porcentagem;
+            valor = auxValor - desconto;
+            return String.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:C}", valor);
+        }
 
 
 

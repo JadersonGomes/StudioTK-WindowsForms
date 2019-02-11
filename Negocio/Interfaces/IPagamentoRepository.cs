@@ -22,5 +22,6 @@ namespace Negocio.Interfaces
         double SomarValorTotal(IEnumerable<Pagamento> lista);
         List<Servico> PopulaServico();
         List<Produto> PopulaProduto();
+        string calculaDesconto(double auxValor, double valor, double porcentagem);
     }
 }

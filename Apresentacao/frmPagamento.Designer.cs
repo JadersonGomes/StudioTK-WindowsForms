@@ -73,14 +73,14 @@
             this.panel1.Controls.Add(this.groupBox1);
             this.panel1.Location = new System.Drawing.Point(14, 15);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(799, 531);
+            this.panel1.Size = new System.Drawing.Size(799, 477);
             this.panel1.TabIndex = 0;
             // 
             // btnAdicionarNaLista
             // 
             this.btnAdicionarNaLista.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdicionarNaLista.ForeColor = System.Drawing.Color.Gray;
-            this.btnAdicionarNaLista.Location = new System.Drawing.Point(230, 477);
+            this.btnAdicionarNaLista.Location = new System.Drawing.Point(230, 421);
             this.btnAdicionarNaLista.Name = "btnAdicionarNaLista";
             this.btnAdicionarNaLista.Size = new System.Drawing.Size(155, 30);
             this.btnAdicionarNaLista.TabIndex = 51;
@@ -93,7 +93,7 @@
             this.btnSalvar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSalvar.ForeColor = System.Drawing.Color.Gray;
             this.btnSalvar.Image = ((System.Drawing.Image)(resources.GetObject("btnSalvar.Image")));
-            this.btnSalvar.Location = new System.Drawing.Point(47, 477);
+            this.btnSalvar.Location = new System.Drawing.Point(47, 421);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Size = new System.Drawing.Size(155, 30);
             this.btnSalvar.TabIndex = 44;
@@ -107,7 +107,7 @@
             // 
             this.btnReagendar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnReagendar.ForeColor = System.Drawing.Color.Gray;
-            this.btnReagendar.Location = new System.Drawing.Point(413, 477);
+            this.btnReagendar.Location = new System.Drawing.Point(413, 421);
             this.btnReagendar.Name = "btnReagendar";
             this.btnReagendar.Size = new System.Drawing.Size(155, 30);
             this.btnReagendar.TabIndex = 43;
@@ -119,7 +119,7 @@
             // 
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelar.ForeColor = System.Drawing.Color.Gray;
-            this.btnCancelar.Location = new System.Drawing.Point(596, 477);
+            this.btnCancelar.Location = new System.Drawing.Point(596, 421);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(155, 30);
             this.btnCancelar.TabIndex = 42;
@@ -171,7 +171,7 @@
             this.groupBox1.Controls.Add(this.cboProdutos);
             this.groupBox1.Location = new System.Drawing.Point(17, 8);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(765, 441);
+            this.groupBox1.Size = new System.Drawing.Size(765, 375);
             this.groupBox1.TabIndex = 47;
             this.groupBox1.TabStop = false;
             // 
@@ -180,7 +180,7 @@
             this.lblValorTroco.AutoSize = true;
             this.lblValorTroco.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblValorTroco.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.lblValorTroco.Location = new System.Drawing.Point(601, 394);
+            this.lblValorTroco.Location = new System.Drawing.Point(592, 327);
             this.lblValorTroco.Name = "lblValorTroco";
             this.lblValorTroco.Size = new System.Drawing.Size(34, 25);
             this.lblValorTroco.TabIndex = 56;
@@ -192,7 +192,7 @@
             this.lblTextoTroco.AutoSize = true;
             this.lblTextoTroco.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTextoTroco.ForeColor = System.Drawing.Color.Gray;
-            this.lblTextoTroco.Location = new System.Drawing.Point(524, 394);
+            this.lblTextoTroco.Location = new System.Drawing.Point(515, 327);
             this.lblTextoTroco.Name = "lblTextoTroco";
             this.lblTextoTroco.Size = new System.Drawing.Size(84, 25);
             this.lblTextoTroco.TabIndex = 55;
@@ -234,7 +234,7 @@
             "40%",
             "45%",
             "50%"});
-            this.cboDesconto.Location = new System.Drawing.Point(23, 364);
+            this.cboDesconto.Location = new System.Drawing.Point(23, 297);
             this.cboDesconto.Name = "cboDesconto";
             this.cboDesconto.Size = new System.Drawing.Size(377, 23);
             this.cboDesconto.TabIndex = 52;
@@ -256,11 +256,12 @@
             // txtValor
             // 
             this.txtValor.ForeColor = System.Drawing.Color.Red;
-            this.txtValor.Location = new System.Drawing.Point(527, 364);
+            this.txtValor.Location = new System.Drawing.Point(518, 297);
             this.txtValor.Multiline = true;
             this.txtValor.Name = "txtValor";
             this.txtValor.Size = new System.Drawing.Size(225, 23);
             this.txtValor.TabIndex = 41;
+            this.txtValor.TextChanged += new System.EventHandler(this.txtValor_TextChanged);
             this.txtValor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtValor_KeyPress);
             // 
             // label2
@@ -279,7 +280,7 @@
             this.lblValor.AutoSize = true;
             this.lblValor.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblValor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.lblValor.Location = new System.Drawing.Point(523, 345);
+            this.lblValor.Location = new System.Drawing.Point(514, 278);
             this.lblValor.Name = "lblValor";
             this.lblValor.Size = new System.Drawing.Size(79, 15);
             this.lblValor.TabIndex = 34;
@@ -413,9 +414,9 @@
             this.listViewServicos.BackColor = System.Drawing.Color.White;
             this.listViewServicos.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.listViewServicos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.listViewServicos.Location = new System.Drawing.Point(819, 15);
+            this.listViewServicos.Location = new System.Drawing.Point(819, 32);
             this.listViewServicos.Name = "listViewServicos";
-            this.listViewServicos.Size = new System.Drawing.Size(371, 531);
+            this.listViewServicos.Size = new System.Drawing.Size(371, 434);
             this.listViewServicos.TabIndex = 1;
             this.listViewServicos.UseCompatibleStateImageBehavior = false;
             this.listViewServicos.View = System.Windows.Forms.View.List;
@@ -425,7 +426,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1202, 558);
+            this.ClientSize = new System.Drawing.Size(1202, 507);
             this.Controls.Add(this.listViewServicos);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

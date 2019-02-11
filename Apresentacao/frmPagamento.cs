@@ -45,34 +45,43 @@ namespace Apresentacao
         {
             try
             {
-                validacao = new Validacao();
-                bool resultadoValidacao = validacao.ValidarPadrao(this.panel1);
-
-                if (!resultadoValidacao)
+                if (!txtValor.Text.Equals(String.Empty))
                 {
-                    string valorPagamentoSemFormatacao = RemoverFormatacaoMoeda(txtValor.Text);
-                    pagamento.NomeCliente = txtNomeCliente.Text;
-                    pagamento.NomeFuncionario = cboFuncionario.SelectedText;
-                    pagamento.ServicoRealizado = (Servico)cboServico.SelectedItem;
-                    pagamento.FormaPagamento = cboFormaPagamento.SelectedText;
-                    pagamento.DataPagamento = Convert.ToDateTime(dtpData.Text);
-                    pagamento.Valor = Convert.ToDouble(valorPagamentoSemFormatacao);
+                    validacao = new Validacao();
+                    bool resultadoValidacao = validacao.ValidarPadrao(this.panel1);
 
-                    // Verifica se o Produto está nulo e recupera o Id do item selecionado e busca na lista de produtos através desse Id, caso não esteja
-                    if (((Produto)cboProdutos.SelectedItem) != null)
-                        pagamento.Produto = produtoRepository.BuscarPorId(((Produto)cboProdutos.SelectedItem).Id);
+                    if (!resultadoValidacao)
+                    {
+                        string valorPagamentoSemFormatacao = RemoverFormatacaoMoeda(txtValor.Text);
+                        pagamento.NomeCliente = txtNomeCliente.Text;
+                        pagamento.NomeFuncionario = cboFuncionario.SelectedText;
+                        pagamento.ServicoRealizado = (Servico)cboServico.SelectedItem;
+                        pagamento.FormaPagamento = cboFormaPagamento.SelectedText;
+                        pagamento.DataPagamento = Convert.ToDateTime(dtpData.Text);
+                        pagamento.Valor = Convert.ToDouble(valorPagamentoSemFormatacao);
 
-                    pagamentoRepository.Adicionar(pagamento);
-                    pagamentoRepository.Salvar();
+                        // Verifica se o Produto está nulo e recupera o Id do item selecionado e busca na lista de produtos através desse Id, caso não esteja
+                        if (((Produto)cboProdutos.SelectedItem) != null)
+                            pagamento.Produto = produtoRepository.BuscarPorId(((Produto)cboProdutos.SelectedItem).Id);
 
-                    MessageBox.Show("Pagamento registrado com sucesso!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    LimparCampos();
+                        pagamentoRepository.Adicionar(pagamento);
+                        pagamentoRepository.Salvar();
+
+                        MessageBox.Show("Pagamento registrado com sucesso!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        LimparCampos();
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Por gentileza, preencha todos os campos.", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    }
 
                 }
                 else
                 {
-                    MessageBox.Show("Por gentileza, preencha todos os campos.", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    MessageBox.Show("Por gentileza, adicione à lista um Produto e/ou Serviço para finalizar.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
+
 
             }
             catch (Exception ex)
@@ -121,7 +130,7 @@ namespace Apresentacao
                 // Carrega o combobox de Produtos
                 cboProdutos.DataSource = pagamentoRepository.PopulaProduto();
 
-                // visible
+                // VISIBLE
 
                 cboProdutos.Visible = true;
                 txtQntd.Visible = true;
@@ -129,12 +138,12 @@ namespace Apresentacao
                 lblQntd.Visible = true;
 
 
-                // size
+                // SIZE
 
                 groupBox1.Height = 441;
                 groupBox1.Width = 765;
 
-                listViewServicos.Height = 531;
+                listViewServicos.Height = 488;
                 listViewServicos.Width = 371;
 
                 this.Height = 592;
@@ -146,13 +155,20 @@ namespace Apresentacao
 
                 // LOCATION
 
+                lblValor.Location = new Point(515, 347);
+                txtValor.Location = new Point(519, 364);
+                lblTextoTroco.Location = new Point(516, 394);
+                lblValorTroco.Location = new Point(593, 394);
+
                 cboDesconto.Location = new Point(23, 364);
                 ckbDesconto.Location = new Point(23, 339);
+
                 lblRecebido.Location = new Point(21, 277);
-                lblForma.Location = new Point(266, 277);
                 txtRecebido.Location = new Point(25, 298);
-                //txtValor.Location = new Point(527, 297);
+
+                lblForma.Location = new Point(266, 277);
                 cboFormaPagamento.Location = new Point(269, 298);
+
                 btnSalvar.Location = new Point(47, 477);
                 btnAdicionarNaLista.Location = new Point(230, 477);
                 btnReagendar.Location = new Point(413, 477);
@@ -160,7 +176,7 @@ namespace Apresentacao
             }
             else
             {
-                // visible
+                // VISIBLE
 
                 cboProdutos.Visible = false;
                 txtQntd.Visible = false;
@@ -168,34 +184,41 @@ namespace Apresentacao
                 lblQntd.Visible = false;
 
 
-                // size
+                // SIZE
 
-                groupBox1.Height = 348;
+                groupBox1.Height = 375;
                 groupBox1.Width = 765;
 
-                panel1.Height = 442;
+                panel1.Height = 477;
                 panel1.Width = 799;
 
-                listViewServicos.Height = 415;
+                listViewServicos.Height = 434;
                 listViewServicos.Width = 371;
 
-                this.Height = 510;
+                this.Height = 541;
                 this.Width = 1218;
 
 
 
                 // LOCATION
+                lblValor.Location = new Point(515, 278);
+                txtValor.Location = new Point(519, 297);
+                lblTextoTroco.Location = new Point(516, 327);
+                lblValorTroco.Location = new Point(593, 327);
 
                 cboDesconto.Location = new Point(23, 297);
                 ckbDesconto.Location = new Point(23, 272);
-                lblRecebido.Location = new Point(21, 211);
-                lblForma.Location = new Point(265, 212);
+
                 txtRecebido.Location = new Point(25, 230);
+                lblRecebido.Location = new Point(21, 211);
+
+                lblForma.Location = new Point(265, 212);
                 cboFormaPagamento.Location = new Point(268, 230);
-                btnSalvar.Location = new Point(47, 385);
-                btnAdicionarNaLista.Location = new Point(230, 385);
-                btnReagendar.Location = new Point(413, 385);
-                btnCancelar.Location = new Point(596, 385);
+
+                btnSalvar.Location = new Point(47, 421);
+                btnAdicionarNaLista.Location = new Point(230, 421);
+                btnReagendar.Location = new Point(413, 421);
+                btnCancelar.Location = new Point(596, 421);
             }
 
 
@@ -325,84 +348,67 @@ namespace Apresentacao
         private void cboDesconto_SelectedIndexChanged(object sender, EventArgs e)
         {
             string valorSemFormatacao = RemoverFormatacaoMoeda(txtValor.Text);
+            valorSemFormatacao = valorSemFormatacao.Replace(".", ",");
 
-            double valor = Convert.ToDouble((valorSemFormatacao));
+            double valor = Convert.ToDouble(valorSemFormatacao);
             double auxValor = pagamento.Valor;
-            double desconto = 0;
+
 
 
             switch (cboDesconto.Text)
             {
 
                 case "5%":
-                    desconto = auxValor * 0.05;
-                    valor = auxValor - desconto;
-                    txtValor.Text = String.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:C}", valor);
+                    txtValor.Text = pagamentoRepository.calculaDesconto(auxValor, valor, 0.05);
                     break;
 
                 case "10%":
-                    desconto = auxValor * 0.10;
-                    valor = auxValor - desconto;
-                    txtValor.Text = String.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:C}", valor);
+                    txtValor.Text = pagamentoRepository.calculaDesconto(auxValor, valor, 0.10);
                     break;
 
                 case "15%":
-                    desconto = auxValor * 0.15;
-                    valor = auxValor - desconto;
-                    txtValor.Text = String.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:C}", valor);
+                    txtValor.Text = pagamentoRepository.calculaDesconto(auxValor, valor, 0.15);
                     break;
 
                 case "20%":
-                    desconto = auxValor * 0.20;
-                    valor = auxValor - desconto;
-                    txtValor.Text = String.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:C}", valor);
+                    txtValor.Text = pagamentoRepository.calculaDesconto(auxValor, valor, 0.20);
                     break;
 
                 case "25%":
-                    desconto = auxValor * 0.25;
-                    valor = auxValor - desconto;
-                    txtValor.Text = String.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:C}", valor);
+                    txtValor.Text = pagamentoRepository.calculaDesconto(auxValor, valor, 0.25);
                     break;
 
                 case "30%":
-                    desconto = auxValor * 0.30;
-                    valor = auxValor - desconto;
-                    txtValor.Text = String.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:C}", valor);
+                    txtValor.Text = pagamentoRepository.calculaDesconto(auxValor, valor, 0.30);
                     break;
 
                 case "35%":
-                    desconto = auxValor * 0.35;
-                    valor = auxValor - desconto;
-                    txtValor.Text = String.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:C}", valor);
+                    txtValor.Text = pagamentoRepository.calculaDesconto(auxValor, valor, 0.35);
                     break;
 
                 case "40%":
-                    desconto = auxValor * 0.40;
-                    valor = auxValor - desconto;
-                    txtValor.Text = String.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:C}", valor);
+                    txtValor.Text = pagamentoRepository.calculaDesconto(auxValor, valor, 0.40);
                     break;
 
                 case "45%":
-                    desconto = auxValor * 0.45;
-                    valor = auxValor - desconto;
-                    txtValor.Text = String.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:C}", valor);
+                    txtValor.Text = pagamentoRepository.calculaDesconto(auxValor, valor, 0.45);
                     break;
 
                 case "50%":
-                    desconto = auxValor * 0.50;
-                    valor = auxValor - desconto;
-                    txtValor.Text = String.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:C}", valor);
+                    txtValor.Text = pagamentoRepository.calculaDesconto(auxValor, valor, 0.50);
                     break;
 
                 default:
                     txtValor.Text = String.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:C}", valor);
                     break;
             }
+
+            AtualizaTroco();
         }
+
 
         private string RemoverFormatacaoMoeda(string texto)
         {
-
             texto = texto.Replace("R$", "");
             texto = texto.Replace(",00", "");
             texto = texto.Replace(",", ".");
@@ -414,26 +420,46 @@ namespace Apresentacao
         }
 
         private void txtRecebido_TextChanged(object sender, EventArgs e)
+        {            
+            AtualizaTroco();
+
+        }
+
+
+        public void AtualizaTroco()
         {
             try
             {
-                double valorPagar = Convert.ToDouble(RemoverFormatacaoMoeda(txtValor.Text));
-                double valorRecebido = Convert.ToDouble(txtRecebido.Text);
+                string valorSemFormatacao = RemoverFormatacaoMoeda(txtValor.Text);
+                valorSemFormatacao = valorSemFormatacao.Replace(".", ",");
 
-                if (Convert.ToDouble(lblValorTroco.Text) > 0)
+                double valorPagar = Convert.ToDouble(valorSemFormatacao);
+                double valorRecebido = Convert.ToDouble(txtRecebido.Text);
+                double result = (valorRecebido - valorPagar);
+                lblValorTroco.Text = result.ToString("C");
+
+                if (result >= 0)
                 {
                     lblValorTroco.Visible = true;
                     lblTextoTroco.Visible = true;
-                    lblValorTroco.Text = (valorRecebido - valorPagar).ToString("C");
 
-                    // VERIFICAR A PARTE DO TROCO
+
                 }
-                
+                else
+                {
+                    lblValorTroco.Visible = false;
+                    lblTextoTroco.Visible = false;
+                }
+
             }
             catch (FormatException ex)
             {
-                
+
             }
+        }
+
+        private void txtValor_TextChanged(object sender, EventArgs e)
+        {
 
         }
     }
