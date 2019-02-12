@@ -14,9 +14,9 @@ namespace Apresentacao
 {
     public partial class frmFiltrarServico : Form
     {
-        private SalaoContext contexto = new SalaoContext();
-        Pagamento pagamento;
-        bool selecionouPeriodo = false, selecionouColaborador = false, selecionouServico = false;       
+        //private SalaoContext contexto = new SalaoContext();
+        //Pagamento pagamento;
+        //bool selecionouPeriodo = false, selecionouColaborador = false, selecionouServico = false;       
 
         public frmFiltrarServico()
         {
@@ -36,7 +36,7 @@ namespace Apresentacao
 
         private void cboColaborador_SelectedIndexChanged(object sender, EventArgs e)
         {
-            selecionouColaborador = true;
+            /*selecionouColaborador = true;
 
             try
             {
@@ -65,13 +65,13 @@ namespace Apresentacao
             {
                 MessageBox.Show("Algo deu errado. Tente novamente mais tarde ou contate o administrador. \n\n\nDetalhes: \n" + ex.Message, "ATENÇÃO", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
+            */
 
         }
 
         private void cboServico_SelectedIndexChanged(object sender, EventArgs e)
         {
-            selecionouServico = true;
+            /*selecionouServico = true;
 
             try
             {
@@ -99,26 +99,26 @@ namespace Apresentacao
             {
                 MessageBox.Show("Algo deu errado. Tente novamente mais tarde ou contate o administrador. \n\n\nDetalhes: \n" + ex.Message, "ATENÇÃO", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
+            */
         }
 
        
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            pagamento = new Pagamento(contexto);
+            /*pagamento = new Pagamento(contexto);
             Agendar ag = new Agendar(contexto);
 
             if (dtpData.Value.Equals(DateTime.Today) && cboColaborador.SelectedItem.Equals("") && cboServico.SelectedItem.Equals(""))
             {
                 datagridVendas.DataSource = pagamento.ListarTodos();                
-            }            
+            }    */        
 
         }
 
         private void cboPeriodo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            selecionouPeriodo = true;
+            /*selecionouPeriodo = true;
 
             try
             {
@@ -148,7 +148,7 @@ namespace Apresentacao
                 MessageBox.Show("Algo deu errado. Tente novamente mais tarde ou contate o administrador. \n\n\nDetalhes: \n" + ex.Message, "ATENÇÃO", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            
+            */
 
         }
     }

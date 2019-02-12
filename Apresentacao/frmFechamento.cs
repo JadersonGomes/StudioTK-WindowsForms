@@ -21,6 +21,8 @@ namespace Apresentacao
         Caixa caixa;
         CaixaRepository caixaRepository;
 
+        // ATENÇAÕ: IMPLEMENTAR A IDEIA DE FATURAMENTO PARA MOSTRAR TUDO O QUE O COLABORADOR FEZ NO PERÍODO SELECIONADO E O QUANTO O MESMO DEVE RECEBER.
+
         public frmFechamento()
         {
             InitializeComponent();
@@ -28,7 +30,7 @@ namespace Apresentacao
 
         private void frmFechamento_Load(object sender, EventArgs e)
         {
-            try
+            /*try
             {
                 pagamento = new Pagamento(contexto);
 
@@ -45,7 +47,7 @@ namespace Apresentacao
             {
                 MessageBox.Show("Algo deu errado. Tente novamente ou contate o administrador do sistema. \n\n\nDetalhes: \n" + ex.Message, "ATENÇÃO", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-            }
+            }*/
 
         }
 
@@ -56,7 +58,7 @@ namespace Apresentacao
 
         private void btnPesquisar_Click(object sender, EventArgs e)
         {
-            try
+            /*try
             {
                 pagamento = new Pagamento(contexto);
 
@@ -70,7 +72,7 @@ namespace Apresentacao
                     IList<Pagamento> lista = pagamento.ListarFechamentoDiario(cboFuncionario.Text, dtpAbertura.Text);
                     //dataGridViewFechamento.DataSource = lista;
 
-                    //txtValorTotal.Text = string.Format("{0:C}", 652.35/*Convert.ToString(pagamento.SomarValorTotal(lista)*/);
+                    //txtValorTotal.Text = string.Format("{0:C}", 652.35/*Convert.ToString(pagamento.SomarValorTotal(lista)*//*);
 
 
                 }
@@ -88,18 +90,14 @@ namespace Apresentacao
                     MessageBox.Show("Data incorreta. Por gentileza, insira uma data final maior que a data inicial.", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
 
-
-
-
-
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Algo deu errado. Tente novamente ou contate o administrador do sistema. \n\n\nDetalhes: \n" + ex.Message, "ATENÇÃO", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            }*/
         }
 
-        private void btnRegistrar_Click(object sender, EventArgs e)
+        private void btnFecharCaixa_Click(object sender, EventArgs e)
         {
             try
             {

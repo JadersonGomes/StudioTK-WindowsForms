@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmFechamento));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnRegistrar = new System.Windows.Forms.Button();
+            this.btnFecharCaixa = new System.Windows.Forms.Button();
             this.btnSair = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dtpAbertura = new System.Windows.Forms.DateTimePicker();
@@ -45,7 +45,7 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.btnRegistrar);
+            this.panel1.Controls.Add(this.btnFecharCaixa);
             this.panel1.Controls.Add(this.btnSair);
             this.panel1.Controls.Add(this.groupBox1);
             this.panel1.Location = new System.Drawing.Point(14, 14);
@@ -53,20 +53,20 @@
             this.panel1.Size = new System.Drawing.Size(623, 327);
             this.panel1.TabIndex = 0;
             // 
-            // btnRegistrar
+            // btnFecharCaixa
             // 
-            this.btnRegistrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRegistrar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnRegistrar.Image = ((System.Drawing.Image)(resources.GetObject("btnRegistrar.Image")));
-            this.btnRegistrar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnRegistrar.Location = new System.Drawing.Point(302, 277);
-            this.btnRegistrar.Name = "btnRegistrar";
-            this.btnRegistrar.Size = new System.Drawing.Size(138, 27);
-            this.btnRegistrar.TabIndex = 13;
-            this.btnRegistrar.Text = "Fechar";
-            this.btnRegistrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnRegistrar.UseVisualStyleBackColor = true;
-            this.btnRegistrar.Click += new System.EventHandler(this.btnRegistrar_Click);
+            this.btnFecharCaixa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFecharCaixa.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnFecharCaixa.Image = ((System.Drawing.Image)(resources.GetObject("btnFecharCaixa.Image")));
+            this.btnFecharCaixa.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnFecharCaixa.Location = new System.Drawing.Point(302, 277);
+            this.btnFecharCaixa.Name = "btnFecharCaixa";
+            this.btnFecharCaixa.Size = new System.Drawing.Size(138, 27);
+            this.btnFecharCaixa.TabIndex = 13;
+            this.btnFecharCaixa.Text = "Fechar";
+            this.btnFecharCaixa.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnFecharCaixa.UseVisualStyleBackColor = true;
+            this.btnFecharCaixa.Click += new System.EventHandler(this.btnFecharCaixa_Click);
             // 
             // btnSair
             // 
@@ -183,7 +183,7 @@
         private System.Windows.Forms.DateTimePicker dtpFechamento;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DateTimePicker dtpAbertura;
-        private System.Windows.Forms.Button btnRegistrar;
+        private System.Windows.Forms.Button btnFecharCaixa;
         private System.Windows.Forms.GroupBox groupBox1;
     }
 }

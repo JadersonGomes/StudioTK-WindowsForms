@@ -66,6 +66,7 @@
     <Compile Include="Implementation\ServicoRepository.cs" />
     <Compile Include="Implementation\UsuarioRepository.cs" />
     <Compile Include="Implementation\Validacao.cs" />
+    <Compile Include="Implementation\VendaRepository.cs" />
     <Compile Include="Interfaces\IAgendarRepository.cs" />
     <Compile Include="Interfaces\ICaixaRepository.cs" />
     <Compile Include="Interfaces\IClienteProdutoRepository.cs" />
@@ -81,6 +82,7 @@
     <Compile Include="Interfaces\IServicoRepository.cs" />
     <Compile Include="Interfaces\IUsuarioRepository.cs" />
     <Compile Include="Interfaces\IValidacao.cs" />
+    <Compile Include="Interfaces\IVendaRepository.cs" />
     <Compile Include="Models\Agendar.cs" />
     <Compile Include="Models\Caixa.cs" />
     <Compile Include="Models\Cliente.cs" />
@@ -95,6 +97,7 @@
     <Compile Include="Models\Produto.cs" />
     <Compile Include="Models\Servico.cs" />
     <Compile Include="Models\Usuario.cs" />
+    <Compile Include="Models\Venda.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

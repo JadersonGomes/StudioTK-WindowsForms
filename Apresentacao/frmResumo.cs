@@ -1,4 +1,6 @@
 ﻿using AcessoBancoDados;
+using Negocio.Implementation;
+using Negocio.Interfaces;
 using Negocio.Models;
 using System;
 using System.Collections.Generic;
@@ -13,10 +15,9 @@ using System.Windows.Forms;
 namespace Apresentacao
 {
     public partial class frmResumo : Form
-    {
-        Pagamento pagamento;
-        Caixa caixa;
+    {           
         SalaoContext contexto = new SalaoContext();
+        IVendaRepository vendaRepository = new VendaRepository(new SalaoContext());
 
 
         public frmResumo()
@@ -28,13 +29,12 @@ namespace Apresentacao
         {
             try
             {
-                pagamento = new Pagamento(contexto);
 
                 if (txtPesquisar.Text.Equals("") || txtPesquisar.Text.Equals(" "))
                 {
                     if (dtpInicial.Text == dtpFinal.Text)
                     {
-                        IEnumerable<Pagamento> lista = pagamento.ListarPorPeriodo(dtpInicial.Text);
+                        IEnumerable<Venda> lista = vendaRepository.ListAllVendas();
                         dataGridViewResumo.DataSource = lista;
 
                         //txtValorTotal.Text = string.Format("{0:C}", 652.35/*Convert.ToString(pagamento.SomarValorTotal(lista)*/);
@@ -42,7 +42,7 @@ namespace Apresentacao
                     }
                     else if (dtpInicial.Value.Date < dtpFinal.Value.Date)
                     {
-                        IEnumerable<Pagamento> lista = pagamento.ListarPorIntervaloPeriodo(dtpInicial.Text, dtpFinal.Text);
+                        IEnumerable<Venda> lista = vendaRepository.ListarPorIntervaloPeriodo(dtpInicial.Text, dtpFinal.Text);
                         dataGridViewResumo.DataSource = lista;
 
                         //txtValorTotal.Text = Convert.ToString(pagamento.SomarValorTotal(lista));
@@ -57,7 +57,7 @@ namespace Apresentacao
                 }
                 else
                 {
-                    dataGridViewResumo.DataSource = pagamento.ListarPorColaborador(txtPesquisar.Text);
+
                 }
 
 
@@ -76,7 +76,7 @@ namespace Apresentacao
                 {
                     if (dtpInicial.Text == dtpFinal.Text)
                     {
-                        IEnumerable<Pagamento> lista = pagamento.ListarPorPeriodo(dtpInicial.Text);
+                        IEnumerable<Venda> lista = vendaRepository.ListarPorData(dtpInicial.Text);
                         dataGridViewResumo.DataSource = lista;
 
                         //txtValorTotal.Text = string.Format("{0:C}", 652.35/*Convert.ToString(pagamento.SomarValorTotal(lista)*/);
@@ -84,7 +84,7 @@ namespace Apresentacao
                     }
                     else if (dtpInicial.Value.Date < dtpFinal.Value.Date)
                     {
-                        IEnumerable<Pagamento> lista = pagamento.ListarPorIntervaloPeriodo(dtpInicial.Text, dtpFinal.Text);
+                        IEnumerable<Venda> lista = vendaRepository.ListarPorIntervaloPeriodo(dtpInicial.Text, dtpFinal.Text);
                         dataGridViewResumo.DataSource = lista;
 
                         //txtValorTotal.Text = Convert.ToString(pagamento.SomarValorTotal(lista));
@@ -97,16 +97,17 @@ namespace Apresentacao
                     }
 
 
-                } else
+                }
+                else
                 {
-
+                    dataGridViewResumo.DataSource = vendaRepository.ListarPorFuncionario(txtPesquisar.Text);
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Algo deu errado. Tente novamente ou contate o administrador do sistema. \n\n\nDetalhes: \n" + ex.Message, "ATENÇÃO", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
+
         }
 
         private void btnFecharCaixa_Click(object sender, EventArgs e)

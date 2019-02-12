@@ -180,7 +180,7 @@
             this.lblValorTroco.AutoSize = true;
             this.lblValorTroco.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblValorTroco.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.lblValorTroco.Location = new System.Drawing.Point(592, 327);
+            this.lblValorTroco.Location = new System.Drawing.Point(589, 337);
             this.lblValorTroco.Name = "lblValorTroco";
             this.lblValorTroco.Size = new System.Drawing.Size(34, 25);
             this.lblValorTroco.TabIndex = 56;
@@ -192,7 +192,7 @@
             this.lblTextoTroco.AutoSize = true;
             this.lblTextoTroco.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTextoTroco.ForeColor = System.Drawing.Color.Gray;
-            this.lblTextoTroco.Location = new System.Drawing.Point(515, 327);
+            this.lblTextoTroco.Location = new System.Drawing.Point(512, 337);
             this.lblTextoTroco.Name = "lblTextoTroco";
             this.lblTextoTroco.Size = new System.Drawing.Size(84, 25);
             this.lblTextoTroco.TabIndex = 55;
@@ -219,6 +219,7 @@
             this.txtRecebido.Size = new System.Drawing.Size(225, 23);
             this.txtRecebido.TabIndex = 53;
             this.txtRecebido.TextChanged += new System.EventHandler(this.txtRecebido_TextChanged);
+            
             // 
             // cboDesconto
             // 
@@ -255,13 +256,13 @@
             // 
             // txtValor
             // 
+            this.txtValor.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtValor.ForeColor = System.Drawing.Color.Red;
             this.txtValor.Location = new System.Drawing.Point(518, 297);
             this.txtValor.Multiline = true;
             this.txtValor.Name = "txtValor";
-            this.txtValor.Size = new System.Drawing.Size(225, 23);
+            this.txtValor.Size = new System.Drawing.Size(225, 37);
             this.txtValor.TabIndex = 41;
-            this.txtValor.TextChanged += new System.EventHandler(this.txtValor_TextChanged);
             this.txtValor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtValor_KeyPress);
             // 
             // label2
@@ -278,13 +279,13 @@
             // lblValor
             // 
             this.lblValor.AutoSize = true;
-            this.lblValor.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblValor.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblValor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.lblValor.Location = new System.Drawing.Point(514, 278);
+            this.lblValor.Location = new System.Drawing.Point(514, 276);
             this.lblValor.Name = "lblValor";
-            this.lblValor.Size = new System.Drawing.Size(79, 15);
+            this.lblValor.Size = new System.Drawing.Size(124, 18);
             this.lblValor.TabIndex = 34;
-            this.lblValor.Text = "Total a Pagar";
+            this.lblValor.Text = "TOTAL À PAGAR";
             // 
             // label3
             // 

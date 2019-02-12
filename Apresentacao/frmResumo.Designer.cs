@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmResumo));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.btnFecharCaixa = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
@@ -44,6 +46,8 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.btnFecharCaixa);
             this.panel1.Controls.Add(this.btnCancelar);
@@ -54,8 +58,26 @@
             this.panel1.Controls.Add(this.dataGridViewResumo);
             this.panel1.Location = new System.Drawing.Point(14, 14);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1091, 605);
+            this.panel1.Size = new System.Drawing.Size(1203, 605);
             this.panel1.TabIndex = 0;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(755, 31);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(31, 15);
+            this.label3.TabIndex = 10;
+            this.label3.Text = "ATÉ:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(508, 31);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(27, 15);
+            this.label2.TabIndex = 9;
+            this.label2.Text = "DE:";
             // 
             // label1
             // 
@@ -70,20 +92,23 @@
             // btnFecharCaixa
             // 
             this.btnFecharCaixa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFecharCaixa.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnFecharCaixa.Location = new System.Drawing.Point(677, 560);
+            this.btnFecharCaixa.ForeColor = System.Drawing.Color.Gray;
+            this.btnFecharCaixa.Image = ((System.Drawing.Image)(resources.GetObject("btnFecharCaixa.Image")));
+            this.btnFecharCaixa.Location = new System.Drawing.Point(792, 560);
             this.btnFecharCaixa.Name = "btnFecharCaixa";
             this.btnFecharCaixa.Size = new System.Drawing.Size(189, 27);
             this.btnFecharCaixa.TabIndex = 6;
             this.btnFecharCaixa.Text = "Fechar caixa";
+            this.btnFecharCaixa.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnFecharCaixa.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnFecharCaixa.UseVisualStyleBackColor = true;
             this.btnFecharCaixa.Click += new System.EventHandler(this.btnFecharCaixa_Click);
             // 
             // btnCancelar
             // 
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancelar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnCancelar.Location = new System.Drawing.Point(887, 560);
+            this.btnCancelar.ForeColor = System.Drawing.Color.Gray;
+            this.btnCancelar.Location = new System.Drawing.Point(999, 560);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(189, 27);
             this.btnCancelar.TabIndex = 5;
@@ -92,20 +117,20 @@
             // 
             // dtpFinal
             // 
-            this.dtpFinal.CalendarForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.dtpFinal.CalendarTitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.dtpFinal.CalendarForeColor = System.Drawing.Color.Gray;
+            this.dtpFinal.CalendarTitleForeColor = System.Drawing.Color.Gray;
             this.dtpFinal.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpFinal.Location = new System.Drawing.Point(681, 28);
+            this.dtpFinal.Location = new System.Drawing.Point(792, 28);
             this.dtpFinal.Name = "dtpFinal";
             this.dtpFinal.Size = new System.Drawing.Size(208, 21);
             this.dtpFinal.TabIndex = 4;
             // 
             // dtpInicial
             // 
-            this.dtpInicial.CalendarForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.dtpInicial.CalendarTitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.dtpInicial.CalendarForeColor = System.Drawing.Color.Gray;
+            this.dtpInicial.CalendarTitleForeColor = System.Drawing.Color.Gray;
             this.dtpInicial.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpInicial.Location = new System.Drawing.Point(465, 29);
+            this.dtpInicial.Location = new System.Drawing.Point(541, 28);
             this.dtpInicial.Name = "dtpInicial";
             this.dtpInicial.Size = new System.Drawing.Size(208, 21);
             this.dtpInicial.TabIndex = 3;
@@ -113,10 +138,10 @@
             // btnPesquisar
             // 
             this.btnPesquisar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPesquisar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnPesquisar.ForeColor = System.Drawing.Color.Gray;
             this.btnPesquisar.Image = ((System.Drawing.Image)(resources.GetObject("btnPesquisar.Image")));
             this.btnPesquisar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPesquisar.Location = new System.Drawing.Point(911, 25);
+            this.btnPesquisar.Location = new System.Drawing.Point(1023, 25);
             this.btnPesquisar.Name = "btnPesquisar";
             this.btnPesquisar.Size = new System.Drawing.Size(165, 27);
             this.btnPesquisar.TabIndex = 2;
@@ -140,7 +165,7 @@
             this.dataGridViewResumo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewResumo.Location = new System.Drawing.Point(14, 58);
             this.dataGridViewResumo.Name = "dataGridViewResumo";
-            this.dataGridViewResumo.Size = new System.Drawing.Size(1062, 496);
+            this.dataGridViewResumo.Size = new System.Drawing.Size(1174, 496);
             this.dataGridViewResumo.TabIndex = 0;
             // 
             // frmResumo
@@ -148,7 +173,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1119, 632);
+            this.ClientSize = new System.Drawing.Size(1229, 632);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
@@ -174,5 +199,7 @@
         private System.Windows.Forms.Button btnFecharCaixa;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
     }
 }

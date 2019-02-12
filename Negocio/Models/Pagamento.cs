@@ -18,13 +18,13 @@ namespace Negocio.Models
 
         public int Id { get; set; }
         public string NomeCliente { get; set; }
-        public string NomeFuncionario { get; set; }
-        public Servico ServicoRealizado { get; set; }
+        public string NomeFuncionario { get; set; }        
         public string FormaPagamento { get; set; }
-        public double Valor { get; set; }        
+        public double ValorTotal { get; set; }
+        public double ValorRecebido { get; set; }
         public DateTime DataPagamento { get; set; }
-        public Produto Produto { get; set; }
-        public int Quantidade { get; set; }
+        public virtual Venda Venda { get; set; }
+
 
 
 
