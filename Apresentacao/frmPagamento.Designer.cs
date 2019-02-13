@@ -338,8 +338,7 @@
             this.txtQntd.Name = "txtQntd";
             this.txtQntd.Size = new System.Drawing.Size(233, 23);
             this.txtQntd.TabIndex = 49;
-            this.txtQntd.Visible = false;
-            this.txtQntd.TextChanged += new System.EventHandler(this.txtQntd_TextChanged);
+            this.txtQntd.Visible = false;            
             this.txtQntd.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtQntd_KeyPress);
             // 
             // lblQntd

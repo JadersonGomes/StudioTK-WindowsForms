@@ -5,7 +5,6 @@ d:\Users\jvieira\documents\visual studio 2015\Projects\appCabeleireiro\AcessoBan
 d:\Users\jvieira\documents\visual studio 2015\Projects\appCabeleireiro\AcessoBancoDados\bin\Debug\EntityFramework.SqlServer.dll
 d:\Users\jvieira\documents\visual studio 2015\Projects\appCabeleireiro\AcessoBancoDados\bin\Debug\EntityFramework.xml
 d:\Users\jvieira\documents\visual studio 2015\Projects\appCabeleireiro\AcessoBancoDados\bin\Debug\EntityFramework.SqlServer.xml
+d:\Users\jvieira\documents\visual studio 2015\Projects\appCabeleireiro\AcessoBancoDados\obj\Debug\AcessoBancoDados.csprojResolveAssemblyReference.cache
 d:\Users\jvieira\documents\visual studio 2015\Projects\appCabeleireiro\AcessoBancoDados\obj\Debug\AcessoBancoDados.dll
 d:\Users\jvieira\documents\visual studio 2015\Projects\appCabeleireiro\AcessoBancoDados\obj\Debug\AcessoBancoDados.pdb
-d:\Users\jvieira\documents\visual studio 2015\Projects\appCabeleireiro\AcessoBancoDados\bin\Debug\AcessoBancoDados.dll.CodeAnalysisLog.xml
-d:\Users\jvieira\documents\visual studio 2015\Projects\appCabeleireiro\AcessoBancoDados\bin\Debug\AcessoBancoDados.dll.lastcodeanalysissucceeded

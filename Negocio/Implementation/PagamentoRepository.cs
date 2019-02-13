@@ -137,11 +137,11 @@ namespace Negocio.Implementation
             return valorTotal;
         }
 
-        public string calculaDesconto(double auxValor, double valor, double porcentagem)
+        public double calculaDesconto(double auxValor, double valor, double porcentagem)
         {
             double desconto = auxValor * porcentagem;
             valor = auxValor - desconto;
-            return String.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:C}", valor);
+            return valor;
         }
 
     }

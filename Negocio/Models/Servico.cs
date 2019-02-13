@@ -17,6 +17,7 @@ namespace Negocio.Models
         public int Id { get; set; }
         public string Nome { get; set; }
         public double Valor { get; set; }
+        public int Quantidade { get; set; } = 1;
         public Cliente Cliente { get; set; }        
         public string Hora { get; set; }
         public DateTime Data { get; set; }
