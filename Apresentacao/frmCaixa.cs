@@ -20,24 +20,28 @@ namespace Apresentacao
         private void btnResumo_Click(object sender, EventArgs e)
         {
             frmResumo resumo = new frmResumo();
+            this.Hide();
             resumo.Show();
         }
 
         private void btnSuprimento_Click(object sender, EventArgs e)
         {
             frmSuprimento suprimento = new frmSuprimento();
+            this.Hide();
             suprimento.Show();
         }
 
         private void btnDespesa_Click(object sender, EventArgs e)
         {
             frmDespesa despesa = new frmDespesa();
+            this.Hide();
             despesa.Show();
         }
 
         private void btnVale_Click(object sender, EventArgs e)
         {
             frmVale vale = new frmVale();
+            this.Hide();
             vale.Show();
         }
 
@@ -48,8 +52,8 @@ namespace Apresentacao
             if (resultadoEscolha == DialogResult.Yes)
             {
                 frmSuprimento suprimento = new frmSuprimento();
-                suprimento.Show();
-                //MessageBox.Show("Caixa aberto com sucesso!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Hide();
+                suprimento.Show();                
 
             } else if (resultadoEscolha == DialogResult.No)
             {
@@ -61,6 +65,7 @@ namespace Apresentacao
         private void btnFecharCaixa_Click(object sender, EventArgs e)
         {
             frmResumo resumo = new frmResumo();
+            this.Hide();
             resumo.Show();
         }
 

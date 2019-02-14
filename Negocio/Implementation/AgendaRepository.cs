@@ -11,20 +11,20 @@ using System.Threading.Tasks;
 
 namespace Negocio.Implementation
 {
-    public class AgendarRepository : AcessoDadosEntityFramework<Agendar>, IAgendarRepository
+    public class AgendaRepository : AcessoDadosEntityFramework<Agenda>, IAgendaRepository
     {
 
         List<string> listaHora = new List<string>();
         SalaoContext contexto = new SalaoContext();
 
-        public AgendarRepository(SalaoContext _contexto) : base(_contexto)
+        public AgendaRepository(SalaoContext _contexto) : base(_contexto)
         {
         }
 
 
-        public List<Agendar> PopulaDataGrid()
+        public List<Agenda> PopulaDataGrid()
         {
-            List<Agendar> listaAgendamento = new List<Agendar>();
+            List<Agenda> listaAgendamento = new List<Agenda>();
 
             Funcionario funcionario = new Funcionario(contexto);
             funcionario.Nome = "Tiago";
@@ -42,47 +42,47 @@ namespace Negocio.Implementation
             servico.Valor = 25;            
             servico.Cliente = cliente;
 
-            Agendar agenda = new Agendar(contexto);
+            Agenda agenda = new Agenda(contexto);
 
             agenda.Id = 1;
             agenda.NomeCliente = "Jaderson";
-            agenda.Data = DateTime.Today.ToShortDateString();
+            agenda.Data = DateTime.Today;
             agenda.Horario = "" + DateTime.Now.ToShortTimeString();
             agenda.Servico = servico;
             agenda.Funcionario = funcionario;
 
-            Agendar agenda2 = new Agendar(contexto);
+            Agenda agenda2 = new Agenda(contexto);
 
             agenda2.Id = 2;
             agenda2.NomeCliente = "Jaderson";
-            agenda2.Data = DateTime.Today.ToShortDateString();
+            agenda2.Data = DateTime.Today;
             agenda2.Horario = "" + DateTime.Now.ToShortTimeString();
             agenda2.Servico = servico;
             agenda2.Funcionario = funcionario;
 
-            Agendar agenda3 = new Agendar(contexto);
+            Agenda agenda3 = new Agenda(contexto);
 
             agenda3.Id = 3;
             agenda3.NomeCliente = "Jaderson";
-            agenda3.Data = DateTime.Today.ToShortDateString();
+            agenda3.Data = DateTime.Today;
             agenda3.Horario = "" + DateTime.Now.ToShortTimeString();
             agenda3.Servico = servico;
             agenda3.Funcionario = funcionario;
 
-            Agendar agenda4 = new Agendar(contexto);
+            Agenda agenda4 = new Agenda(contexto);
 
             agenda4.Id = 4;
             agenda4.NomeCliente = "Jaderson";
-            agenda4.Data = DateTime.Today.ToShortDateString();
+            agenda4.Data = DateTime.Today;
             agenda4.Horario = "" + DateTime.Now.ToShortTimeString();
             agenda4.Servico = servico;
             agenda4.Funcionario = funcionario;
 
-            Agendar agenda5 = new Agendar(contexto);
+            Agenda agenda5 = new Agenda(contexto);
 
             agenda5.Id = 5;
             agenda5.NomeCliente = "Jaderson";
-            agenda5.Data = DateTime.Today.ToShortDateString();
+            agenda5.Data = DateTime.Today;
             agenda5.Horario = "" + DateTime.Now.ToShortTimeString();
             agenda5.Servico = servico;
             agenda5.Funcionario = funcionario;
@@ -140,8 +140,8 @@ namespace Negocio.Implementation
             int posHoraInicial = 0, posHoraFinal = 0;
             using (SalaoContext contexto = new SalaoContext())
             {
-                AgendarRepository repositorio = new AgendarRepository(contexto);
-                ICollection<Agendar> lista = repositorio.ListarTodos().Where(a => a.Data.Equals(DateTime.Now.ToString())).ToList();
+                AgendaRepository repositorio = new AgendaRepository(contexto);
+                ICollection<Agenda> lista = repositorio.ListarTodos().Where(a => a.Data.Equals(DateTime.Now.ToString())).ToList();
 
                 for (int i = 0; i < lista.Count; i++)
                 {
@@ -232,12 +232,12 @@ namespace Negocio.Implementation
             return listaColaborador;
         }
 
-        public IEnumerable<Agendar> BuscarPorNomeCliente(string nomeCliente)
+        public IEnumerable<Agenda> BuscarPorNomeCliente(string nomeCliente)
         {
             return this.ListarTodos().Where(a => a.NomeCliente.Contains(nomeCliente));
         }
 
-        public List<Agendar> ListarPorDataColaborador(DateTime dataAgendamento, string colaborador)
+        public List<Agenda> ListarPorDataColaborador(DateTime dataAgendamento, string colaborador)
         {
             return ListarTodos().Where(a => a.Data.Equals(dataAgendamento)).Where(a => a.Funcionario.Equals(colaborador)).ToList();
         }

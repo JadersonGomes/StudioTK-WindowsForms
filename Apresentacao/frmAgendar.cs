@@ -1,5 +1,6 @@
 ﻿using AcessoBancoDados;
 using Negocio.Implementation;
+using Negocio.Interfaces;
 using Negocio.Models;
 using System;
 using System.Collections.Generic;
@@ -15,13 +16,11 @@ namespace Apresentacao
 {
     public partial class frmAgendar : Form
     {
-        SalaoContext contexto = new SalaoContext();
-        Agendar agendamento;
-        AgendarRepository agendarRepository;
+        IAgendaRepository agendarRepository = new AgendaRepository(new SalaoContext());
+
+        Agenda agendamento;
         Validacao validacao;
         List<string> lista;
-        List<Agendar> listaAgendamento = new List<Agendar>();
-
 
         bool selecionouData = false;
 
@@ -30,39 +29,28 @@ namespace Apresentacao
             InitializeComponent();
         }
 
-        
 
         private void btnAgendar_Click(object sender, EventArgs e)
         {
             try
             {
-                validacao = new Validacao();
+                agendamento = new Agenda(new SalaoContext());
 
-                if (validacao.ValidarAgendamento(this.panel1))
-                {                    
-                    agendamento = new Agendar(contexto);
-                    agendarRepository = new AgendarRepository(contexto);
+                agendamento.NomeCliente = txtNomeCliente.Text;
+                agendamento.Data = Convert.ToDateTime(dtpDataAgendamento.Value);
+                agendamento.Horario = cboHorario.Text;
+                agendamento.Servico = (Servico)cboServico.SelectedItem;
+                agendamento.Funcionario = (Funcionario)cboColaborador.SelectedItem;
 
-                    /* agendamento.NomeCliente = txtNomeCliente.Text;
-                     agendamento.Data = Convert.ToDateTime(dtpDataAgendamento.Value);
-                     agendamento.HorarioInicial = cboHorarioInicial.SelectedValue.ToString();
-                     agendamento.HorarioFinal = cboHorarioFinal.SelectedValue.ToString();
-                     agendamento.Servico = (Servico)cboServico.SelectedItem;
-                     agendamento.Funcionario = (Funcionario)cboColaborador.SelectedItem;
-
-                     agendarRepository.Adicionar(agendamento);
-                     agendarRepository.Salvar();*/
-
-                    //agendarRepository.AtualizarHorario(lista, cboHorarioInicial.Text, cboHorarioFinal.Text);
-
-                    MessageBox.Show("Agendado com sucesso!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    LimparCampos();
-                }
-                else
-                {
-                    MessageBox.Show("Por gentileza, preencha todos os campos.", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                }
+                // Trecho responsável por salvar o agendamento no Banco de dados.
+                /*agendarRepository.Adicionar(agendamento);
+                agendarRepository.Salvar();*/
                 
+
+                MessageBox.Show("Agendado com sucesso!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                LimparCampos();
+
+
             }
             catch (Exception ex)
             {
@@ -77,58 +65,58 @@ namespace Apresentacao
         }
 
         private void frmAgendar_Load(object sender, EventArgs e)
-        {
-            //agendamento = new Agendar(contexto);
-            cboServico.DataSource = agendamento.PopulaServico();
-            cboColaborador.DataSource = agendamento.PopulaColaborador();
+        {            
+            cboServico.DataSource = agendarRepository.PopulaServico();
+            cboColaborador.DataSource = agendarRepository.PopulaColaborador();
 
-            
-
-        }        
+        }
 
         private void dtpDataAgendamento_ValueChanged(object sender, EventArgs e)
         {
-            agendamento = new Agendar(contexto);
-            
-            lista = agendamento.PopulaComboHora(dtpDataAgendamento.Value, cboHorarioInicial.Text/*, cboHorarioFinal.Text*/);           
-            
-            cboHorarioInicial.DataSource = lista;
-            //cboHorarioFinal.DataSource = cboHorarioInicial.Items;
-            
+            agendamento = new Agenda(new SalaoContext());
+
+            lista = agendarRepository.PopulaComboHora(dtpDataAgendamento.Value, cboHorario.Text);
+
+            cboHorario.DataSource = lista;            
+
             selecionouData = true;
+
         }
 
-        
 
-
-        private void cboHorarioInicial_MouseClick(object sender, MouseEventArgs e)
+        private void cboHorario_MouseClick(object sender, MouseEventArgs e)
         {
             if (!selecionouData)
             {
                 MessageBox.Show("Por gentileza, selecione uma data.", "Observação.", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+            }
+
+        }
+                
+
+        private void btnVisualizarAgenda_Click(object sender, EventArgs e)
+        {
+            if (selecionouData && cboColaborador.Text != String.Empty)
+            {
+                frmVisualizarAgenda visualizarAgenda = new frmVisualizarAgenda(dtpDataAgendamento.Value, cboColaborador.SelectedText);
+                visualizarAgenda.Show();
+
+            }
+            else
+            {
+                MessageBox.Show("Por gentileza, selecione a Data e um Colaborador.", "Observação.", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+
             }
         }
 
         public void LimparCampos()
         {
             txtNomeCliente.Clear();
-            cboColaborador.SelectedIndex = 0;
-            //cboHorarioFinal.SelectedIndex = 0;
-            cboServico.SelectedIndex = 0;
+            cboColaborador.SelectedIndex = -1;
+            cboServico.SelectedIndex = -1;
+            cboHorario.SelectedIndex = -1;
             dtpDataAgendamento.Value = DateTime.Now.Date;
-        }
 
-        private void btnVisualizarAgenda_Click(object sender, EventArgs e)
-        {
-            if (selecionouData)
-            {
-                frmVisualizarAgenda visualizarAgenda = new frmVisualizarAgenda(dtpDataAgendamento.Value, cboColaborador.SelectedText);
-                visualizarAgenda.Show();
-            }
-            else
-            {
-                MessageBox.Show("Por gentileza, selecione uma data.", "Observação.", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-            }
         }
     }
 }

@@ -15,5 +15,12 @@ namespace Negocio.Implementation
         public CaixaRepository(SalaoContext _contexto) : base(_contexto)
         {
         }
+
+
+        public DateTime BuscarUltimoFechamento()
+        {
+            Caixa ultimoFechamento = entidade.ToList().LastOrDefault();
+            return ultimoFechamento.dataFechamento;
+        }
     }
 }

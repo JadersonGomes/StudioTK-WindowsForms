@@ -107,7 +107,7 @@ namespace Apresentacao
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             /*pagamento = new Pagamento(contexto);
-            Agendar ag = new Agendar(contexto);
+            Agenda ag = new Agenda(contexto);
 
             if (dtpData.Value.Equals(DateTime.Today) && cboColaborador.SelectedItem.Equals("") && cboServico.SelectedItem.Equals(""))
             {

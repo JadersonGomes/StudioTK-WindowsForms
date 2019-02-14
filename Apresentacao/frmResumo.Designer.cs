@@ -40,12 +40,14 @@
             this.btnPesquisar = new System.Windows.Forms.Button();
             this.txtPesquisar = new System.Windows.Forms.TextBox();
             this.dataGridViewResumo = new System.Windows.Forms.DataGridView();
+            this.lblUltimoFechamento = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewResumo)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.lblUltimoFechamento);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
@@ -168,6 +170,17 @@
             this.dataGridViewResumo.Size = new System.Drawing.Size(1174, 496);
             this.dataGridViewResumo.TabIndex = 0;
             // 
+            // lblUltimoFechamento
+            // 
+            this.lblUltimoFechamento.AutoSize = true;
+            this.lblUltimoFechamento.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUltimoFechamento.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.lblUltimoFechamento.Location = new System.Drawing.Point(21, 572);
+            this.lblUltimoFechamento.Name = "lblUltimoFechamento";
+            this.lblUltimoFechamento.Size = new System.Drawing.Size(199, 20);
+            this.lblUltimoFechamento.TabIndex = 11;
+            this.lblUltimoFechamento.Text = "DATA ÚLTIMO FECHAMENTO: ";
+            // 
             // frmResumo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -201,5 +214,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblUltimoFechamento;
     }
 }

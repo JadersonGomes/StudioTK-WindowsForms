@@ -17,9 +17,9 @@ namespace Apresentacao
     {
 
         SalaoContext contexto = new SalaoContext();
-        Agendar agendamento;
-        AgendarRepository agendarRepository;
-        List<Agendar> listaAgendamento = new List<Agendar>();
+        Agenda agendamento;
+        AgendaRepository agendarRepository;
+        List<Agenda> listaAgendamento = new List<Agenda>();
         bool selecionouData = false;
 
         public frmEditarAgendamento()
@@ -30,10 +30,10 @@ namespace Apresentacao
         public frmEditarAgendamento(string id, string data, Funcionario funcionario, string nomeCliente, string horario, Servico servico)
         {
             InitializeComponent();
-            agendamento = new Agendar(contexto);
+            agendamento = new Agenda(contexto);
             agendamento.Id = Convert.ToInt16(id);
             agendamento.NomeCliente = nomeCliente;
-            agendamento.Data = data;
+            agendamento.Data = Convert.ToDateTime(data);
             agendamento.Horario = horario;
             agendamento.Servico = servico;
             agendamento.Funcionario = funcionario;
@@ -43,11 +43,11 @@ namespace Apresentacao
 
         private void frmEditarAgendamento_Load(object sender, EventArgs e)
         {
-            Agendar agenda = listaAgendamento[0];
+            Agenda agenda = listaAgendamento[0];
 
             lblId.Text = agenda.Id.ToString();
             txtNomeCliente.Text = agenda.NomeCliente;
-            dtpDataAgendamento.Text = agenda.Data;
+            dtpDataAgendamento.Text = agenda.Data.ToShortDateString();
             //cboHorarioInicial.Text = agenda.Horario;
             cboServico.Text = agenda.Servico.Nome;
             cboColaborador.Text = agenda.Funcionario.Nome;
@@ -70,7 +70,7 @@ namespace Apresentacao
 
                     if (resultadoEscolha == DialogResult.Yes)
                     {
-                        agendarRepository = new AgendarRepository(contexto);
+                        agendarRepository = new AgendaRepository(contexto);
                         agendarRepository.ExcluirPorId(id);
                         agendarRepository.Salvar();                       
 
@@ -100,16 +100,16 @@ namespace Apresentacao
             try
             {
 
-                Agendar agenda = new Agendar(contexto);
+                Agenda agenda = new Agenda(contexto);
 
                 agenda.Id = Convert.ToInt16(lblId.Text);
                 agenda.NomeCliente = txtNomeCliente.Text;
-                agenda.Data = dtpDataAgendamento.Value.ToShortDateString();
+                agenda.Data = dtpDataAgendamento.Value;
                 agenda.Horario = cboHorarioInicial.Text;
                 agenda.Servico = ((Servico)cboServico.SelectedItem);
                 agenda.Funcionario = ((Funcionario)cboColaborador.SelectedItem);
 
-                agendarRepository = new AgendarRepository(contexto);
+                agendarRepository = new AgendaRepository(contexto);
                 agendarRepository.Atualizar(agenda);
                 agendarRepository.Salvar();
 
@@ -125,7 +125,7 @@ namespace Apresentacao
 
         private void dtpDataAgendamento_ValueChanged(object sender, EventArgs e)
         {
-            Agendar agenda = listaAgendamento[0];
+            Agenda agenda = listaAgendamento[0];
             var lista = agendamento.PopulaComboHora(dtpDataAgendamento.Value, cboHorarioInicial.Text/*, cboHorarioFinal.Text*/);
 
             cboHorarioInicial.DataSource = lista;

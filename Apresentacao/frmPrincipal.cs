@@ -17,7 +17,7 @@ namespace Apresentacao
     {
 
         SalaoContext contexto = new SalaoContext();        
-        AgendarRepository agendarRepository;
+        AgendaRepository agendarRepository;
 
         public frmPrincipal()
         {
@@ -74,7 +74,7 @@ namespace Apresentacao
         {
             try
             {
-                agendarRepository = new AgendarRepository(contexto);
+                agendarRepository = new AgendaRepository(contexto);
 
                 /*var listaAgendamentos = from agendamento in agendarRepository.ListarTodos()
                                         where agendamento.Data.Equals(DateTime.Today)
@@ -107,7 +107,7 @@ namespace Apresentacao
         {
             try
             {
-                agendarRepository = new AgendarRepository(contexto);
+                agendarRepository = new AgendaRepository(contexto);
                 dataGridViewPrincipal.DataSource = agendarRepository.BuscarPorNomeCliente(txtPesquisar.Text);
             }
             catch (Exception ex)

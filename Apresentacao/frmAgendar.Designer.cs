@@ -34,7 +34,7 @@
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnAgendar = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.cboHorarioInicial = new System.Windows.Forms.ComboBox();
+            this.cboHorario = new System.Windows.Forms.ComboBox();
             this.dtpDataAgendamento = new System.Windows.Forms.DateTimePicker();
             this.label6 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -98,7 +98,7 @@
             this.btnAgendar.Name = "btnAgendar";
             this.btnAgendar.Size = new System.Drawing.Size(154, 28);
             this.btnAgendar.TabIndex = 7;
-            this.btnAgendar.Text = "Agendar";
+            this.btnAgendar.Text = "Agenda";
             this.btnAgendar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnAgendar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnAgendar.UseVisualStyleBackColor = true;
@@ -106,7 +106,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.cboHorarioInicial);
+            this.groupBox1.Controls.Add(this.cboHorario);
             this.groupBox1.Controls.Add(this.dtpDataAgendamento);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.label1);
@@ -122,16 +122,16 @@
             this.groupBox1.TabIndex = 23;
             this.groupBox1.TabStop = false;
             // 
-            // cboHorarioInicial
+            // cboHorario
             // 
-            this.cboHorarioInicial.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cboHorarioInicial.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.cboHorarioInicial.FormattingEnabled = true;
-            this.cboHorarioInicial.Location = new System.Drawing.Point(15, 242);
-            this.cboHorarioInicial.Name = "cboHorarioInicial";
-            this.cboHorarioInicial.Size = new System.Drawing.Size(532, 23);
-            this.cboHorarioInicial.TabIndex = 5;
-            this.cboHorarioInicial.MouseClick += new System.Windows.Forms.MouseEventHandler(this.cboHorarioInicial_MouseClick);
+            this.cboHorario.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboHorario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.cboHorario.FormattingEnabled = true;
+            this.cboHorario.Location = new System.Drawing.Point(15, 242);
+            this.cboHorario.Name = "cboHorario";
+            this.cboHorario.Size = new System.Drawing.Size(532, 23);
+            this.cboHorario.TabIndex = 5;
+            this.cboHorario.MouseClick += new System.Windows.Forms.MouseEventHandler(this.cboHorario_MouseClick);
             // 
             // dtpDataAgendamento
             // 
@@ -264,7 +264,7 @@
         private System.Windows.Forms.TextBox txtNomeCliente;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ComboBox cboHorarioInicial;
+        private System.Windows.Forms.ComboBox cboHorario;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnVisualizarAgenda;
     }

@@ -15,9 +15,9 @@ using System.Windows.Forms;
 namespace Apresentacao
 {
     public partial class frmResumo : Form
-    {           
-        SalaoContext contexto = new SalaoContext();
+    {                   
         IVendaRepository vendaRepository = new VendaRepository(new SalaoContext());
+        ICaixaRepository caixaRepository = new CaixaRepository(new SalaoContext());
 
 
         public frmResumo()
@@ -30,11 +30,14 @@ namespace Apresentacao
             try
             {
 
+                DateTime dataUltimoFechamento = caixaRepository.BuscarUltimoFechamento();
+                lblUltimoFechamento.Text = "DATA ÚLTIMO FECHAMENTO: " + dataUltimoFechamento.ToShortDateString();
+
                 if (txtPesquisar.Text.Equals("") || txtPesquisar.Text.Equals(" "))
                 {
                     if (dtpInicial.Text == dtpFinal.Text)
                     {
-                        IEnumerable<Venda> lista = vendaRepository.ListAllVendas();
+                        IEnumerable<Venda> lista = vendaRepository.ListarPorData(dtpInicial.Text);
                         dataGridViewResumo.DataSource = lista;
 
                         //txtValorTotal.Text = string.Format("{0:C}", 652.35/*Convert.ToString(pagamento.SomarValorTotal(lista)*/);
@@ -57,7 +60,8 @@ namespace Apresentacao
                 }
                 else
                 {
-
+                    IEnumerable<Venda> lista = vendaRepository.ListarPorFuncionario(txtPesquisar.Text);
+                    dataGridViewResumo.DataSource = lista;
                 }
 
 

@@ -108,7 +108,7 @@
             this.btnAgendar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnAgendar.Name = "btnAgendar";
             this.btnAgendar.Size = new System.Drawing.Size(68, 68);
-            this.btnAgendar.Text = "Agendar";
+            this.btnAgendar.Text = "Agenda";
             this.btnAgendar.Click += new System.EventHandler(this.btnAgendar_Click);
             // 
             // toolStripSeparator8

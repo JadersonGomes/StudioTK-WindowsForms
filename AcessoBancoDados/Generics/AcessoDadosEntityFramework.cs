@@ -11,6 +11,7 @@ namespace AcessoBancoDados.Generics
     {
         SalaoContext contexto = null;
         protected DbSet<T> entidade { get; } = null;
+        // CONECTOR 6.10
 
         public AcessoDadosEntityFramework(SalaoContext _contexto)
         {
@@ -54,7 +55,6 @@ namespace AcessoBancoDados.Generics
         {
             contexto.SaveChanges();
         }
-
 
 
         private bool disposed = false;

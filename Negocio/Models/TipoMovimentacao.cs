@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace Negocio.Models
 {
-    public class ExibicaoPagamentos
+    public class TipoMovimentacao
     {
-        public string servicoString { get; set; }
-        public string valorString { get; set; }
+
+        public int Id { get; set; }
+        public string Nome { get; set; }
     }
 }

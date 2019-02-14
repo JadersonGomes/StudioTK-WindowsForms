@@ -15,9 +15,10 @@ using System.Windows.Forms;
 namespace Apresentacao
 {
     public partial class frmVisualizarAgenda : Form
-    {
-        SalaoContext contexto = new SalaoContext();
-        AgendarRepository agendarRepository;
+    {        
+        IAgendaRepository agendaRepository = new AgendaRepository(new SalaoContext());
+
+        // As variáveis abaixo servem para recuperar parametros passados pelo construtor
         private DateTime data;
         private string colaborador;
 
@@ -44,26 +45,17 @@ namespace Apresentacao
                 lblAgendamento.Text = "AGENDA DIA " + data.Date.ToShortDateString() + " - " + diaSemana.ToUpper();
 
                 // O código abaixo serve para centralizar o Label dinamicamente
-                //panel1.Top = (lblAgendamento.Height - panel1.Height) / 2;
-                //panel1.Left = (lblAgendamento.Width - panel1.Width) / 2;
-
                 lblAgendamento.Top = (panel1.Height - lblAgendamento.Height) / 2;
                 lblAgendamento.Left = (panel1.Width - lblAgendamento.Width) / 2;
-
-                agendarRepository = new AgendarRepository(contexto);
+                
                 // Perguntar p Karol como ela prefere que a Agenda seja exibida (Agenda de todos ou Agenda do colaborador selecionado)
-                dataGridView1.DataSource = agendarRepository.ListarPorDataColaborador(data, colaborador);
+                dataGridView1.DataSource = agendaRepository.ListarPorDataColaborador(data, colaborador);
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Algo deu errado. Tente novamente ou contate o administrador do sistema. \n\n\nDetalhes: \n" + ex.Message, "ATENÇÃO", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
+        }        
 
         private void btnFechar_Click(object sender, EventArgs e)
         {

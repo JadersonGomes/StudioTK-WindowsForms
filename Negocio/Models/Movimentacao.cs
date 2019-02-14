@@ -19,8 +19,9 @@ namespace Negocio.Models
         public double Valor { get; set; }
         public string Forma { get; set; }
         public string Descricao { get; set; }
-        public string Tipo { get; set; }
+        public virtual TipoMovimentacao TipoMovimentacao { get; set; }
+        public int IdTipoMovimentacao { get; set; }
         public string nomeColaborador { get; set; }
-        public Caixa Caixa { get; set; }
+        
     }
 }

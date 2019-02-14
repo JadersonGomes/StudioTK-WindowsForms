@@ -35,6 +35,7 @@
             this.btnFecharCaixa = new System.Windows.Forms.Button();
             this.btnAbrirCaixa = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnResumo
@@ -43,7 +44,7 @@
             this.btnResumo.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnResumo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnResumo.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnResumo.ForeColor = System.Drawing.Color.LightSkyBlue;
+            this.btnResumo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnResumo.Location = new System.Drawing.Point(73, 52);
             this.btnResumo.Name = "btnResumo";
             this.btnResumo.Size = new System.Drawing.Size(180, 57);
@@ -58,7 +59,7 @@
             this.btnDespesa.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnDespesa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDespesa.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDespesa.ForeColor = System.Drawing.Color.Gray;
+            this.btnDespesa.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnDespesa.Location = new System.Drawing.Point(73, 151);
             this.btnDespesa.Name = "btnDespesa";
             this.btnDespesa.Size = new System.Drawing.Size(180, 57);
@@ -73,7 +74,7 @@
             this.btnSuprimento.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSuprimento.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSuprimento.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSuprimento.ForeColor = System.Drawing.Color.LightSkyBlue;
+            this.btnSuprimento.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnSuprimento.Location = new System.Drawing.Point(292, 52);
             this.btnSuprimento.Name = "btnSuprimento";
             this.btnSuprimento.Size = new System.Drawing.Size(180, 57);
@@ -88,7 +89,7 @@
             this.btnVale.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnVale.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnVale.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVale.ForeColor = System.Drawing.Color.Gray;
+            this.btnVale.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnVale.Location = new System.Drawing.Point(292, 151);
             this.btnVale.Name = "btnVale";
             this.btnVale.Size = new System.Drawing.Size(180, 57);
@@ -102,11 +103,11 @@
             this.btnFecharCaixa.BackColor = System.Drawing.Color.White;
             this.btnFecharCaixa.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnFecharCaixa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFecharCaixa.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFecharCaixa.ForeColor = System.Drawing.Color.Gray;
-            this.btnFecharCaixa.Location = new System.Drawing.Point(73, 321);
+            this.btnFecharCaixa.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFecharCaixa.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.btnFecharCaixa.Location = new System.Drawing.Point(61, 238);
             this.btnFecharCaixa.Name = "btnFecharCaixa";
-            this.btnFecharCaixa.Size = new System.Drawing.Size(399, 57);
+            this.btnFecharCaixa.Size = new System.Drawing.Size(399, 89);
             this.btnFecharCaixa.TabIndex = 5;
             this.btnFecharCaixa.Text = "FECHAR CAIXA ";
             this.btnFecharCaixa.UseVisualStyleBackColor = false;
@@ -119,19 +120,22 @@
             this.btnAbrirCaixa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAbrirCaixa.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAbrirCaixa.ForeColor = System.Drawing.Color.LightSkyBlue;
-            this.btnAbrirCaixa.Location = new System.Drawing.Point(73, 236);
+            this.btnAbrirCaixa.Location = new System.Drawing.Point(61, 333);
             this.btnAbrirCaixa.Name = "btnAbrirCaixa";
             this.btnAbrirCaixa.Size = new System.Drawing.Size(399, 57);
             this.btnAbrirCaixa.TabIndex = 4;
             this.btnAbrirCaixa.Text = "ABRIR CAIXA ";
             this.btnAbrirCaixa.UseVisualStyleBackColor = false;
+            this.btnAbrirCaixa.Visible = false;
             this.btnAbrirCaixa.Click += new System.EventHandler(this.btnAbrirCaixa_Click);
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnAbrirCaixa);
+            this.groupBox1.Controls.Add(this.btnFecharCaixa);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(520, 407);
+            this.groupBox1.Size = new System.Drawing.Size(520, 376);
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             // 
@@ -140,9 +144,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(544, 431);
-            this.Controls.Add(this.btnAbrirCaixa);
-            this.Controls.Add(this.btnFecharCaixa);
+            this.ClientSize = new System.Drawing.Size(544, 406);
             this.Controls.Add(this.btnVale);
             this.Controls.Add(this.btnSuprimento);
             this.Controls.Add(this.btnDespesa);
@@ -152,6 +154,7 @@
             this.Name = "frmCaixa";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Caixa";
+            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

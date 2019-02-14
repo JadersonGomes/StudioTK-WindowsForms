@@ -36,8 +36,7 @@ namespace Apresentacao
         // Listas auxiliares que guardam objetos que podem ser adicionados na Venda.
         List<Produto> listaProdutos = new List<Produto>();
         List<Servico> listaServicos = new List<Servico>();
-        List<Pagamento> listaPagamentos = new List<Pagamento>();
-        List<ExibicaoPagamentos> listaString = new List<ExibicaoPagamentos>();
+        List<Pagamento> listaPagamentos = new List<Pagamento>();        
 
 
         public frmPagamento()

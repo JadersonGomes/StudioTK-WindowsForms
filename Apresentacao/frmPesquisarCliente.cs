@@ -64,6 +64,7 @@ namespace Apresentacao
 
             frmEditarCliente editarCliente = new frmEditarCliente(id, nome, email, telefone);
             editarCliente.Show();
+            
         }
     }
 }

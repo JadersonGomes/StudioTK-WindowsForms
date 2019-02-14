@@ -29,7 +29,7 @@ namespace Negocio.Implementation
 
         public IEnumerable<Venda> ListarPorFuncionario(string funcionario)
         {
-            return entidade.Where(v => v.Funcionario.Equals(funcionario));
+            return entidade.Where(v => v.Funcionario.Equals(funcionario)).OrderBy(v => v.Data);
         }
         public IEnumerable<Venda> ListarPorData(string data)
         {

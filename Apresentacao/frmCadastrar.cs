@@ -19,36 +19,31 @@ namespace Apresentacao
 
         private void btnCadastrarProduto_Click(object sender, EventArgs e)
         {
-            frmCadastrarProduto cadastrarProduto = new frmCadastrarProduto();
-            this.Hide();
+            frmCadastrarProduto cadastrarProduto = new frmCadastrarProduto();            
             cadastrarProduto.Show();
         }
 
         private void btnCadasatrarColaborador_Click(object sender, EventArgs e)
         {
-            frmCadastrarColaborador cadastrarColaborador = new frmCadastrarColaborador();
-            this.Hide();
+            frmCadastrarColaborador cadastrarColaborador = new frmCadastrarColaborador();            
             cadastrarColaborador.Show();
         }
 
         private void btnCadastrarFornecedor_Click(object sender, EventArgs e)
         {
-            frmCadastrarFornecedor cadastrarFornecedor = new frmCadastrarFornecedor();
-            this.Hide();
+            frmCadastrarFornecedor cadastrarFornecedor = new frmCadastrarFornecedor();            
             cadastrarFornecedor.Show();
         }
 
         private void btnCadastrarCliente_Click(object sender, EventArgs e)
         {
-            frmCadastrarCliente cadastrarCliente = new frmCadastrarCliente();
-            this.Hide();
+            frmCadastrarCliente cadastrarCliente = new frmCadastrarCliente();            
             cadastrarCliente.Show();
         }
 
         private void btnCadastrarUsuario_Click(object sender, EventArgs e)
         {
-            frmCadastrarUsuario cadastrarUsuario = new frmCadastrarUsuario();
-            this.Hide();
+            frmCadastrarUsuario cadastrarUsuario = new frmCadastrarUsuario();            
             cadastrarUsuario.Show();
         }
     }
