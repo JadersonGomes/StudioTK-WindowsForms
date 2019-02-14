@@ -218,8 +218,9 @@
             this.txtRecebido.Name = "txtRecebido";
             this.txtRecebido.Size = new System.Drawing.Size(225, 23);
             this.txtRecebido.TabIndex = 53;
+            this.txtRecebido.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtRecebido_MouseClick);
             this.txtRecebido.TextChanged += new System.EventHandler(this.txtRecebido_TextChanged);
-            
+            this.txtRecebido.MouseLeave += new System.EventHandler(this.txtRecebido_MouseLeave);
             // 
             // cboDesconto
             // 
@@ -256,7 +257,7 @@
             // 
             // txtValor
             // 
-            this.txtValor.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtValor.Font = new System.Drawing.Font("Arial Narrow", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtValor.ForeColor = System.Drawing.Color.Red;
             this.txtValor.Location = new System.Drawing.Point(518, 297);
             this.txtValor.Multiline = true;
@@ -338,7 +339,7 @@
             this.txtQntd.Name = "txtQntd";
             this.txtQntd.Size = new System.Drawing.Size(233, 23);
             this.txtQntd.TabIndex = 49;
-            this.txtQntd.Visible = false;            
+            this.txtQntd.Visible = false;
             this.txtQntd.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtQntd_KeyPress);
             // 
             // lblQntd
@@ -413,7 +414,10 @@
             // 
             this.listViewServicos.BackColor = System.Drawing.Color.White;
             this.listViewServicos.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.listViewServicos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.listViewServicos.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.listViewServicos.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listViewServicos.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.listViewServicos.FullRowSelect = true;
             this.listViewServicos.Location = new System.Drawing.Point(819, 32);
             this.listViewServicos.Name = "listViewServicos";
             this.listViewServicos.Size = new System.Drawing.Size(371, 434);
@@ -427,8 +431,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1202, 507);
-            this.Controls.Add(this.listViewServicos);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.listViewServicos);
             this.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Name = "frmPagamento";

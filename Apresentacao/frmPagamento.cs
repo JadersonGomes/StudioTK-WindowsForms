@@ -27,12 +27,17 @@ namespace Apresentacao
 
         Validacao validacao;
         Venda venda;
+        // Variável que auxilia no calculo de desconto e ao final, traz o desconto total que foi concedido ao cliente para que seja salvo na Venda.
         double auxValor = 0;
+
+        // Variável responsável por acumular o valor total da Venda conforme o usuário adiciona serviços/ produtos.
         double valorTotal = 0;
 
+        // Listas auxiliares que guardam objetos que podem ser adicionados na Venda.
         List<Produto> listaProdutos = new List<Produto>();
         List<Servico> listaServicos = new List<Servico>();
         List<Pagamento> listaPagamentos = new List<Pagamento>();
+        List<ExibicaoPagamentos> listaString = new List<ExibicaoPagamentos>();
 
 
         public frmPagamento()
@@ -65,17 +70,15 @@ namespace Apresentacao
 
                         pagamento = new Pagamento(new SalaoContext());
 
-
-                        string valorPagamentoSemFormatacao = RemoverFormatacaoMoeda(txtValor.Text);
-                        valorPagamentoSemFormatacao = valorPagamentoSemFormatacao.Replace(".", ",");
-                        double valorRecebido = Convert.ToDouble(txtRecebido.Text);
+                        double valorPagamentoSemFormatacao = RemoverFormatacaoMoeda(txtValor.Text);
+                        double valorRecebidoSemFormatacao = RemoverFormatacaoMoeda(txtRecebido.Text);                        
 
                         pagamento.NomeCliente = txtNomeCliente.Text;
                         pagamento.NomeFuncionario = cboFuncionario.Text;
                         pagamento.FormaPagamento = cboFormaPagamento.Text;
                         pagamento.DataPagamento = Convert.ToDateTime(dtpData.Text);
-                        pagamento.ValorRecebido = (Convert.ToDouble(txtRecebido.Text));
-                        pagamento.ValorTotal = Convert.ToDouble(valorPagamentoSemFormatacao);
+                        pagamento.ValorRecebido = valorRecebidoSemFormatacao;
+                        pagamento.ValorTotal = valorPagamentoSemFormatacao;
 
 
 
@@ -86,19 +89,17 @@ namespace Apresentacao
 
                             if (resultadoEscolha == DialogResult.Yes)
                             {
+                                double valorPagar = (pagamento.ValorTotal - pagamento.ValorRecebido);
 
-                                double valorPagar = (pagamento.ValorTotal - valorRecebido);
-                                if (valorPagar > 0)
-                                {
-                                    MessageBox.Show("Pagamento registrado com sucesso!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                txtRecebido.Clear();
+                                cboServico.SelectedIndex = 0;
+                                ckbDesconto.Visible = false;
+                                cboDesconto.Visible = false;
+                                txtValor.Text = valorPagar.ToString("C");
 
-                                    txtRecebido.Clear();
-                                    cboServico.SelectedIndex = 0;
-                                    txtValor.Text = valorPagar.ToString("C");
+                                listaPagamentos.Add(pagamento);
 
-                                    listaPagamentos.Add(pagamento);
-
-                                }
+                                MessageBox.Show("Pagamento registrado com sucesso!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                             }
                             else
@@ -137,6 +138,9 @@ namespace Apresentacao
                                 listaServicos = new List<Servico>();
                                 auxValor = 0;
                                 valorTotal = 0;
+
+                                // Torna a opção de desconto visível novamente após a finalização da Venda.
+                                ckbDesconto.Visible = true;
 
                                 MessageBox.Show("Pagamento registrado com sucesso!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 LimparCampos();
@@ -180,6 +184,9 @@ namespace Apresentacao
                             auxValor = 0;
                             valorTotal = 0;
 
+                            // Torna a opção de desconto visível novamente após a finalização da Venda.
+                            ckbDesconto.Visible = true;
+
 
                             MessageBox.Show("Pagamento registrado com sucesso!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             LimparCampos();
@@ -209,14 +216,14 @@ namespace Apresentacao
 
         private void frmPagamento_Load(object sender, EventArgs e)
         {
-            listViewServicos.Items.Add(" ");
-            listViewServicos.Items.Add("                             LISTA DE SERVIÇOS À PAGAR");
-            listViewServicos.Items.Add(" ");
-            listViewServicos.Items.Add(" ");
+            // Montagem da ListView
+            listViewServicos.View = View.Details;
+            listViewServicos.Columns.Add("Descrição", 270);
+            listViewServicos.Columns.Add("Valor", 100);
             listViewServicos.Items.Add(" ");
 
             cboServico.DataSource = pagamentoRepository.PopulaServico();
-            //cboServico.Text = "[ Selecione ]";  
+
 
         }
 
@@ -240,11 +247,14 @@ namespace Apresentacao
 
             listViewServicos.Clear();
 
+            // Montagem da ListView
+            listViewServicos.View = View.Details;
+            listViewServicos.Columns.Add("Descrição", 270);
+            listViewServicos.Columns.Add("Valor", 100);
+
             listViewServicos.Items.Add(" ");
-            listViewServicos.Items.Add("                             LISTA DE SERVIÇOS À PAGAR");
-            listViewServicos.Items.Add(" ");
-            listViewServicos.Items.Add(" ");
-            listViewServicos.Items.Add(" ");
+
+
 
         }
 
@@ -256,6 +266,7 @@ namespace Apresentacao
                 // Carrega o combobox de Produtos
                 cboProdutos.DataSource = pagamentoRepository.PopulaProduto();
 
+                // ---------------------- TRECHO RESPONSÁVEL POR POSICIONAR OS ELEMENTOS NA POSIÇÃO CORRETA DE ACORDO COM O SERVIÇO SELECIONADO
                 // VISIBLE
 
                 cboProdutos.Visible = true;
@@ -343,7 +354,7 @@ namespace Apresentacao
 
             }
         }
-
+        // ---------------------- FIM TRECHO RESPONSÁVEL POR POSICIONAR OS ELEMENTOS NA POSIÇÃO CORRETA DE ACORDO COM O SERVIÇO SELECIONADO --------
 
         private void txtQntd_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -373,61 +384,68 @@ namespace Apresentacao
                 {
                     Servico servico = ((Servico)cboServico.SelectedItem);
 
-                    if(txtQntd.Text != string.Empty)
+                    if (txtQntd.Text != string.Empty)
                         servico.Quantidade = Convert.ToInt32(txtQntd.Text);
 
                     listaServicos.Add(servico);
-
-
-                    //if(!txtRecebido.Text.Equals(String.Empty))
-                    // valorRecebido += (Convert.ToDouble(txtRecebido.Text));
 
 
                     if (!(servico.Nome.Equals("Venda")))
                     {
                         valorTotal += servico.Valor;                        
 
-                        // Converte o valor do pagamento para o formato moeda
-                        txtValor.Text = String.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:C}", valorTotal);
+                        // Monta os dados e insere na ListView
+                        string[] row = { "+  1 " + servico.Nome, "R$ " + servico.Valor + ",00" };
+                        ListViewItem item = new ListViewItem(row);
+                        listViewServicos.Items.Add(item);                        
 
-                        listViewServicos.Items.Add("+  1 " + servico.Nome + "......................." + "R$ " + servico.Valor + ",00");
-                        listViewServicos.Items.Add(" ");
+                        // Converte o valor do pagamento para o formato moeda
+                        txtValor.Text = String.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:C}", valorTotal);                        
+                        
+
                     }
                     else if (!txtQntd.Text.Equals(String.Empty))
                     {
                         Produto produto = ((Produto)cboProdutos.SelectedItem);
+
                         listaProdutos.Add(produto);
+
                         int quantidade = Convert.ToInt32(txtQntd.Text);
                         double valorTotalProduto = (produto.Valor * quantidade);
 
                         valorTotal += valorTotalProduto;
-                        //pagamento.Valor += (valorTotalProduto - valorRecebido);
-                        // Converte o valor do pagamento para o formato moeda
-                        txtValor.Text = String.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:C}", valorTotal);
 
-                        listViewServicos.Items.Add("+  " + quantidade + " " + produto.Descricao + "......................." + "R$ " + valorTotalProduto + ",00");
-                        listViewServicos.Items.Add(" ");
+                        // Monta os dados e insere na ListView
+                        String[] row = { "+  " + quantidade + " " + produto.Descricao, "R$ " + valorTotalProduto + ",00" };
+                        ListViewItem item = new ListViewItem(row);
+                        listViewServicos.Items.Add(item);                                             
+
                         txtQntd.Clear();
                         cboServico.SelectedIndex = 0;
+
+                        // Converte o valor total da venda para o formato moeda
+                        txtValor.Text = String.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:C}", valorTotal);
+
                     }
                     else
                     {
                         MessageBox.Show("Por gentileza, preencha o campo 'Quantidade'.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     }
 
-
-
                     AtualizaTroco();
+
                 }
                 else
                 {
                     MessageBox.Show("Por gentileza, preencha o campo 'Serviço'.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
 
+
+
             }
             catch (FormatException ex)
             {
-
+                // Entrará aqui e não fará nada caso o programa não consiga converter algum valor recebido da caixa de texto.
             }
             catch (Exception ex)
             {
@@ -448,7 +466,8 @@ namespace Apresentacao
             else
             {
                 cboDesconto.Visible = false;
-                // Converte o valor do pagamento para o formato moeda
+
+                // Converte o valor total da venda para o formato moeda
                 txtValor.Text = String.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:C}", valorTotal);
 
                 AtualizaTroco();
@@ -461,77 +480,77 @@ namespace Apresentacao
         {
             try
             {
-                string valorSemFormatacao = RemoverFormatacaoMoeda(txtValor.Text);
-                valorSemFormatacao = valorSemFormatacao.Replace(".", ",");
-
-                double valor = Convert.ToDouble(valorSemFormatacao);
+                // Remove a formatação do Valor Total para que sejam realizados alguns cálculos.
+                double valorSemFormatacao = RemoverFormatacaoMoeda(txtValor.Text);
                 auxValor = valorTotal;
 
                 switch (cboDesconto.Text)
                 {
 
                     case "5%":
-                        auxValor = pagamentoRepository.calculaDesconto(auxValor, valor, 0.05);
+                        // Método devolve valor total da compra já com o desconto.
+                        auxValor = pagamentoRepository.calculaDesconto(auxValor, valorSemFormatacao, 0.05);
                         txtValor.Text = auxValor.ToString("C");
+                        // Variável 'auxValor' recebe o desconto para que o mesmo seja salvo na Venda posteriormente
                         auxValor = valorTotal - auxValor;
                         break;
 
                     case "10%":
-                        auxValor = pagamentoRepository.calculaDesconto(auxValor, valor, 0.10);
+                        auxValor = pagamentoRepository.calculaDesconto(auxValor, valorSemFormatacao, 0.10);
                         txtValor.Text = auxValor.ToString("C");
                         auxValor = valorTotal - auxValor;
                         break;
 
                     case "15%":
-                        auxValor = pagamentoRepository.calculaDesconto(auxValor, valor, 0.15);
+                        auxValor = pagamentoRepository.calculaDesconto(auxValor, valorSemFormatacao, 0.15);
                         txtValor.Text = auxValor.ToString("C");
                         auxValor = valorTotal - auxValor;
                         break;
 
                     case "20%":
-                        auxValor = pagamentoRepository.calculaDesconto(auxValor, valor, 0.20);
+                        auxValor = pagamentoRepository.calculaDesconto(auxValor, valorSemFormatacao, 0.20);
                         txtValor.Text = auxValor.ToString("C");
                         auxValor = valorTotal - auxValor;
                         break;
 
                     case "25%":
-                        auxValor = pagamentoRepository.calculaDesconto(auxValor, valor, 0.25);
+                        auxValor = pagamentoRepository.calculaDesconto(auxValor, valorSemFormatacao, 0.25);
                         txtValor.Text = auxValor.ToString("C");
                         auxValor = valorTotal - auxValor;
                         break;
 
                     case "30%":
-                        auxValor = pagamentoRepository.calculaDesconto(auxValor, valor, 0.30);
+                        auxValor = pagamentoRepository.calculaDesconto(auxValor, valorSemFormatacao, 0.30);
                         txtValor.Text = auxValor.ToString("C");
                         auxValor = valorTotal - auxValor;
                         break;
 
                     case "35%":
-                        auxValor = pagamentoRepository.calculaDesconto(auxValor, valor, 0.35);
+                        auxValor = pagamentoRepository.calculaDesconto(auxValor, valorSemFormatacao, 0.35);
                         txtValor.Text = auxValor.ToString("C");
                         auxValor = valorTotal - auxValor;
                         break;
 
                     case "40%":
-                        auxValor = pagamentoRepository.calculaDesconto(auxValor, valor, 0.40);
+                        auxValor = pagamentoRepository.calculaDesconto(auxValor, valorSemFormatacao, 0.40);
                         txtValor.Text = auxValor.ToString("C");
                         auxValor = valorTotal - auxValor;
                         break;
 
                     case "45%":
-                        auxValor = pagamentoRepository.calculaDesconto(auxValor, valor, 0.45);
+                        auxValor = pagamentoRepository.calculaDesconto(auxValor, valorSemFormatacao, 0.45);
                         txtValor.Text = auxValor.ToString("C");
                         auxValor = valorTotal - auxValor;
                         break;
 
                     case "50%":
-                        auxValor = pagamentoRepository.calculaDesconto(auxValor, valor, 0.50);
+                        auxValor = pagamentoRepository.calculaDesconto(auxValor, valorSemFormatacao, 0.50);
                         txtValor.Text = auxValor.ToString("C");
                         auxValor = valorTotal - auxValor;
                         break;
 
                     default:
-                        txtValor.Text = String.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:C}", valor);
+                        txtValor.Text = String.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:C}", valorSemFormatacao);
                         break;
                 }
 
@@ -551,14 +570,16 @@ namespace Apresentacao
         }
 
 
-        private string RemoverFormatacaoMoeda(string texto)
+        private double RemoverFormatacaoMoeda(string texto)
         {
+            double valorSemFormatacao = 0;
+
             texto = texto.Replace("R$", "");
             texto = texto.Replace(",00", "");
-            texto = texto.Replace(",", ".");
-            //texto = texto.Replace("0", "");
 
-            return texto;
+            valorSemFormatacao = Convert.ToDouble(texto);
+
+            return valorSemFormatacao;
 
         }
 
@@ -566,12 +587,10 @@ namespace Apresentacao
         {
             try
             {
-                string valorSemFormatacao = RemoverFormatacaoMoeda(txtValor.Text);
-                valorSemFormatacao = valorSemFormatacao.Replace(".", ",");
+                double valorPagarSemFormatacao = RemoverFormatacaoMoeda(txtValor.Text);
 
-                double valorPagar = Convert.ToDouble(valorSemFormatacao);
                 double valorRecebido = Convert.ToDouble(txtRecebido.Text);
-                double result = (valorRecebido - valorPagar);
+                double result = (valorRecebido - valorPagarSemFormatacao);
 
                 lblValorTroco.Text = result.ToString("C");
 
@@ -591,7 +610,7 @@ namespace Apresentacao
             }
             catch (FormatException ex)
             {
-
+                // Não fará nada pois na maioria das vezes o usuário adicionará um serviço sem adicionar um valor recebido. Isso impede que o programa trave caso não tenha nada no txtRecebido.
             }
         }
 
@@ -599,6 +618,29 @@ namespace Apresentacao
         private void txtRecebido_TextChanged(object sender, EventArgs e)
         {
             AtualizaTroco();
+        }
+
+        private void txtRecebido_MouseLeave(object sender, EventArgs e)
+        {
+            try
+            {
+                double texto = Convert.ToDouble(txtRecebido.Text);
+                txtRecebido.Text = texto.ToString("C");
+            }
+            catch (FormatException ex)
+            {
+                // Cairá aqui toda vez que o usuário não inserir valor no txtRecebido
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Algo deu errado. Tente novamente ou contate o administrador do sistema. \n\n\nDetalhes: \n" + ex.Message, "ATENÇÃO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
+        private void txtRecebido_MouseClick(object sender, MouseEventArgs e)
+        {
+            txtRecebido.Clear();
         }
     }
 }
