@@ -1,5 +1,6 @@
 ﻿using AcessoBancoDados;
 using Negocio.Implementation;
+using Negocio.Interfaces;
 using Negocio.Models;
 using System;
 using System.Collections.Generic;
@@ -14,11 +15,10 @@ using System.Windows.Forms;
 namespace Apresentacao
 {
     public partial class frmEditarAgendamento : Form
-    {
-
-        SalaoContext contexto = new SalaoContext();
+    {       
+        
+        IAgendaRepository agendarRepository = new AgendaRepository(new SalaoContext());
         Agenda agendamento;
-        AgendaRepository agendarRepository;
         List<Agenda> listaAgendamento = new List<Agenda>();
         bool selecionouData = false;
 
@@ -30,7 +30,7 @@ namespace Apresentacao
         public frmEditarAgendamento(string id, string data, Funcionario funcionario, string nomeCliente, string horario, Servico servico)
         {
             InitializeComponent();
-            agendamento = new Agenda(contexto);
+            agendamento = new Agenda();
             agendamento.Id = Convert.ToInt16(id);
             agendamento.NomeCliente = nomeCliente;
             agendamento.Data = Convert.ToDateTime(data);
@@ -69,8 +69,7 @@ namespace Apresentacao
                     DialogResult resultadoEscolha = MessageBox.Show("Tem certeza que deseja excluir este item?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
 
                     if (resultadoEscolha == DialogResult.Yes)
-                    {
-                        agendarRepository = new AgendaRepository(contexto);
+                    {                        
                         agendarRepository.ExcluirPorId(id);
                         agendarRepository.Salvar();                       
 
@@ -100,7 +99,7 @@ namespace Apresentacao
             try
             {
 
-                Agenda agenda = new Agenda(contexto);
+                Agenda agenda = new Agenda();
 
                 agenda.Id = Convert.ToInt16(lblId.Text);
                 agenda.NomeCliente = txtNomeCliente.Text;
@@ -109,7 +108,7 @@ namespace Apresentacao
                 agenda.Servico = ((Servico)cboServico.SelectedItem);
                 agenda.Funcionario = ((Funcionario)cboColaborador.SelectedItem);
 
-                agendarRepository = new AgendaRepository(contexto);
+                
                 agendarRepository.Atualizar(agenda);
                 agendarRepository.Salvar();
 
@@ -126,7 +125,7 @@ namespace Apresentacao
         private void dtpDataAgendamento_ValueChanged(object sender, EventArgs e)
         {
             Agenda agenda = listaAgendamento[0];
-            var lista = agendamento.PopulaComboHora(dtpDataAgendamento.Value, cboHorarioInicial.Text/*, cboHorarioFinal.Text*/);
+            var lista = agendarRepository.PopulaComboHora(dtpDataAgendamento.Value, cboHorarioInicial.Text/*, cboHorarioFinal.Text*/);
 
             cboHorarioInicial.DataSource = lista;
             cboHorarioInicial.Text = listaAgendamento[0].Horario;

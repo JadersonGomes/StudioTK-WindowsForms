@@ -17,7 +17,6 @@ namespace Apresentacao
 {
     public partial class frmPagamento : Form
     {
-        //SalaoContext contexto = new SalaoContext();
 
         Pagamento pagamento;
 
@@ -25,7 +24,6 @@ namespace Apresentacao
         IProdutoRepository produtoRepository = new ProdutoRepository(new SalaoContext());
         IVendaRepository vendaRepository = new VendaRepository(new SalaoContext());
 
-        Validacao validacao;
         Venda venda;
         // Variável que auxilia no calculo de desconto e ao final, traz o desconto total que foi concedido ao cliente para que seja salvo na Venda.
         double auxValor = 0;
@@ -36,7 +34,7 @@ namespace Apresentacao
         // Listas auxiliares que guardam objetos que podem ser adicionados na Venda.
         List<Produto> listaProdutos = new List<Produto>();
         List<Servico> listaServicos = new List<Servico>();
-        List<Pagamento> listaPagamentos = new List<Pagamento>();        
+        List<Pagamento> listaPagamentos = new List<Pagamento>();
 
 
         public frmPagamento()
@@ -61,100 +59,52 @@ namespace Apresentacao
             {
                 if (!txtValor.Text.Equals(String.Empty))
                 {
-                    validacao = new Validacao();
-                    bool resultadoValidacao = validacao.ValidarAgendamento(this.panel1);
 
-                    if (!resultadoValidacao)
+
+                    pagamento = new Pagamento();
+
+                    double valorPagamentoSemFormatacao = RemoverFormatacaoMoeda(txtValor.Text);
+                    double valorRecebidoSemFormatacao = RemoverFormatacaoMoeda(txtRecebido.Text);
+
+                    pagamento.NomeCliente = txtNomeCliente.Text;
+                    pagamento.NomeFuncionario = cboFuncionario.Text;
+                    pagamento.FormaPagamento = cboFormaPagamento.Text;
+                    pagamento.DataPagamento = Convert.ToDateTime(dtpData.Text);
+                    pagamento.ValorRecebido = valorRecebidoSemFormatacao;
+                    pagamento.ValorTotal = valorPagamentoSemFormatacao;
+
+
+
+                    // TRECHO DE CÓDIGO QUE TESTA SE SERÁ REALIZADO MAIS DE UM PAGAMENTO PARA A MESMA COMPRA:
+                    if (pagamento.ValorRecebido < pagamento.ValorTotal)
                     {
+                        DialogResult resultadoEscolha = MessageBox.Show("Deseja realizar mais um pagamento?", "Pagamento", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-                        pagamento = new Pagamento(new SalaoContext());
-
-                        double valorPagamentoSemFormatacao = RemoverFormatacaoMoeda(txtValor.Text);
-                        double valorRecebidoSemFormatacao = RemoverFormatacaoMoeda(txtRecebido.Text);                        
-
-                        pagamento.NomeCliente = txtNomeCliente.Text;
-                        pagamento.NomeFuncionario = cboFuncionario.Text;
-                        pagamento.FormaPagamento = cboFormaPagamento.Text;
-                        pagamento.DataPagamento = Convert.ToDateTime(dtpData.Text);
-                        pagamento.ValorRecebido = valorRecebidoSemFormatacao;
-                        pagamento.ValorTotal = valorPagamentoSemFormatacao;
-
-
-
-                        // TRECHO DE CÓDIGO QUE TESTA SE SERÁ REALIZADO MAIS DE UM PAGAMENTO PARA A MESMA COMPRA:
-                        if (pagamento.ValorRecebido < pagamento.ValorTotal)
+                        if (resultadoEscolha == DialogResult.Yes)
                         {
-                            DialogResult resultadoEscolha = MessageBox.Show("Deseja realizar mais um pagamento?", "Pagamento", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                            double valorPagar = (pagamento.ValorTotal - pagamento.ValorRecebido);
 
-                            if (resultadoEscolha == DialogResult.Yes)
-                            {
-                                double valorPagar = (pagamento.ValorTotal - pagamento.ValorRecebido);
+                            txtRecebido.Clear();
+                            cboServico.SelectedIndex = 0;
+                            ckbDesconto.Visible = false;
+                            cboDesconto.Visible = false;
+                            txtValor.Text = valorPagar.ToString("C");
 
-                                txtRecebido.Clear();
-                                cboServico.SelectedIndex = 0;
-                                ckbDesconto.Visible = false;
-                                cboDesconto.Visible = false;
-                                txtValor.Text = valorPagar.ToString("C");
+                            listaPagamentos.Add(pagamento);
 
-                                listaPagamentos.Add(pagamento);
+                            MessageBox.Show("Pagamento registrado com sucesso!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                                MessageBox.Show("Pagamento registrado com sucesso!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                            }
-                            else
-                            {
-
-                                // Foi necessário inicializar a venda em dois pontos diferentes porque a mesma está relacionada com a quantidade de pagamentos que podem ser realizados.
-                                venda = new Venda(new SalaoContext());
-
-                                //venda.Id = 1;
-                                venda.Data = Convert.ToDateTime(dtpData.Text);
-                                venda.Hora = DateTime.Now.ToShortTimeString();
-                                venda.Funcionario = cboFuncionario.Text; // TROCAR DEPOIS PARA RECUPERAR O FUNCIONARIO E NÃO O TEXTO DO COMBOBOX     
-                                venda.ValorDesconto = auxValor;
-
-                                // Relaciona a venda com o pagamento realizado e depois adiciona na Lista auxiliar
-                                pagamento.Venda = venda;
-                                listaPagamentos.Add(pagamento);
-
-                                // Pega o primeiro item da lista de pagamentos, pois ele sempre terá o valor total da compra.
-                                venda.ValorTotal = listaPagamentos[0].ValorTotal;
-
-                                venda.Produtos = listaProdutos;
-                                venda.Servicos = listaServicos;
-                                venda.Pagamentos = listaPagamentos;
-
-                                if (ckbDesconto.Checked)
-                                    venda.Desconto = true;
-
-                                // Trecho responsável por salvar a venda no banco de dados.
-                                /*vendaRepository.Adicionar(venda);
-                                vendaRepository.Salvar();*/
-
-                                //Limpa todos os valores utilizados pela instância.                                
-                                listaPagamentos = new List<Pagamento>();
-                                listaProdutos = new List<Produto>();
-                                listaServicos = new List<Servico>();
-                                auxValor = 0;
-                                valorTotal = 0;
-
-                                // Torna a opção de desconto visível novamente após a finalização da Venda.
-                                ckbDesconto.Visible = true;
-
-                                MessageBox.Show("Pagamento registrado com sucesso!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                LimparCampos();
-                            }
                         }
                         else
                         {
 
                             // Foi necessário inicializar a venda em dois pontos diferentes porque a mesma está relacionada com a quantidade de pagamentos que podem ser realizados.
-                            venda = new Venda(new SalaoContext());
+                            venda = new Venda();
 
                             //venda.Id = 1;
                             venda.Data = Convert.ToDateTime(dtpData.Text);
                             venda.Hora = DateTime.Now.ToShortTimeString();
-                            venda.Funcionario = cboFuncionario.Text; // TROCAR DEPOIS PARA RECUPERAR O FUNCIONARIO E NÃO O TEXTO DO COMBOBOX
+                            venda.Funcionario = cboFuncionario.Text; // TROCAR DEPOIS PARA RECUPERAR O FUNCIONARIO E NÃO O TEXTO DO COMBOBOX     
                             venda.ValorDesconto = auxValor;
 
                             // Relaciona a venda com o pagamento realizado e depois adiciona na Lista auxiliar
@@ -163,7 +113,6 @@ namespace Apresentacao
 
                             // Pega o primeiro item da lista de pagamentos, pois ele sempre terá o valor total da compra.
                             venda.ValorTotal = listaPagamentos[0].ValorTotal;
-
 
                             venda.Produtos = listaProdutos;
                             venda.Servicos = listaServicos;
@@ -176,27 +125,56 @@ namespace Apresentacao
                             /*vendaRepository.Adicionar(venda);
                             vendaRepository.Salvar();*/
 
-                            //Limpa todos os valores utilizados pela instância.
-                            listaPagamentos = new List<Pagamento>();
-                            listaProdutos = new List<Produto>();
-                            listaServicos = new List<Servico>();
-                            auxValor = 0;
-                            valorTotal = 0;
 
                             // Torna a opção de desconto visível novamente após a finalização da Venda.
                             ckbDesconto.Visible = true;
 
-
                             MessageBox.Show("Pagamento registrado com sucesso!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             LimparCampos();
                         }
-
-
                     }
                     else
                     {
-                        MessageBox.Show("Por gentileza, preencha todos os campos.", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+                        // Foi necessário inicializar a venda em dois pontos diferentes porque a mesma está relacionada com a quantidade de pagamentos que podem ser realizados.
+                        venda = new Venda();
+
+                        //venda.Id = 1;
+                        venda.Data = Convert.ToDateTime(dtpData.Text);
+                        venda.Hora = DateTime.Now.ToShortTimeString();
+                        venda.Funcionario = cboFuncionario.Text; // TROCAR DEPOIS PARA RECUPERAR O FUNCIONARIO E NÃO O TEXTO DO COMBOBOX
+                        venda.ValorDesconto = auxValor;
+
+                        // Relaciona a venda com o pagamento realizado e depois adiciona na Lista auxiliar
+                        pagamento.Venda = venda;
+                        listaPagamentos.Add(pagamento);
+
+                        // Pega o primeiro item da lista de pagamentos, pois ele sempre terá o valor total da compra.
+                        venda.ValorTotal = listaPagamentos[0].ValorTotal;
+
+
+                        venda.Produtos = listaProdutos;
+                        venda.Servicos = listaServicos;
+                        venda.Pagamentos = listaPagamentos;
+
+                        if (ckbDesconto.Checked)
+                            venda.Desconto = true;
+
+                        // Trecho responsável por salvar a venda no banco de dados.
+                        /*vendaRepository.Adicionar(venda);
+                        vendaRepository.Salvar();*/
+
+
+                        // Torna a opção de desconto visível novamente após a finalização da Venda.
+                        ckbDesconto.Visible = true;
+
+
+                        MessageBox.Show("Pagamento registrado com sucesso!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        LimparCampos();
                     }
+
+
+
 
                 }
                 else
@@ -243,6 +221,13 @@ namespace Apresentacao
             lblValorTroco.Visible = false;
 
             ckbDesconto.Checked = false;
+
+            //Limpa todos os valores utilizados pela instância.    
+            listaPagamentos = new List<Pagamento>();
+            listaProdutos = new List<Produto>();
+            listaServicos = new List<Servico>();
+            auxValor = 0;
+            valorTotal = 0;
 
             listViewServicos.Clear();
 
@@ -291,8 +276,8 @@ namespace Apresentacao
 
                 lblValor.Location = new Point(515, 347);
                 txtValor.Location = new Point(519, 364);
-                lblTextoTroco.Location = new Point(513, 394);
-                lblValorTroco.Location = new Point(590, 394);
+                lblTextoTroco.Location = new Point(514, 394);
+                lblValorTroco.Location = new Point(591, 394);
 
                 cboDesconto.Location = new Point(23, 364);
                 ckbDesconto.Location = new Point(23, 339);
@@ -305,6 +290,7 @@ namespace Apresentacao
 
                 btnSalvar.Location = new Point(47, 477);
                 btnAdicionarNaLista.Location = new Point(230, 477);
+                btnLimpar.Location = new Point(486, 364);
                 btnReagendar.Location = new Point(413, 477);
                 btnCancelar.Location = new Point(596, 477);
             }
@@ -334,8 +320,8 @@ namespace Apresentacao
                 // LOCATION
                 lblValor.Location = new Point(515, 278);
                 txtValor.Location = new Point(519, 297);
-                lblTextoTroco.Location = new Point(512, 337);
-                lblValorTroco.Location = new Point(589, 337);
+                lblTextoTroco.Location = new Point(514, 337);
+                lblValorTroco.Location = new Point(591, 337);
 
                 cboDesconto.Location = new Point(23, 297);
                 ckbDesconto.Location = new Point(23, 272);
@@ -348,6 +334,7 @@ namespace Apresentacao
 
                 btnSalvar.Location = new Point(47, 421);
                 btnAdicionarNaLista.Location = new Point(230, 421);
+                btnLimpar.Location = new Point(486, 297);
                 btnReagendar.Location = new Point(413, 421);
                 btnCancelar.Location = new Point(596, 421);
 
@@ -381,57 +368,65 @@ namespace Apresentacao
             {
                 if (!(cboServico.SelectedIndex == -1))
                 {
-                    Servico servico = ((Servico)cboServico.SelectedItem);
-
-                    if (txtQntd.Text != string.Empty)
-                        servico.Quantidade = Convert.ToInt32(txtQntd.Text);
-
-                    listaServicos.Add(servico);
-
-
-                    if (!(servico.Nome.Equals("Venda")))
+                    if (!(cboFuncionario.SelectedIndex == -1))
                     {
-                        valorTotal += servico.Valor;                        
+                        Servico servico = ((Servico)cboServico.SelectedItem);
 
-                        // Monta os dados e insere na ListView
-                        string[] row = { "+  1 " + servico.Nome, "R$ " + servico.Valor + ",00" };
-                        ListViewItem item = new ListViewItem(row);
-                        listViewServicos.Items.Add(item);                        
+                        if (txtQntd.Text != string.Empty)
+                            servico.Quantidade = Convert.ToInt32(txtQntd.Text);
 
-                        // Converte o valor do pagamento para o formato moeda
-                        txtValor.Text = String.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:C}", valorTotal);                        
-                        
+                        listaServicos.Add(servico);
 
-                    }
-                    else if (!txtQntd.Text.Equals(String.Empty))
-                    {
-                        Produto produto = ((Produto)cboProdutos.SelectedItem);
 
-                        listaProdutos.Add(produto);
+                        if (!(servico.Nome.Equals("Venda")))
+                        {
+                            valorTotal += servico.Valor;
 
-                        int quantidade = Convert.ToInt32(txtQntd.Text);
-                        double valorTotalProduto = (produto.Valor * quantidade);
+                            // Monta os dados e insere na ListView
+                            string[] row = { "+  1 " + servico.Nome, "R$ " + servico.Valor + ",00" };
+                            ListViewItem item = new ListViewItem(row);
+                            listViewServicos.Items.Add(item);
 
-                        valorTotal += valorTotalProduto;
+                            // Converte o valor do pagamento para o formato moeda
+                            txtValor.Text = String.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:C}", valorTotal);
 
-                        // Monta os dados e insere na ListView
-                        String[] row = { "+  " + quantidade + " " + produto.Descricao, "R$ " + valorTotalProduto + ",00" };
-                        ListViewItem item = new ListViewItem(row);
-                        listViewServicos.Items.Add(item);                                             
 
-                        txtQntd.Clear();
-                        cboServico.SelectedIndex = 0;
+                        }
+                        else if (!txtQntd.Text.Equals(String.Empty))
+                        {
+                            Produto produto = ((Produto)cboProdutos.SelectedItem);
 
-                        // Converte o valor total da venda para o formato moeda
-                        txtValor.Text = String.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:C}", valorTotal);
+                            listaProdutos.Add(produto);
+
+                            int quantidade = Convert.ToInt32(txtQntd.Text);
+                            double valorTotalProduto = (produto.Valor * quantidade);
+
+                            valorTotal += valorTotalProduto;
+
+                            // Monta os dados e insere na ListView
+                            String[] row = { "+  " + quantidade + " " + produto.Descricao, "R$ " + valorTotalProduto + ",00" };
+                            ListViewItem item = new ListViewItem(row);
+                            listViewServicos.Items.Add(item);
+
+                            txtQntd.Clear();
+                            cboServico.SelectedIndex = 0;
+
+                            // Converte o valor total da venda para o formato moeda
+                            txtValor.Text = String.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:C}", valorTotal);
+
+                        }
+                        else
+                        {
+                            MessageBox.Show("Por gentileza, preencha o campo 'Quantidade'.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        }
+
+                        AtualizaTroco();
 
                     }
                     else
                     {
-                        MessageBox.Show("Por gentileza, preencha o campo 'Quantidade'.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        MessageBox.Show("Por gentileza, preencha o campo 'Colaborador'.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     }
-
-                    AtualizaTroco();
 
                 }
                 else
@@ -640,6 +635,11 @@ namespace Apresentacao
         private void txtRecebido_MouseClick(object sender, MouseEventArgs e)
         {
             txtRecebido.Clear();
+        }
+
+        private void btnLimpar_Click(object sender, EventArgs e)
+        {
+            LimparCampos();
         }
     }
 }

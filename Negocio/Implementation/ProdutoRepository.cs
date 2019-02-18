@@ -11,8 +11,7 @@ using System.Threading.Tasks;
 namespace Negocio.Implementation
 {
     public class ProdutoRepository : AcessoDadosEntityFramework<Produto>, IProdutoRepository
-    {
-        protected SalaoContext contexto = new SalaoContext();
+    {        
 
         public ProdutoRepository(SalaoContext _contexto) : base(_contexto)
         {
@@ -34,7 +33,7 @@ namespace Negocio.Implementation
         {
             List<Produto> listaProdutos = new List<Produto>();
 
-            Endereco endereco = new Endereco(contexto);
+            Endereco endereco = new Endereco();
             endereco.Id = 1;
             endereco.Cep = "02991040";
             endereco.Estado = "São Paulo";
@@ -43,7 +42,7 @@ namespace Negocio.Implementation
             endereco.Rua = "Rua Primeiro de Abril";
             endereco.Numero = "512";
 
-            Fornecedor fornecedor = new Fornecedor(contexto);
+            Fornecedor fornecedor = new Fornecedor();
             fornecedor.Id = 1;
             fornecedor.Nome = "Josiel";
             fornecedor.Telefone = "011978785454";
@@ -51,7 +50,7 @@ namespace Negocio.Implementation
             fornecedor.Especialidade = "Produtos de cabelo";
             fornecedor.Endereco = endereco;
 
-            Produto produto = new Produto(contexto);
+            Produto produto = new Produto();
             produto.Id = 1;
             produto.Descricao = "Shampoo 300ml Desmaia Cabelo";
             produto.Quantidade = 10;

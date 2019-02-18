@@ -16,9 +16,8 @@ namespace Apresentacao
 {
     public partial class frmEditarProduto : Form
     {
-        SalaoContext contexto = new SalaoContext();
-        Produto produto;
         IProdutoRepository produtoRepository = new ProdutoRepository(new SalaoContext());
+        Produto produto;        
         List<Produto> listaProdutos = new List<Produto>(); 
 
         public frmEditarProduto()
@@ -29,7 +28,7 @@ namespace Apresentacao
         {
             InitializeComponent();
 
-            produto = new Produto(contexto);
+            produto = new Produto();
             produto.Id = id;
             produto.Descricao = descricao;
             produto.Quantidade = quantidade;
@@ -57,7 +56,6 @@ namespace Apresentacao
 
         private void btnExcluir_Click(object sender, EventArgs e)
         {
-
             try
             {
                 int id = Convert.ToInt16(lblId.Text);
@@ -100,7 +98,7 @@ namespace Apresentacao
                 Fornecedor fornecedor = (Fornecedor)cboFornecedor.SelectedItem;
                 fornecedor.Nome = cboFornecedor.Text;                  
 
-                produto = new Produto(contexto);
+                produto = new Produto();
                 produto.Id = Convert.ToInt16(lblId.Text);
                 produto.Descricao = txtDescricao.Text;
                 produto.Quantidade = Convert.ToInt32(txtQuantidade.Text);

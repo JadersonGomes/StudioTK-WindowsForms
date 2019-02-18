@@ -1,5 +1,6 @@
 ﻿using AcessoBancoDados;
 using Negocio.Implementation;
+using Negocio.Interfaces;
 using Negocio.Models;
 using System;
 using System.Collections.Generic;
@@ -15,12 +16,8 @@ namespace Apresentacao
 {
     public partial class frmVale : Form
     {
-        private SalaoContext contexto = new SalaoContext();
-        private Validacao validacao;
+        public IMovimentacaoRepository movimentacaoRepository = new MovimentacaoRepository(new SalaoContext());
         private Movimentacao movimentacao;
-        public MovimentacaoRepository movimentacaoRepository;
-        
-        
 
         public frmVale()
         {
@@ -36,28 +33,16 @@ namespace Apresentacao
         {
             try
             {
-                validacao = new Validacao();
-                bool resultadoValidacao = validacao.ValidarAgendamento(this.panel1);
+                movimentacao = new Movimentacao();                
 
-                if (!resultadoValidacao)
-                {
-                    movimentacao = new Movimentacao(contexto);
-                    movimentacaoRepository = new MovimentacaoRepository(contexto);
+                movimentacao.nomeColaborador = txtNome.Text;
+                movimentacao.Data = dtpData.Value;
+                movimentacao.Valor = Convert.ToDouble(txtValor.Text);
+                movimentacao.Descricao = txtDescricao.Text;
 
-                    movimentacao.nomeColaborador = txtNome.Text;
-                    movimentacao.Data = dtpData.Value;
-                    movimentacao.Valor = Convert.ToDouble(txtValor.Text);
-                    movimentacao.Descricao = txtDescricao.Text;
+                movimentacaoRepository.Adicionar(movimentacao);
+                movimentacaoRepository.Salvar();
 
-                    movimentacaoRepository.Adicionar(movimentacao);
-                    movimentacaoRepository.Salvar();
-
-
-
-                } else
-                {
-                    MessageBox.Show("Por gentileza, preencha todos os campos.", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                }
             }
             catch (Exception ex)
             {

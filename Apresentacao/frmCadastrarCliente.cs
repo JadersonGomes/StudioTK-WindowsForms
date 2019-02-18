@@ -1,5 +1,6 @@
 ﻿using AcessoBancoDados;
 using Negocio.Implementation;
+using Negocio.Interfaces;
 using Negocio.Models;
 using System;
 using System.Collections.Generic;
@@ -15,10 +16,10 @@ namespace Apresentacao
 {
     public partial class frmCadastrarCliente : Form
     {
-        SalaoContext contexto = new SalaoContext();
+        IClienteRepository clienteRepository = new ClienteRepository(new SalaoContext());
         Validacao validacao;
         Cliente cliente;
-        ClienteRepository clienteRepository;
+        
 
         public frmCadastrarCliente()
         {
@@ -35,16 +36,13 @@ namespace Apresentacao
         private void btnSalvar_Click(object sender, EventArgs e)
         {
             try
-            {
-                validacao = new Validacao();
-                bool resultadoValidacao = validacao.ValidarCliente(this.panel1);
+            {               
                 bool resultadoValidacaoEmail = validacao.ValidarEmail(txtEmail.Text);
 
-                if (!resultadoValidacao || !resultadoValidacaoEmail)
+                if (!resultadoValidacaoEmail)
                 {
                     
-                    cliente = new Cliente(contexto);
-                    clienteRepository = new ClienteRepository(contexto);
+                    cliente = new Cliente();                    
 
                     cliente.Nome = txtNome.Text;
                     cliente.Email = txtEmail.Text;
@@ -58,7 +56,7 @@ namespace Apresentacao
 
                 } else
                 {
-                    MessageBox.Show("Por gentileza, preencha todos os campos.", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    MessageBox.Show("E-mail inválido.", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
 
             }

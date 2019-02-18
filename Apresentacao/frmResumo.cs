@@ -31,7 +31,7 @@ namespace Apresentacao
             {
 
                 DateTime dataUltimoFechamento = caixaRepository.BuscarUltimoFechamento();
-                lblUltimoFechamento.Text = "DATA ÚLTIMO FECHAMENTO: " + dataUltimoFechamento.ToShortDateString();
+                lblDataUltimoFechamento.Text = dataUltimoFechamento.ToShortDateString();
 
                 if (txtPesquisar.Text.Equals("") || txtPesquisar.Text.Equals(" "))
                 {
@@ -116,8 +116,25 @@ namespace Apresentacao
 
         private void btnFecharCaixa_Click(object sender, EventArgs e)
         {
-            frmFechamento fechamento = new frmFechamento();
-            fechamento.Show();
+            try
+            {
+                DateTime dataInicial = Convert.ToDateTime(lblDataUltimoFechamento.Text);
+                frmFechamento fechamento = new frmFechamento(dataInicial, DateTime.Today);
+                fechamento.Show();
+
+            }
+            catch (FormatException ex)
+            {
+                MessageBox.Show("Data incorreta na Tela Resumo. Por gentileza, insira uma data válida. \n\n\nDetalhes: \n" + ex.Message, "ATENÇÃO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Algo deu errado. Tente novamente ou contate o administrador do sistema. \n\n\nDetalhes: \n" + ex.Message, "ATENÇÃO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
         }
+
+        
     }
 }

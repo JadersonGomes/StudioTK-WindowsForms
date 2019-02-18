@@ -8,11 +8,9 @@ using System.Threading.Tasks;
 
 namespace Negocio.Models
 {
-    public class Cliente : ClienteRepository
+    public class Cliente 
     {
-        public Cliente(SalaoContext _contexto) : base(_contexto)
-        {
-        }
+        
         public int Id { get; set; }
         public string Nome { get; set; }
         public string Email { get; set; }

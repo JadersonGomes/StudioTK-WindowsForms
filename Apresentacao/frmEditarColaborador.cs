@@ -16,11 +16,10 @@ namespace Apresentacao
 {
     public partial class frmEditarColaborador : Form
     {
-        SalaoContext contexto = new SalaoContext();
-        Funcionario funcionario;
-        Endereco endereco;
         IFuncionarioRepository funcionarioRepository = new FuncionarioRepository(new SalaoContext());
         IEnderecoRepository enderecoRepository = new EnderecoRepository(new SalaoContext());
+        Funcionario funcionario;
+        Endereco endereco;        
         List<Funcionario> listaFuncionarios = new List<Funcionario>();
 
 
@@ -33,7 +32,7 @@ namespace Apresentacao
         {
             InitializeComponent();
 
-            funcionario = new Funcionario(contexto);
+            funcionario = new Funcionario();
             funcionario.Id = id;
             funcionario.Nome = nome;
             funcionario.Telefone = telefone;
@@ -108,7 +107,7 @@ namespace Apresentacao
                 string cepSemMascara = RemoverFormatacaoMascara(txtCep.Text);
                 string telefoneSemMascara = RemoverFormatacaoMascara(txtTelefone.Text);
 
-                endereco = new Endereco(contexto);
+                endereco = new Endereco();
                 //endereco.Id = ((Endereco)enderecoRepository.BuscarPorCep(cepSemMascara)).Id;
                 endereco.Cep = cepSemMascara;
                 endereco.Estado = cboEstados.Text;
@@ -117,7 +116,7 @@ namespace Apresentacao
                 endereco.Rua = txtRua.Text;
                 endereco.Numero = txtNumero.Text;
 
-                funcionario = new Funcionario(contexto);
+                funcionario = new Funcionario();
                 funcionario.Id = Convert.ToInt16(lblId.Text);
                 funcionario.Nome = txtNome.Text;
                 funcionario.Telefone = telefoneSemMascara;

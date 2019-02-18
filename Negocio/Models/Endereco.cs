@@ -8,11 +8,9 @@ using System.Threading.Tasks;
 
 namespace Negocio.Models
 {
-    public class Endereco : EnderecoRepository
+    public class Endereco 
     {
-        public Endereco(SalaoContext _contexto) : base(_contexto)
-        {
-        }
+       
         public int Id { get; set; }
         public string Cep { get; set; }
         public string Rua { get; set; }

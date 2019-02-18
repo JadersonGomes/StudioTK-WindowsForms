@@ -8,11 +8,8 @@ using System.Threading.Tasks;
 
 namespace Negocio.Models
 {
-    public class Fornecedor : FornecedorRepository
-    {
-        public Fornecedor(SalaoContext _contexto) : base(_contexto)
-        {
-        }
+    public class Fornecedor 
+    {        
 
         public int Id { get; set; }
         public string Nome { get; set; }

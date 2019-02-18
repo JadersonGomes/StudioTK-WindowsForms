@@ -1,5 +1,6 @@
 ﻿using AcessoBancoDados;
 using Negocio.Implementation;
+using Negocio.Interfaces;
 using Negocio.Models;
 using System;
 using System.Collections.Generic;
@@ -15,9 +16,8 @@ namespace Apresentacao
 {
     public partial class frmPesquisarProduto : Form
     {
-        SalaoContext contexto = new SalaoContext();
-        Produto produto;
-        ProdutoRepository produtoRepository;
+        IProdutoRepository produtoRepository = new ProdutoRepository(new SalaoContext());
+        Produto produto;        
 
         public frmPesquisarProduto()
         {
@@ -26,22 +26,22 @@ namespace Apresentacao
 
         private void btnPesquisar_Click(object sender, EventArgs e)
         {
-            produto = new Produto(contexto);
+            produto = new Produto();
 
             if (txtPesquisar.Text == "")
             {
-                dataGridViewProdutos.DataSource = produto.ListarTodos();
+                dataGridViewProdutos.DataSource = produtoRepository.ListarTodos();
             } else
             {                
-                dataGridViewProdutos.DataSource = produto.ListarPorNome(txtPesquisar.Text);
+                dataGridViewProdutos.DataSource = produtoRepository.ListarPorNome(txtPesquisar.Text);
 
             }
         }
 
         private void frmPesquisarProduto_Load(object sender, EventArgs e)
-        {
-            produtoRepository = new ProdutoRepository(contexto);
+        {            
             dataGridViewProdutos.DataSource = produtoRepository.PopulaDataGrid();
+
         }
 
         private void dataGridViewProdutos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)

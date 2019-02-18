@@ -11,9 +11,7 @@ using System.Threading.Tasks;
 namespace Negocio.Implementation
 {
     public class UsuarioRepository : AcessoDadosEntityFramework<Usuario>, IUsuarioRepository
-    {
-
-        protected SalaoContext contexto = new SalaoContext();
+    {        
 
         public UsuarioRepository(SalaoContext _contexto) : base(_contexto)
         {
@@ -24,7 +22,7 @@ namespace Negocio.Implementation
         {
             List<Usuario> listaUsuarios = new List<Usuario>();            
 
-            Usuario usuario = new Usuario(contexto);
+            Usuario usuario = new Usuario();
             usuario.Id = 1;
             usuario.nomeUsuario = "Jaderson";
             usuario.Senha = "123";

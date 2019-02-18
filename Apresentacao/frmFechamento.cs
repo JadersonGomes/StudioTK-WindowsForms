@@ -1,5 +1,6 @@
 ﻿using AcessoBancoDados;
 using Negocio.Implementation;
+using Negocio.Interfaces;
 using Negocio.Models;
 using System;
 using System.Collections.Generic;
@@ -15,11 +16,12 @@ namespace Apresentacao
 {
     public partial class frmFechamento : Form
     {
-        SalaoContext contexto = new SalaoContext();
-        Validacao validacao;
-        Pagamento pagamento;        
+        ICaixaRepository caixaRepository = new CaixaRepository(new SalaoContext());
+        IFuncionarioRepository funcionarioRepository = new FuncionarioRepository(new SalaoContext());
+        Pagamento pagamento;
         Caixa caixa;
-        CaixaRepository caixaRepository;
+        private DateTime dataInicial, dataFinal;
+
 
         // ATENÇAÕ: IMPLEMENTAR A IDEIA DE FATURAMENTO PARA MOSTRAR TUDO O QUE O COLABORADOR FEZ NO PERÍODO SELECIONADO E O QUANTO O MESMO DEVE RECEBER.
 
@@ -28,18 +30,30 @@ namespace Apresentacao
             InitializeComponent();
         }
 
+        public frmFechamento(DateTime pDataInicial, DateTime pDataFinal)
+        {
+            InitializeComponent();
+
+            dataInicial = pDataInicial;
+            dataFinal = pDataFinal;
+        }
+
         private void frmFechamento_Load(object sender, EventArgs e)
         {
-            /*try
+            try
             {
-                pagamento = new Pagamento(contexto);
+                pagamento = new Pagamento();
 
-                // Carregar campos do comboBox de colaborador.
-                Funcionario funcionario = new Funcionario(contexto);
-                cboFuncionario.DataSource = funcionario.ListarTodos();
+                // Carregar campos do comboBox de colaborador.                
+                cboFuncionario.DataSource = funcionarioRepository.ListarTodos();
+
+                dtpInicial.Value = dataInicial;
+                dtpFinal.Value = dataFinal;
+
+
 
                 // Carregar dados para o dataGridView e somar o valor total para atribuir ao textBox ValorTotal
-                IEnumerable<Pagamento> lista = pagamento.ListarPorPeriodo(DateTime.Today.Date.ToString());
+                //IEnumerable<Pagamento> lista = pagamento.ListarPorPeriodo(DateTime.Today.Date.ToString());
 
                 //txtValorTotal.Text = Convert.ToString(pagamento.SomarValorTotal(lista));
             }
@@ -47,7 +61,7 @@ namespace Apresentacao
             {
                 MessageBox.Show("Algo deu errado. Tente novamente ou contate o administrador do sistema. \n\n\nDetalhes: \n" + ex.Message, "ATENÇÃO", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-            }*/
+            }
 
         }
 
@@ -101,28 +115,17 @@ namespace Apresentacao
         {
             try
             {
-                validacao = new Validacao();
-                bool campoVazio = validacao.ValidarPadrao(this.panel1);
+                caixa = new Caixa();
 
-                if (!campoVazio)
-                {
-                    caixa = new Caixa(contexto);
-                    caixaRepository = new CaixaRepository(contexto);
+                caixa.Status = "Fechado";
+                caixa.dataAbertura = dtpInicial.Value;
+                caixa.dataFechamento = dtpFinal.Value;
 
-                    caixa.Status = "Fechado";
-                    caixa.dataAbertura = dtpAbertura.Value;
-                    caixa.dataFechamento = dtpFechamento.Value;
+                /* Parte responsável por salvar os dados do fechamento de caixa no Banco de dados.
+                caixaRepository.Adicionar(caixa);
+                caixaRepository.Salvar();*/
 
-                    caixaRepository.Adicionar(caixa);
-                    caixaRepository.Salvar();
-
-
-                    MessageBox.Show("Fechamento realizado com sucesso!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    MessageBox.Show("Por gentileza, preencha todos os campos.", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                }
+                MessageBox.Show("Fechamento realizado com sucesso!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             }
             catch (Exception ex)
@@ -130,7 +133,9 @@ namespace Apresentacao
                 MessageBox.Show("Algo deu errado. Tente novamente ou contate o administrador do sistema. \n\n\nDetalhes: \n" + ex.Message, "ATENÇÃO", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            
+
         }
+
+
     }
 }

@@ -12,8 +12,7 @@ namespace Negocio.Implementation
 {
     public class FornecedorRepository : AcessoDadosEntityFramework<Fornecedor>, IFornecedorRepository
     {
-        protected SalaoContext contexto = new SalaoContext();
-
+        
         public FornecedorRepository(SalaoContext _contexto) : base(_contexto)
         {
         }
@@ -36,7 +35,7 @@ namespace Negocio.Implementation
         {
             List<Fornecedor> listaFornecedores = new List<Fornecedor>();
 
-            Endereco endereco = new Endereco(contexto);
+            Endereco endereco = new Endereco();
             endereco.Id = 1;
             endereco.Cep = "02991040";
             endereco.Estado = "São Paulo";
@@ -45,7 +44,7 @@ namespace Negocio.Implementation
             endereco.Rua = "Rua Primeiro de Abril";
             endereco.Numero = "512";
 
-            Fornecedor fornecedor = new Fornecedor(contexto);            
+            Fornecedor fornecedor = new Fornecedor();            
             fornecedor.Id = 1;
             fornecedor.Nome = "Josiel";
             fornecedor.Telefone = "011978785454";

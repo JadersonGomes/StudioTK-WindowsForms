@@ -11,8 +11,7 @@ using System.Threading.Tasks;
 namespace Negocio.Implementation
 {
     public class ClienteRepository : AcessoDadosEntityFramework<Cliente>, IClienteRepository
-    {
-        protected SalaoContext contexto = new SalaoContext();
+    {        
 
         public ClienteRepository(SalaoContext _contexto) : base(_contexto)
         {
@@ -36,7 +35,7 @@ namespace Negocio.Implementation
         {
             List<Cliente> listaClientes = new List<Cliente>();            
 
-            Cliente cliente = new Cliente(contexto);
+            Cliente cliente = new Cliente();
             cliente.Id = 1;
             cliente.Nome = "Jaderson";
             cliente.Telefone = "011976645381";

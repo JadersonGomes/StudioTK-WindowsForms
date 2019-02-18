@@ -8,11 +8,8 @@ using AcessoBancoDados;
 
 namespace Negocio.Models
 {
-    public class Caixa : CaixaRepository
-    {
-        public Caixa(SalaoContext _contexto) : base(_contexto)
-        {
-        }
+    public class Caixa 
+    {        
 
         public int Id { get; set; }
         public string Status { get; set; }

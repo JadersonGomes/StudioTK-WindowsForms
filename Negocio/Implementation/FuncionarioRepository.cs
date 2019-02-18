@@ -11,8 +11,7 @@ using System.Threading.Tasks;
 namespace Negocio.Implementation
 {
     public class FuncionarioRepository : AcessoDadosEntityFramework<Funcionario>, IFuncionarioRepository
-    {
-        protected SalaoContext contexto = new SalaoContext();
+    {        
 
         public FuncionarioRepository(SalaoContext _contexto) : base(_contexto)
         {
@@ -36,7 +35,7 @@ namespace Negocio.Implementation
         {
             List<Funcionario> listaFuncionarios = new List<Funcionario>();
 
-            Endereco endereco = new Endereco(contexto);
+            Endereco endereco = new Endereco();
             endereco.Id = 1;
             endereco.Cep = "02991040";
             endereco.Estado = "SP";
@@ -45,7 +44,7 @@ namespace Negocio.Implementation
             endereco.Rua = "Rua Primeiro de Abril";
             endereco.Numero = "512";
 
-            Funcionario funcionario = new Funcionario(contexto);
+            Funcionario funcionario = new Funcionario();
             funcionario.Id = 1;
             funcionario.Nome = "Karol";
             funcionario.Telefone = "011941474409";

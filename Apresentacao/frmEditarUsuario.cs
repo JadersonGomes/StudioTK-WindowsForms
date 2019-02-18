@@ -16,9 +16,8 @@ namespace Apresentacao
 {
     public partial class frmEditarUsuario : Form
     {
-        SalaoContext contexto = new SalaoContext();
-        Usuario usuario;
         IUsuarioRepository usuarioRepository = new UsuarioRepository(new SalaoContext());
+        Usuario usuario;        
         List<Usuario> listaUsuarios = new List<Usuario>();
 
         public frmEditarUsuario()
@@ -29,7 +28,8 @@ namespace Apresentacao
         public frmEditarUsuario(int pId, string pNomeUsuario, string pEmail, string pSenha)
         {
             InitializeComponent();
-            usuario = new Usuario(contexto);
+
+            usuario = new Usuario();
             usuario.Id = pId;
             usuario.nomeUsuario = pNomeUsuario;
             usuario.email = pEmail;
@@ -93,7 +93,7 @@ namespace Apresentacao
         {
             try
             {
-                usuario = new Usuario(contexto);
+                usuario = new Usuario();
                 usuario.Id = Convert.ToInt16(lblId.Text);
                 usuario.nomeUsuario = txtUsuario.Text;
                 usuario.Senha = txtSenha.Text;

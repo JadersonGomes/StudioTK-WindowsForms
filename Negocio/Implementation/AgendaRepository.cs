@@ -14,8 +14,7 @@ namespace Negocio.Implementation
     public class AgendaRepository : AcessoDadosEntityFramework<Agenda>, IAgendaRepository
     {
 
-        List<string> listaHora = new List<string>();
-        SalaoContext contexto = new SalaoContext();
+        List<string> listaHora = new List<string>();        
 
         public AgendaRepository(SalaoContext _contexto) : base(_contexto)
         {
@@ -26,23 +25,23 @@ namespace Negocio.Implementation
         {
             List<Agenda> listaAgendamento = new List<Agenda>();
 
-            Funcionario funcionario = new Funcionario(contexto);
+            Funcionario funcionario = new Funcionario();
             funcionario.Nome = "Tiago";
 
-            Cliente cliente = new Cliente(contexto);
+            Cliente cliente = new Cliente();
             cliente.Id = 1;
             cliente.Nome = "Jaderson";
             cliente.Telefone = "11 97664 5381";
             cliente.Email = "jaderson_goomes@hotmail.com";
 
-            Servico servico = new Servico(contexto);
+            Servico servico = new Servico();
             servico.Id = 1;
             servico.Nome = "Corte Masculino";
             servico.Data = DateTime.Today;
             servico.Valor = 25;            
             servico.Cliente = cliente;
 
-            Agenda agenda = new Agenda(contexto);
+            Agenda agenda = new Agenda();
 
             agenda.Id = 1;
             agenda.NomeCliente = "Jaderson";
@@ -51,7 +50,7 @@ namespace Negocio.Implementation
             agenda.Servico = servico;
             agenda.Funcionario = funcionario;
 
-            Agenda agenda2 = new Agenda(contexto);
+            Agenda agenda2 = new Agenda();
 
             agenda2.Id = 2;
             agenda2.NomeCliente = "Jaderson";
@@ -60,7 +59,7 @@ namespace Negocio.Implementation
             agenda2.Servico = servico;
             agenda2.Funcionario = funcionario;
 
-            Agenda agenda3 = new Agenda(contexto);
+            Agenda agenda3 = new Agenda();
 
             agenda3.Id = 3;
             agenda3.NomeCliente = "Jaderson";
@@ -69,7 +68,7 @@ namespace Negocio.Implementation
             agenda3.Servico = servico;
             agenda3.Funcionario = funcionario;
 
-            Agenda agenda4 = new Agenda(contexto);
+            Agenda agenda4 = new Agenda();
 
             agenda4.Id = 4;
             agenda4.NomeCliente = "Jaderson";
@@ -78,7 +77,7 @@ namespace Negocio.Implementation
             agenda4.Servico = servico;
             agenda4.Funcionario = funcionario;
 
-            Agenda agenda5 = new Agenda(contexto);
+            Agenda agenda5 = new Agenda();
 
             agenda5.Id = 5;
             agenda5.NomeCliente = "Jaderson";
@@ -201,8 +200,8 @@ namespace Negocio.Implementation
         {
             List<Servico> listaServicos = new List<Servico>();
 
-            Servico servico = new Servico(contexto);
-            Servico servico2 = new Servico(contexto);
+            Servico servico = new Servico();
+            Servico servico2 = new Servico();
 
             servico.Nome = "Corte Masculino";
             servico2.Nome = "Unha simples";
@@ -217,9 +216,9 @@ namespace Negocio.Implementation
         {
             List<Funcionario> listaColaborador = new List<Funcionario>();
 
-            Funcionario funcionario = new Funcionario(contexto);
-            Funcionario funcionario2 = new Funcionario(contexto);
-            Funcionario funcionario3 = new Funcionario(contexto);
+            Funcionario funcionario = new Funcionario();
+            Funcionario funcionario2 = new Funcionario();
+            Funcionario funcionario3 = new Funcionario();
 
             funcionario.Nome = "Karol";
             funcionario2.Nome = "Thiago";

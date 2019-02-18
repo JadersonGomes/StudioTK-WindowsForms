@@ -8,11 +8,8 @@ using AcessoBancoDados;
 
 namespace Negocio.Models
 {
-    public class Movimentacao : MovimentacaoRepository
-    {
-        public Movimentacao(SalaoContext _contexto) : base(_contexto)
-        {
-        }
+    public class Movimentacao 
+    {        
 
         public int Id { get; set; }
         public DateTime Data { get; set; }

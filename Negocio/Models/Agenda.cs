@@ -8,18 +8,14 @@ using System.Threading.Tasks;
 
 namespace Negocio.Models
 {
-    public class Agenda : AgendaRepository
+    public class Agenda
     {
-
-        public Agenda(SalaoContext _contexto) : base(_contexto)
-        {
-        }
-
         public int Id { get; set; }
         public string NomeCliente { get; set; }
         public DateTime Data { get; set; }
-        public string Horario { get; set; }        
+        public string Horario { get; set; }
         public Servico Servico { get; set; }
         public Funcionario Funcionario { get; set; }
+
     }
 }

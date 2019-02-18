@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPagamento));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnLimpar = new System.Windows.Forms.Button();
             this.btnAdicionarNaLista = new System.Windows.Forms.Button();
             this.btnSalvar = new System.Windows.Forms.Button();
             this.btnReagendar = new System.Windows.Forms.Button();
@@ -76,11 +77,24 @@
             this.panel1.Size = new System.Drawing.Size(799, 477);
             this.panel1.TabIndex = 0;
             // 
+            // btnLimpar
+            // 
+            this.btnLimpar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLimpar.ForeColor = System.Drawing.Color.Silver;
+            this.btnLimpar.Image = ((System.Drawing.Image)(resources.GetObject("btnLimpar.Image")));
+            this.btnLimpar.Location = new System.Drawing.Point(486, 297);
+            this.btnLimpar.Name = "btnLimpar";
+            this.btnLimpar.Size = new System.Drawing.Size(34, 37);
+            this.btnLimpar.TabIndex = 52;
+            this.btnLimpar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnLimpar.UseVisualStyleBackColor = true;
+            this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
+            // 
             // btnAdicionarNaLista
             // 
             this.btnAdicionarNaLista.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdicionarNaLista.ForeColor = System.Drawing.Color.Gray;
-            this.btnAdicionarNaLista.Location = new System.Drawing.Point(230, 421);
+            this.btnAdicionarNaLista.Location = new System.Drawing.Point(228, 412);
             this.btnAdicionarNaLista.Name = "btnAdicionarNaLista";
             this.btnAdicionarNaLista.Size = new System.Drawing.Size(155, 30);
             this.btnAdicionarNaLista.TabIndex = 51;
@@ -93,7 +107,7 @@
             this.btnSalvar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSalvar.ForeColor = System.Drawing.Color.Gray;
             this.btnSalvar.Image = ((System.Drawing.Image)(resources.GetObject("btnSalvar.Image")));
-            this.btnSalvar.Location = new System.Drawing.Point(47, 421);
+            this.btnSalvar.Location = new System.Drawing.Point(40, 412);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Size = new System.Drawing.Size(155, 30);
             this.btnSalvar.TabIndex = 44;
@@ -107,7 +121,7 @@
             // 
             this.btnReagendar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnReagendar.ForeColor = System.Drawing.Color.Gray;
-            this.btnReagendar.Location = new System.Drawing.Point(413, 421);
+            this.btnReagendar.Location = new System.Drawing.Point(416, 412);
             this.btnReagendar.Name = "btnReagendar";
             this.btnReagendar.Size = new System.Drawing.Size(155, 30);
             this.btnReagendar.TabIndex = 43;
@@ -119,7 +133,7 @@
             // 
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelar.ForeColor = System.Drawing.Color.Gray;
-            this.btnCancelar.Location = new System.Drawing.Point(596, 421);
+            this.btnCancelar.Location = new System.Drawing.Point(604, 412);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(155, 30);
             this.btnCancelar.TabIndex = 42;
@@ -149,6 +163,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnLimpar);
             this.groupBox1.Controls.Add(this.lblValorTroco);
             this.groupBox1.Controls.Add(this.lblTextoTroco);
             this.groupBox1.Controls.Add(this.lblRecebido);
@@ -180,7 +195,7 @@
             this.lblValorTroco.AutoSize = true;
             this.lblValorTroco.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblValorTroco.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.lblValorTroco.Location = new System.Drawing.Point(589, 337);
+            this.lblValorTroco.Location = new System.Drawing.Point(591, 337);
             this.lblValorTroco.Name = "lblValorTroco";
             this.lblValorTroco.Size = new System.Drawing.Size(34, 25);
             this.lblValorTroco.TabIndex = 56;
@@ -192,7 +207,7 @@
             this.lblTextoTroco.AutoSize = true;
             this.lblTextoTroco.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTextoTroco.ForeColor = System.Drawing.Color.Gray;
-            this.lblTextoTroco.Location = new System.Drawing.Point(512, 337);
+            this.lblTextoTroco.Location = new System.Drawing.Point(514, 337);
             this.lblTextoTroco.Name = "lblTextoTroco";
             this.lblTextoTroco.Size = new System.Drawing.Size(84, 25);
             this.lblTextoTroco.TabIndex = 55;
@@ -478,5 +493,6 @@
         private System.Windows.Forms.Label lblRecebido;
         private System.Windows.Forms.TextBox txtRecebido;
         private System.Windows.Forms.Label lblValorTroco;
+        private System.Windows.Forms.Button btnLimpar;
     }
 }

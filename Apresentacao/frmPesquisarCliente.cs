@@ -1,5 +1,6 @@
 ﻿using AcessoBancoDados;
 using Negocio.Implementation;
+using Negocio.Interfaces;
 using Negocio.Models;
 using System;
 using System.Collections.Generic;
@@ -15,9 +16,9 @@ namespace Apresentacao
 {
     public partial class frmPesquisarCliente : Form
     {
-        SalaoContext contexto = new SalaoContext();
+        IClienteRepository clienteRepository = new ClienteRepository(new SalaoContext());
         Cliente cliente;
-        ClienteRepository clienteRepository;
+        
         public frmPesquisarCliente()
         {
             InitializeComponent();
@@ -25,22 +26,22 @@ namespace Apresentacao
 
         private void btnPesquisar_Click(object sender, EventArgs e)
         {
-            cliente = new Cliente(contexto);            
+                  
 
             if (txtPesquisar.Text == "")
             {
-                dataGridViewClientes.DataSource = cliente.ListarTodos();
+                dataGridViewClientes.DataSource = clienteRepository.ListarTodos();
             }
             else
             {
                 try
                 {
                     var t = Convert.ToInt64(txtPesquisar.Text);
-                    dataGridViewClientes.DataSource = cliente.ListarPorTelefone(txtPesquisar.Text); 
+                    dataGridViewClientes.DataSource = clienteRepository.ListarPorTelefone(txtPesquisar.Text); 
                 }
                 catch (Exception ex)
                 {                    
-                    dataGridViewClientes.DataSource = cliente.ListarPorNome(txtPesquisar.Text);
+                    dataGridViewClientes.DataSource = clienteRepository.ListarPorNome(txtPesquisar.Text);
 
                 }
                 
@@ -49,9 +50,8 @@ namespace Apresentacao
 
         private void frmPesquisarCliente_Load(object sender, EventArgs e)
         {
-            clienteRepository = new ClienteRepository(contexto);
-
             dataGridViewClientes.DataSource = clienteRepository.PopulaDataGrid();
+
         }
 
         private void dataGridViewClientes_CellDoubleClick(object sender, DataGridViewCellEventArgs e)

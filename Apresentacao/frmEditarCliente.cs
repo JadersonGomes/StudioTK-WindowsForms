@@ -1,5 +1,6 @@
 ﻿using AcessoBancoDados;
 using Negocio.Implementation;
+using Negocio.Interfaces;
 using Negocio.Models;
 using System;
 using System.Collections.Generic;
@@ -15,9 +16,9 @@ namespace Apresentacao
 {
     public partial class frmEditarCliente : Form
     {
-        SalaoContext contexto = new SalaoContext();
+        IClienteRepository clienteRepository = new ClienteRepository(new SalaoContext());
         Cliente cliente;
-        ClienteRepository clienteRepository;
+        
         List<Cliente> listaClientes = new List<Cliente>();
 
         public frmEditarCliente()
@@ -29,7 +30,7 @@ namespace Apresentacao
         {
             InitializeComponent();
 
-            cliente = new Cliente(contexto);
+            cliente = new Cliente();
             cliente.Id = pId;
             cliente.Nome = pNome;
             cliente.Email = pEmail;
@@ -65,7 +66,7 @@ namespace Apresentacao
 
                     if (resultadoEscolha == DialogResult.Yes)
                     {
-                        clienteRepository = new ClienteRepository(contexto);
+                        
                         clienteRepository.ExcluirPorId(id);
                         clienteRepository.Salvar();
 
@@ -92,13 +93,13 @@ namespace Apresentacao
         {
             try
             {
-                cliente = new Cliente(contexto);
+                cliente = new Cliente();
                 cliente.Id = Convert.ToInt16(lblId.Text);
                 cliente.Nome = txtNome.Text;
                 cliente.Email = txtEmail.Text;
                 cliente.Telefone = RemoverFormatacaoMascara(txtTelefone.Text);
 
-                clienteRepository = new ClienteRepository(contexto);
+                
                 clienteRepository.Atualizar(cliente);
                 clienteRepository.Salvar();
 

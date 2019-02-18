@@ -1,5 +1,6 @@
 ﻿using AcessoBancoDados;
 using Negocio.Implementation;
+using Negocio.Interfaces;
 using Negocio.Models;
 using System;
 using System.Collections.Generic;
@@ -15,11 +16,9 @@ namespace Apresentacao
 {
     public partial class frmCadastrarProduto : Form
     {
-        private SalaoContext contexto = new SalaoContext();
-        ProdutoRepository produtoRepository;
-        Validacao validacao;
+        IProdutoRepository produtoRepository = new ProdutoRepository(new SalaoContext());
         Produto produto;
-        
+
 
         public frmCadastrarProduto()
         {
@@ -30,40 +29,29 @@ namespace Apresentacao
         {
             try
             {
-                validacao = new Validacao();
-                bool resultadoValidacao = validacao.ValidarPadrao(this.panel1);
+                produto = new Produto();
 
-                if (!resultadoValidacao)
-                {
-                    produto = new Produto(contexto);
-                    produtoRepository = new ProdutoRepository(contexto);
+                Fornecedor fornecedor = new Fornecedor();
 
-                    Fornecedor fornecedor = new Fornecedor(contexto);
+                var fornecedorSelecionado = (Fornecedor)cboFornecedor.SelectedValue;
 
-                    var fornecedorSelecionado = (Fornecedor)cboFornecedor.SelectedValue;
+                produto.Descricao = txtDescricao.Text;
+                produto.Quantidade = Convert.ToInt16(txtQuantidade.Text);
+                produto.Valor = Convert.ToDouble(txtValor.Text);
+                //produto.Fornecedor = fornecedor.BuscarPorId(fornecedorSelecionado.Id);
 
-                    produto.Descricao = txtDescricao.Text;
-                    produto.Quantidade = Convert.ToInt16(txtQuantidade.Text);
-                    produto.Valor = Convert.ToDouble(txtValor.Text);
-                    //produto.Fornecedor = fornecedor.BuscarPorId(fornecedorSelecionado.Id);
+                produtoRepository.Adicionar(produto);
+                produtoRepository.Salvar();
 
-                    produtoRepository.Adicionar(produto);
-                    produtoRepository.Salvar();
+                MessageBox.Show("Salvo com sucesso!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                LimparCampos();
 
-                    MessageBox.Show("Salvo com sucesso!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    LimparCampos();
-                }
-                else
-                {
-                    MessageBox.Show("Por gentileza, preencha todos os campos.", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                }
-                
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Algo deu errado. Tente novamente mais tarde ou contate o administrador. \n\n\nDetalhes: \n" + ex.Message, "ATENÇÃO", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
+
 
         }
 
@@ -77,8 +65,8 @@ namespace Apresentacao
 
         private void frmCadastrarProduto_Load(object sender, EventArgs e)
         {
-            Fornecedor fornecedor = new Fornecedor(contexto);
-            cboFornecedor.DataSource = fornecedor.ListarTodos();
+            cboFornecedor.DataSource = produtoRepository.ListarTodos();
+
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -88,6 +76,6 @@ namespace Apresentacao
             cadastrar.Show();
         }
 
-       
+
     }
 }

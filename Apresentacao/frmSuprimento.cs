@@ -1,5 +1,6 @@
 ﻿using AcessoBancoDados;
 using Negocio.Implementation;
+using Negocio.Interfaces;
 using Negocio.Models;
 using System;
 using System.Collections.Generic;
@@ -15,11 +16,9 @@ namespace Apresentacao
 {
     public partial class frmSuprimento : Form
     {
-        SalaoContext contexto = new SalaoContext();
-        Validacao validacao;
+        IMovimentacaoRepository movimentacaoRepository = new MovimentacaoRepository(new SalaoContext());
         Movimentacao movimentacao;
-        MovimentacaoRepository movimentacaoRepository;
-        
+
 
         public frmSuprimento()
         {
@@ -35,29 +34,17 @@ namespace Apresentacao
         {
             try
             {
-                validacao = new Validacao();
-                bool resultadoValidacao = validacao.ValidarAgendamento(this.panel1);
+                movimentacao = new Movimentacao();
 
-                if (!resultadoValidacao)
-                {
-                    movimentacao = new Movimentacao(contexto);
-                    movimentacaoRepository = new MovimentacaoRepository(contexto);
+                movimentacao.Valor = Convert.ToDouble(txtValor.Text);
+                movimentacao.Data = DateTime.Now;
+                movimentacao.Forma = cboForma.SelectedItem.ToString();
+                movimentacao.Descricao = txtDescricao.Text;
 
-                    movimentacao.Valor = Convert.ToDouble(txtValor.Text);
-                    movimentacao.Data = DateTime.Now;
-                    movimentacao.Forma = cboForma.SelectedItem.ToString();
-                    movimentacao.Descricao = txtDescricao.Text;
+                movimentacaoRepository.Adicionar(movimentacao);
+                movimentacaoRepository.Salvar();
 
-                    movimentacaoRepository.Adicionar(movimentacao);
-                    movimentacaoRepository.Salvar();
-                                        
-
-                    MessageBox.Show("Salvo com sucesso!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    MessageBox.Show("Por gentileza, preencha todos os campos.", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                }
+                MessageBox.Show("Salvo com sucesso!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
 
             }

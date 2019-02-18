@@ -16,9 +16,9 @@ namespace Apresentacao
 {
     public partial class frmPesquisarFuncionario : Form
     {
-        SalaoContext contexto = new SalaoContext();
-        Funcionario funcionario;
         IFuncionarioRepository funcionarioRepository = new FuncionarioRepository(new SalaoContext());
+        Funcionario funcionario;
+        
 
         public frmPesquisarFuncionario()
         {
@@ -27,22 +27,20 @@ namespace Apresentacao
 
         private void btnPesquisar_Click(object sender, EventArgs e)
         {
-            funcionario = new Funcionario(contexto);
-
             if (txtPesquisar.Text == "")
             {
-                dataGridViewFuncionarios.DataSource = funcionario.ListarTodos();
+                dataGridViewFuncionarios.DataSource = funcionarioRepository.ListarTodos();
             }
             else
             {
                 try
-                {
-                    var t = Convert.ToInt64(txtPesquisar.Text);
-                    dataGridViewFuncionarios.DataSource = funcionario.ListarPorTelefone(txtPesquisar.Text);
+                {                    
+                    dataGridViewFuncionarios.DataSource = funcionarioRepository.ListarPorTelefone(txtPesquisar.Text);
+
                 }
                 catch (Exception ex)
                 {
-                    dataGridViewFuncionarios.DataSource = funcionario.ListarPorNome(txtPesquisar.Text);
+                    dataGridViewFuncionarios.DataSource = funcionarioRepository.ListarPorNome(txtPesquisar.Text);
 
                 }
 
@@ -52,6 +50,7 @@ namespace Apresentacao
         private void frmPesquisarFuncionario_Load(object sender, EventArgs e)
         {            
             dataGridViewFuncionarios.DataSource = funcionarioRepository.PopulaDataGrid();
+
         }
 
         private void dataGridViewFuncionarios_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -62,9 +61,9 @@ namespace Apresentacao
             string comissao = dataGridViewFuncionarios.Rows[e.RowIndex].Cells[3].Value.ToString();
             Endereco endereco = (Endereco)dataGridViewFuncionarios.Rows[e.RowIndex].Cells[4].Value;
 
-
             frmEditarColaborador editarColaborador = new frmEditarColaborador(id, nome, telefone, comissao, endereco);
             editarColaborador.Show();
+
         }
     }
 }

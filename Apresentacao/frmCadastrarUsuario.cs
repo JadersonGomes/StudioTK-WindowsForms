@@ -1,5 +1,6 @@
 ﻿using AcessoBancoDados;
 using Negocio.Implementation;
+using Negocio.Interfaces;
 using Negocio.Models;
 using System;
 using System.Collections.Generic;
@@ -15,10 +16,9 @@ namespace Apresentacao
 {
     public partial class frmCadastrarUsuario : Form
     {
-        SalaoContext contexto = new SalaoContext();
+        IUsuarioRepository usuarioRepository = new UsuarioRepository(new SalaoContext());
         Validacao validacao;
         Usuario usuario;
-        UsuarioRepository usuarioRepository;
 
         public frmCadastrarUsuario()
         {
@@ -30,15 +30,12 @@ namespace Apresentacao
             try
             {
                 validacao = new Validacao();
-                bool campoVazio = validacao.ValidarUsuario(this.panel1);
                 bool emailValido = validacao.ValidarEmail(txtEmail.Text);
 
                 // O método validarUsuario retorna um booleano informando se o mesmo possui algum campo vazio. Vazio = true, preenchido = false
-                if (!campoVazio && emailValido)
+                if (emailValido)
                 {
-                    
-                    usuario = new Usuario(contexto);
-                    usuarioRepository = new UsuarioRepository(contexto);
+                    usuario = new Usuario();
 
                     usuario.nomeUsuario = txtUsuario.Text;
                     //usuario.Senha = txtSenha.Text;
@@ -48,15 +45,14 @@ namespace Apresentacao
                     usuarioRepository.Salvar();
 
                     MessageBox.Show("Salvo com sucesso!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                 }
                 else
                 {
-                    if (campoVazio)
-                    {
-                        MessageBox.Show("Por gentileza, preencha todos os campos.", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    }
+                    MessageBox.Show("E-mail inválido.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
                 }
-                    
+
 
             }
             catch (Exception ex)

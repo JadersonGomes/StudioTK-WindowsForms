@@ -8,11 +8,9 @@ using System.Threading.Tasks;
 
 namespace Negocio.Models
 {
-    public class Funcionario : FuncionarioRepository
+    public class Funcionario 
     {
-        public Funcionario(SalaoContext _contexto) : base(_contexto)
-        {
-        }
+        
         public int Id { get; set; }
         public string Nome { get; set; }
         public string Telefone { get; set; }        

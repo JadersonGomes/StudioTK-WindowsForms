@@ -16,9 +16,9 @@ namespace Apresentacao
 {
     public partial class frmPesquisarFornecedor : Form
     {
-        SalaoContext contexto = new SalaoContext();
-        Fornecedor fornecedor;
         IFornecedorRepository fornecedorRepository = new FornecedorRepository(new SalaoContext());
+        Fornecedor fornecedor;
+        
 
         public frmPesquisarFornecedor()
         {
@@ -26,25 +26,21 @@ namespace Apresentacao
         }
 
         private void btnPesquisar_Click(object sender, EventArgs e)
-        {
-            fornecedor = new Fornecedor(contexto);
-
+        {            
             if (txtPesquisar.Text == "")
             {
-                dataGridViewFornecedores.DataSource = fornecedor.ListarTodos();
+                dataGridViewFornecedores.DataSource = fornecedorRepository.ListarTodos();
             }
             else
             {
                 try
                 {
                     var t = Convert.ToInt64(txtPesquisar.Text);
-                    dataGridViewFornecedores.DataSource = fornecedor.ListarPorTelefone(txtPesquisar.Text);
+                    dataGridViewFornecedores.DataSource = fornecedorRepository.ListarPorTelefone(txtPesquisar.Text);
                 }
                 catch (Exception ex)
                 {
-                    dataGridViewFornecedores.DataSource = fornecedor.ListarPorNome(txtPesquisar.Text);
-
-
+                    dataGridViewFornecedores.DataSource = fornecedorRepository.ListarPorNome(txtPesquisar.Text);
                     
                 }
 
@@ -54,6 +50,7 @@ namespace Apresentacao
         private void frmPesquisarFornecedor_Load(object sender, EventArgs e)
         {            
             dataGridViewFornecedores.DataSource = fornecedorRepository.PopulaDataGrid();
+
         }
 
         private void dataGridViewFornecedores_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -65,9 +62,9 @@ namespace Apresentacao
             string especialidade = dataGridViewFornecedores.Rows[e.RowIndex].Cells[4].Value.ToString();
             Endereco endereco = (Endereco)dataGridViewFornecedores.Rows[e.RowIndex].Cells[5].Value;
 
-
             frmEditarFornecedor editarFornecedor = new frmEditarFornecedor(id, nome, email, telefone, especialidade, endereco);
             editarFornecedor.Show();
+
         }
     }
 }

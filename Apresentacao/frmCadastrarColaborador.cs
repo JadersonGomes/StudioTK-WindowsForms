@@ -1,5 +1,6 @@
 ﻿using AcessoBancoDados;
 using Negocio.Implementation;
+using Negocio.Interfaces;
 using Negocio.Models;
 using System;
 using System.Collections.Generic;
@@ -15,10 +16,10 @@ namespace Apresentacao
 {
     public partial class frmCadastrarColaborador : Form
     {
-        SalaoContext contexto = new SalaoContext();
+        IFuncionarioRepository funcionarioRepository = new FuncionarioRepository(new SalaoContext());
         Validacao validacao;
         Funcionario funcionario;
-        FuncionarioRepository funcionarioRepository;
+
 
         public frmCadastrarColaborador()
         {
@@ -36,47 +37,35 @@ namespace Apresentacao
         {
             try
             {
-                validacao = new Validacao();
-                bool resultadoValidacao = validacao.ValidarColaboradorOuFornecedor(this.groupBox1, this.groupBox2);
+                funcionario = new Funcionario();
+                Endereco endereco = new Endereco();
 
-                if (!resultadoValidacao)
-                {
-                    
-                    funcionario = new Funcionario(contexto);
-                    funcionarioRepository = new FuncionarioRepository(contexto);
+                funcionario.Nome = txtNome.Text;
+                funcionario.Telefone = txtTelefone.Text;
+                //funcionario.Comissao = Convert.ToDouble(cboComissao.SelectedValue);
 
-                    Endereco endereco = new Endereco(contexto);
+                endereco.Cep = txtCep.Text;
+                endereco.Estado = txtEstado.Text;
+                endereco.Cidade = txtCidade.Text;
+                endereco.Bairro = txtBairro.Text;
+                endereco.Rua = txtRua.Text;
+                endereco.Numero = txtNumero.Text;
 
-                    funcionario.Nome = txtNome.Text;
-                    funcionario.Telefone = txtTelefone.Text;
-                    //funcionario.Comissao = Convert.ToDouble(cboComissao.SelectedValue);
+                //funcionario.Endereco = endereco;
 
-                    endereco.Cep = txtCep.Text;
-                    endereco.Estado = txtEstado.Text;
-                    endereco.Cidade = txtCidade.Text;
-                    endereco.Bairro = txtBairro.Text;
-                    endereco.Rua = txtRua.Text;
-                    endereco.Numero = txtNumero.Text;
+                funcionarioRepository.Adicionar(funcionario);
+                funcionarioRepository.Salvar();
 
-                    //funcionario.Endereco = endereco;
+                MessageBox.Show("Salvo com sucesso!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                LimparCampos();
 
-                    funcionarioRepository.Adicionar(funcionario);
-                    funcionarioRepository.Salvar();
 
-                    MessageBox.Show("Salvo com sucesso!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    LimparCampos();
-                }
-                else
-                {
-                    MessageBox.Show("Por gentileza, preencha todos os campos.", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                }
-                
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Algo deu errado. Tente novamente mais tarde ou contate o administrador. \n\n\nDetalhes: \n" + ex.Message, "ATENÇÃO", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
+
         }
 
         public void LimparCampos()

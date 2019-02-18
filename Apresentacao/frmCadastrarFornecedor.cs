@@ -1,5 +1,6 @@
 ﻿using AcessoBancoDados;
 using Negocio.Implementation;
+using Negocio.Interfaces;
 using Negocio.Models;
 using System;
 using System.Collections.Generic;
@@ -15,11 +16,10 @@ namespace Apresentacao
 {
     public partial class frmCadastrarFornecedor : Form
     {
-
-        SalaoContext contexto = new SalaoContext();
+        IFornecedorRepository fornecedorRepository = new FornecedorRepository(new SalaoContext());
         Validacao validacao;
         Fornecedor fornecedor;
-        FornecedorRepository fornecedorRepository;
+        
 
         public frmCadastrarFornecedor()
         {
@@ -35,17 +35,14 @@ namespace Apresentacao
         {
             try
             {
-                validacao = new Validacao();
-                bool resultadoValidacao = validacao.ValidarColaboradorOuFornecedor(this.groupBox1, this.groupBox2);
+                validacao = new Validacao();                
                 bool resultadoValidacaoEmail = validacao.ValidarEmail(txtEmail.Text);
 
-                if (!resultadoValidacao && resultadoValidacaoEmail)
+                if (resultadoValidacaoEmail)
                 {
                     
-                    fornecedor = new Fornecedor(contexto);
-                    fornecedorRepository = new FornecedorRepository(contexto);
-
-                    Endereco endereco = new Endereco(contexto);                    
+                    fornecedor = new Fornecedor();
+                    Endereco endereco = new Endereco();                    
 
                     fornecedor.Nome = txtNome.Text;
                     fornecedor.Email = txtEmail.Text;

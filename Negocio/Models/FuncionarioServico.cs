@@ -8,10 +8,8 @@ using System.Threading.Tasks;
 
 namespace Negocio.Models
 {
-    public class FuncionarioServico : FuncionarioServicoRepository
+    public class FuncionarioServico 
     {
-        public FuncionarioServico(SalaoContext _contexto) : base(_contexto)
-        {
-        }
+        
     }
 }

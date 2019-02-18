@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmResumo));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblDataUltimoFechamento = new System.Windows.Forms.Label();
+            this.lblUltimoFechamento = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -40,13 +42,13 @@
             this.btnPesquisar = new System.Windows.Forms.Button();
             this.txtPesquisar = new System.Windows.Forms.TextBox();
             this.dataGridViewResumo = new System.Windows.Forms.DataGridView();
-            this.lblUltimoFechamento = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewResumo)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.lblDataUltimoFechamento);
             this.panel1.Controls.Add(this.lblUltimoFechamento);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label2);
@@ -62,6 +64,28 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1203, 605);
             this.panel1.TabIndex = 0;
+            // 
+            // lblDataUltimoFechamento
+            // 
+            this.lblDataUltimoFechamento.AutoSize = true;
+            this.lblDataUltimoFechamento.Font = new System.Drawing.Font("Arial Narrow", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDataUltimoFechamento.ForeColor = System.Drawing.Color.Black;
+            this.lblDataUltimoFechamento.Location = new System.Drawing.Point(215, 570);
+            this.lblDataUltimoFechamento.Name = "lblDataUltimoFechamento";
+            this.lblDataUltimoFechamento.Size = new System.Drawing.Size(90, 23);
+            this.lblDataUltimoFechamento.TabIndex = 12;
+            this.lblDataUltimoFechamento.Text = "18/02/2019";
+            // 
+            // lblUltimoFechamento
+            // 
+            this.lblUltimoFechamento.AutoSize = true;
+            this.lblUltimoFechamento.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUltimoFechamento.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.lblUltimoFechamento.Location = new System.Drawing.Point(21, 572);
+            this.lblUltimoFechamento.Name = "lblUltimoFechamento";
+            this.lblUltimoFechamento.Size = new System.Drawing.Size(199, 20);
+            this.lblUltimoFechamento.TabIndex = 11;
+            this.lblUltimoFechamento.Text = "DATA ÚLTIMO FECHAMENTO: ";
             // 
             // label3
             // 
@@ -170,17 +194,6 @@
             this.dataGridViewResumo.Size = new System.Drawing.Size(1174, 496);
             this.dataGridViewResumo.TabIndex = 0;
             // 
-            // lblUltimoFechamento
-            // 
-            this.lblUltimoFechamento.AutoSize = true;
-            this.lblUltimoFechamento.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUltimoFechamento.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.lblUltimoFechamento.Location = new System.Drawing.Point(21, 572);
-            this.lblUltimoFechamento.Name = "lblUltimoFechamento";
-            this.lblUltimoFechamento.Size = new System.Drawing.Size(199, 20);
-            this.lblUltimoFechamento.TabIndex = 11;
-            this.lblUltimoFechamento.Text = "DATA ÚLTIMO FECHAMENTO: ";
-            // 
             // frmResumo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -215,5 +228,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblUltimoFechamento;
+        private System.Windows.Forms.Label lblDataUltimoFechamento;
     }
 }

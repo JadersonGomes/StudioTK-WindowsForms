@@ -17,9 +17,7 @@ namespace Apresentacao
     public partial class frmAgendar : Form
     {
         IAgendaRepository agendarRepository = new AgendaRepository(new SalaoContext());
-
-        Agenda agendamento;
-        Validacao validacao;
+        Agenda agenda;        
         List<string> lista;
 
         bool selecionouData = false;
@@ -34,13 +32,13 @@ namespace Apresentacao
         {
             try
             {
-                agendamento = new Agenda(new SalaoContext());
+                agenda = new Agenda();
 
-                agendamento.NomeCliente = txtNomeCliente.Text;
-                agendamento.Data = Convert.ToDateTime(dtpDataAgendamento.Value);
-                agendamento.Horario = cboHorario.Text;
-                agendamento.Servico = (Servico)cboServico.SelectedItem;
-                agendamento.Funcionario = (Funcionario)cboColaborador.SelectedItem;
+                agenda.NomeCliente = txtNomeCliente.Text;
+                agenda.Data = Convert.ToDateTime(dtpDataAgendamento.Value);
+                agenda.Horario = cboHorario.Text;
+                agenda.Servico = (Servico)cboServico.SelectedItem;
+                agenda.Funcionario = (Funcionario)cboColaborador.SelectedItem;
 
                 // Trecho responsável por salvar o agendamento no Banco de dados.
                 /*agendarRepository.Adicionar(agendamento);
@@ -73,7 +71,7 @@ namespace Apresentacao
 
         private void dtpDataAgendamento_ValueChanged(object sender, EventArgs e)
         {
-            agendamento = new Agenda(new SalaoContext());
+            agenda = new Agenda();
 
             lista = agendarRepository.PopulaComboHora(dtpDataAgendamento.Value, cboHorario.Text);
 

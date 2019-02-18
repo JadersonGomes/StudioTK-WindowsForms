@@ -10,11 +10,8 @@ using AcessoBancoDados;
 
 namespace Negocio.Models
 {
-    public class Pagamento: PagamentoRepository
-    {
-        public Pagamento(SalaoContext _contexto) : base(_contexto)
-        {
-        }
+    public class Pagamento
+    {        
 
         public int Id { get; set; }
         public string NomeCliente { get; set; }

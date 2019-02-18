@@ -57,6 +57,7 @@
     <Compile Include="Implementation\ClienteRepository.cs" />
     <Compile Include="Implementation\ClienteServicoRepository.cs" />
     <Compile Include="Implementation\EnderecoRepository.cs" />
+    <Compile Include="Implementation\FaturamentoRepository.cs" />
     <Compile Include="Implementation\FornecedorRepository.cs" />
     <Compile Include="Implementation\FuncionarioRepository.cs" />
     <Compile Include="Implementation\FuncionarioServicoRepository.cs" />
@@ -73,6 +74,7 @@
     <Compile Include="Interfaces\IClienteRepository.cs" />
     <Compile Include="Interfaces\IClienteServicoRepository.cs" />
     <Compile Include="Interfaces\IEnderecoRepository.cs" />
+    <Compile Include="Interfaces\IFaturamentoRepository.cs" />
     <Compile Include="Interfaces\IFornecedorRepository.cs" />
     <Compile Include="Interfaces\IFuncionarioRepository.cs" />
     <Compile Include="Interfaces\IFuncionarioServicoRepository.cs" />
@@ -89,6 +91,7 @@
     <Compile Include="Models\ClienteProduto.cs" />
     <Compile Include="Models\ClienteServico.cs" />
     <Compile Include="Models\Endereco.cs" />
+    <Compile Include="Models\Faturamento.cs" />
     <Compile Include="Models\Fornecedor.cs" />
     <Compile Include="Models\Funcionario.cs" />
     <Compile Include="Models\FuncionarioServico.cs" />

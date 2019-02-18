@@ -16,10 +16,9 @@ namespace Apresentacao
 {
     public partial class frmEditarFornecedor : Form
     {
-        SalaoContext contexto = new SalaoContext();
+        IFornecedorRepository fornecedorRepository = new FornecedorRepository(new SalaoContext());        
         Fornecedor fornecedor;
-        Endereco endereco;
-        IFornecedorRepository fornecedorRepository = new FornecedorRepository(new SalaoContext());
+        Endereco endereco;        
         List<Fornecedor> listaFornecedores = new List<Fornecedor>();
 
         public frmEditarFornecedor()
@@ -31,7 +30,7 @@ namespace Apresentacao
         {
             InitializeComponent();
 
-            fornecedor = new Fornecedor(contexto);
+            fornecedor = new Fornecedor();
             fornecedor.Id = id;
             fornecedor.Nome = nome;
             fornecedor.Email = email;
@@ -108,7 +107,7 @@ namespace Apresentacao
                 string cepSemMascara = RemoverFormatacaoMascara(txtCep);
                 string telefoneSemMascara = RemoverFormatacaoMascara(txtTelefone);
 
-                endereco = new Endereco(contexto);
+                endereco = new Endereco();
                 //endereco.Id = ((Endereco)enderecoRepository.BuscarPorCep(cepSemMascara)).Id;
                 endereco.Cep = cepSemMascara;
                 endereco.Estado = cboEstados.Text;
@@ -117,7 +116,7 @@ namespace Apresentacao
                 endereco.Rua = txtRua.Text;
                 endereco.Numero = txtNumero.Text;
 
-                fornecedor = new Fornecedor(contexto);
+                fornecedor = new Fornecedor();
                 fornecedor.Id = Convert.ToInt16(lblId.Text);
                 fornecedor.Nome = txtNome.Text;
                 fornecedor.Telefone = telefoneSemMascara;

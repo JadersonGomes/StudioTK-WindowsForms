@@ -8,11 +8,8 @@ using AcessoBancoDados;
 
 namespace Negocio.Models
 {
-    public class Venda : VendaRepository
-    {
-        public Venda(SalaoContext _contexto) : base(_contexto)
-        {
-        }
+    public class Venda
+    {       
 
         public int Id { get; set; }
         public string Funcionario { get; set; }
