@@ -135,6 +135,9 @@ namespace Apresentacao
             
         }
 
-        
+        private void btnHistoricoCaixa_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

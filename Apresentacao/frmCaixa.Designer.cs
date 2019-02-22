@@ -154,6 +154,7 @@
             this.Name = "frmCaixa";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Caixa";
+            
             this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
 

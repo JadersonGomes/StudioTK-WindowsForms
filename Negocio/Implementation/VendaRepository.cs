@@ -36,6 +36,16 @@ namespace Negocio.Implementation
             return entidade.Where(p => p.Data == Convert.ToDateTime(data));
         }
 
+        public dynamic RecuperaProdutosVendidosPorData(DateTime dataInicial, DateTime dataFinal)
+        {
+            var query = (from listaProdutos in entidade.Where(v => v.Produtos.Count > 0) select new {
+                produtos = listaProdutos.Produtos.FirstOrDefault().Descricao
+                
+            }).OrderBy(p => p.produtos);
+
+            return query;
+        } 
+
 
     }
 }

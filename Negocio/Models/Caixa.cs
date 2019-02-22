@@ -12,7 +12,7 @@ namespace Negocio.Models
     {        
 
         public int Id { get; set; }
-        public string Status { get; set; }
+        public string Status { get; set; } = "Aberto";
         public DateTime dataAbertura { get; set; }
         public DateTime dataFechamento { get; set; }
         public List<Movimentacao> Movimentacoes { get; set; }

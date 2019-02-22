@@ -10,5 +10,8 @@ namespace Negocio.Interfaces
 {
     public interface IMovimentacaoRepository : IRepository<Movimentacao>
     {
+        List<Movimentacao> ListarPorPeriodo(DateTime dataInicial, DateTime dataFinal);
     }
+
+    
 }

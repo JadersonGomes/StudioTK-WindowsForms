@@ -9,8 +9,7 @@ using AcessoBancoDados;
 namespace Negocio.Models
 {
     public class Movimentacao 
-    {        
-
+    {     
         public int Id { get; set; }
         public DateTime Data { get; set; }
         public double Valor { get; set; }

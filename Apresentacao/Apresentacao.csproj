@@ -151,6 +151,12 @@
     <Compile Include="frmFiltrarServico.Designer.cs">
       <DependentUpon>frmFiltrarServico.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmHistoricoCaixa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmHistoricoCaixa.Designer.cs">
+      <DependentUpon>frmHistoricoCaixa.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -287,6 +293,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmFiltrarServico.resx">
       <DependentUpon>frmFiltrarServico.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmHistoricoCaixa.resx">
+      <DependentUpon>frmHistoricoCaixa.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>

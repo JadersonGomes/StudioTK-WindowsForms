@@ -15,5 +15,6 @@ namespace Negocio.Interfaces
         IEnumerable<Venda> ListarPorIntervaloPeriodo(string dataInicial, string dataFinal);
         IEnumerable<Venda> ListarPorFuncionario(string funcionario);
         IEnumerable<Venda> ListAllVendas();
+        dynamic RecuperaProdutosVendidosPorData(DateTime dataInicial, DateTime dataFinal);
     }
 }

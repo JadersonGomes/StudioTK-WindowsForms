@@ -30,21 +30,21 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmFechamento));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnResumo = new System.Windows.Forms.Button();
             this.btnFecharCaixa = new System.Windows.Forms.Button();
             this.btnSair = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Colaborador = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Periodo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Quantidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ValorTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dtpInicial = new System.Windows.Forms.DateTimePicker();
             this.dtpFinal = new System.Windows.Forms.DateTimePicker();
             this.cboFuncionario = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.Colaborador = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Periodo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Quantidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ValorTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnResumo = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -60,6 +60,19 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(837, 466);
             this.panel1.TabIndex = 0;
+            // 
+            // btnResumo
+            // 
+            this.btnResumo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnResumo.ForeColor = System.Drawing.Color.Gray;
+            this.btnResumo.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnResumo.Location = new System.Drawing.Point(524, 423);
+            this.btnResumo.Name = "btnResumo";
+            this.btnResumo.Size = new System.Drawing.Size(138, 27);
+            this.btnResumo.TabIndex = 15;
+            this.btnResumo.Text = "Resumo";
+            this.btnResumo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnResumo.UseVisualStyleBackColor = true;
             // 
             // btnFecharCaixa
             // 
@@ -117,6 +130,34 @@
             this.dataGridView1.Size = new System.Drawing.Size(771, 288);
             this.dataGridView1.TabIndex = 13;
             // 
+            // Colaborador
+            // 
+            this.Colaborador.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Colaborador.HeaderText = "Colaborador";
+            this.Colaborador.Name = "Colaborador";
+            this.Colaborador.ReadOnly = true;
+            // 
+            // Periodo
+            // 
+            this.Periodo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Periodo.HeaderText = "Período";
+            this.Periodo.Name = "Periodo";
+            this.Periodo.ReadOnly = true;
+            // 
+            // Quantidade
+            // 
+            this.Quantidade.HeaderText = "Qntd. Serviços Realizados";
+            this.Quantidade.Name = "Quantidade";
+            this.Quantidade.ReadOnly = true;
+            this.Quantidade.Width = 200;
+            // 
+            // ValorTotal
+            // 
+            this.ValorTotal.HeaderText = "Faturamento total";
+            this.ValorTotal.Name = "ValorTotal";
+            this.ValorTotal.ReadOnly = true;
+            this.ValorTotal.Width = 150;
+            // 
             // dtpInicial
             // 
             this.dtpInicial.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
@@ -132,6 +173,7 @@
             this.dtpFinal.Name = "dtpFinal";
             this.dtpFinal.Size = new System.Drawing.Size(151, 21);
             this.dtpFinal.TabIndex = 12;
+            this.dtpFinal.ValueChanged += new System.EventHandler(this.dtpFinal_ValueChanged);
             // 
             // cboFuncionario
             // 
@@ -145,6 +187,7 @@
             this.cboFuncionario.Name = "cboFuncionario";
             this.cboFuncionario.Size = new System.Drawing.Size(424, 23);
             this.cboFuncionario.TabIndex = 2;
+            this.cboFuncionario.SelectedIndexChanged += new System.EventHandler(this.cboFuncionario_SelectedIndexChanged);
             // 
             // label4
             // 
@@ -175,47 +218,6 @@
             this.label3.Size = new System.Drawing.Size(68, 15);
             this.label3.TabIndex = 9;
             this.label3.Text = "Data inicial";
-            // 
-            // Colaborador
-            // 
-            this.Colaborador.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Colaborador.HeaderText = "Colaborador";
-            this.Colaborador.Name = "Colaborador";
-            this.Colaborador.ReadOnly = true;
-            // 
-            // Periodo
-            // 
-            this.Periodo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Periodo.HeaderText = "Período";
-            this.Periodo.Name = "Periodo";
-            this.Periodo.ReadOnly = true;
-            // 
-            // Quantidade
-            // 
-            this.Quantidade.HeaderText = "Qntd. Serviços Realizados";
-            this.Quantidade.Name = "Quantidade";
-            this.Quantidade.ReadOnly = true;
-            this.Quantidade.Width = 200;
-            // 
-            // ValorTotal
-            // 
-            this.ValorTotal.HeaderText = "Faturamento total";
-            this.ValorTotal.Name = "ValorTotal";
-            this.ValorTotal.ReadOnly = true;
-            this.ValorTotal.Width = 150;
-            // 
-            // btnResumo
-            // 
-            this.btnResumo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnResumo.ForeColor = System.Drawing.Color.Gray;
-            this.btnResumo.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnResumo.Location = new System.Drawing.Point(524, 423);
-            this.btnResumo.Name = "btnResumo";
-            this.btnResumo.Size = new System.Drawing.Size(138, 27);
-            this.btnResumo.TabIndex = 15;
-            this.btnResumo.Text = "Resumo";
-            this.btnResumo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnResumo.UseVisualStyleBackColor = true;
             // 
             // frmFechamento
             // 

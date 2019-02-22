@@ -17,14 +17,15 @@ namespace Apresentacao
 {
     public partial class frmPagamento : Form
     {
-
-        Pagamento pagamento;
-
         IPagamentoRepository pagamentoRepository = new PagamentoRepository(new SalaoContext());
         IProdutoRepository produtoRepository = new ProdutoRepository(new SalaoContext());
         IVendaRepository vendaRepository = new VendaRepository(new SalaoContext());
+        IFaturamentoRepository faturamentoRepository = new FaturamentoRepository(new SalaoContext());
 
         Venda venda;
+        Pagamento pagamento;
+        Faturamento faturamento = new Faturamento();
+
         // Variável que auxilia no calculo de desconto e ao final, traz o desconto total que foi concedido ao cliente para que seja salvo na Venda.
         double auxValor = 0;
 
@@ -35,6 +36,7 @@ namespace Apresentacao
         List<Produto> listaProdutos = new List<Produto>();
         List<Servico> listaServicos = new List<Servico>();
         List<Pagamento> listaPagamentos = new List<Pagamento>();
+        List<Servico> listaServicosFaturamento = new List<Servico>();
 
 
         public frmPagamento()
@@ -151,8 +153,7 @@ namespace Apresentacao
 
                         // Pega o primeiro item da lista de pagamentos, pois ele sempre terá o valor total da compra.
                         venda.ValorTotal = listaPagamentos[0].ValorTotal;
-
-
+                        
                         venda.Produtos = listaProdutos;
                         venda.Servicos = listaServicos;
                         venda.Pagamentos = listaPagamentos;
@@ -167,6 +168,9 @@ namespace Apresentacao
 
                         // Torna a opção de desconto visível novamente após a finalização da Venda.
                         ckbDesconto.Visible = true;
+
+                        // Cria uma nova instancia do Faturamento para salvar novos dados.
+                        faturamento = new Faturamento();
 
 
                         MessageBox.Show("Pagamento registrado com sucesso!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -370,7 +374,9 @@ namespace Apresentacao
                 {
                     if (!(cboFuncionario.SelectedIndex == -1))
                     {
+                        // Recuoera o Servico do ComboBox e depois adiciona na lista auxiliar para salvar no Faturamento.
                         Servico servico = ((Servico)cboServico.SelectedItem);
+                        listaServicosFaturamento.Add(servico);
 
                         if (txtQntd.Text != string.Empty)
                             servico.Quantidade = Convert.ToInt32(txtQntd.Text);
@@ -395,6 +401,7 @@ namespace Apresentacao
                         else if (!txtQntd.Text.Equals(String.Empty))
                         {
                             Produto produto = ((Produto)cboProdutos.SelectedItem);
+                                                       
 
                             listaProdutos.Add(produto);
 
@@ -413,6 +420,16 @@ namespace Apresentacao
 
                             // Converte o valor total da venda para o formato moeda
                             txtValor.Text = String.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:C}", valorTotal);
+
+                            Funcionario funcionario = (Funcionario)cboFuncionario.SelectedItem;
+                            faturamento.Colaborador = funcionario;
+                            faturamento.QntdServicos = 1;
+                            faturamento.faturamentoTotal = servico.Valor;
+                            faturamento.Data = DateTime.Today;
+                            faturamento.Servico = servico;
+
+                            faturamentoRepository.Adicionar(faturamento);
+                            faturamentoRepository.Salvar();
 
                         }
                         else

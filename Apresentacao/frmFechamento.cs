@@ -18,8 +18,13 @@ namespace Apresentacao
     {
         ICaixaRepository caixaRepository = new CaixaRepository(new SalaoContext());
         IFuncionarioRepository funcionarioRepository = new FuncionarioRepository(new SalaoContext());
+        IVendaRepository vendaRepository = new VendaRepository(new SalaoContext());
+        IFaturamentoRepository faturamentoRepository = new FaturamentoRepository(new SalaoContext());
+        IMovimentacaoRepository movimentacaoRepository = new MovimentacaoRepository(new SalaoContext());
+
         Pagamento pagamento;
         Caixa caixa;
+        Movimentacao movimentacao;
         private DateTime dataInicial, dataFinal;
 
 
@@ -41,15 +46,20 @@ namespace Apresentacao
         private void frmFechamento_Load(object sender, EventArgs e)
         {
             try
-            {
+            {                
                 pagamento = new Pagamento();
 
                 // Carregar campos do comboBox de colaborador.                
                 cboFuncionario.DataSource = funcionarioRepository.ListarTodos();
+                cboFuncionario.SelectedIndex = -1;
 
                 dtpInicial.Value = dataInicial;
                 dtpFinal.Value = dataFinal;
 
+                var listaFaturamento = faturamentoRepository.ListarPorPeriodo(dataInicial, dataFinal); 
+                
+
+                dataGridView1.DataSource = listaFaturamento;                                
 
 
                 // Carregar dados para o dataGridView e somar o valor total para atribuir ao textBox ValorTotal
@@ -111,15 +121,68 @@ namespace Apresentacao
             }*/
         }
 
+        private void cboFuncionario_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                var lista = faturamentoRepository.ListarPorColaboradorData(cboFuncionario.Text, dataInicial, dataFinal);
+                dataGridView1.DataSource = lista;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Algo deu errado. Tente novamente ou contate o administrador do sistema. \n\n\nDetalhes: \n" + ex.Message, "ATENÇÃO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
+        }
+
+        private void dtpFinal_ValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                
+                if (dtpInicial.Value <= dtpFinal.Value)
+                {
+                    dataGridView1.DataSource = faturamentoRepository.ListarPorPeriodo(dataInicial, dataFinal);
+
+                }
+                else
+                {
+                    MessageBox.Show("Por gentileza, insira uma data final maior que a data inicial.", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Algo deu errado. Tente novamente ou contate o administrador do sistema. \n\n\nDetalhes: \n" + ex.Message, "ATENÇÃO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+            
+        }
+
         private void btnFecharCaixa_Click(object sender, EventArgs e)
         {
             try
             {
-                caixa = new Caixa();
+                
 
+                movimentacao = new Movimentacao();
+                movimentacao.Data = DateTime.Today;
+                movimentacao.Descricao = "Fechamento de caixa";
+                movimentacao.Valor = faturamentoRepository.SomaFaturamentoTotal(faturamentoRepository.ListarPorPeriodo(dtpInicial.Value, dtpFinal.Value));
+
+                /*movimentacaoRepository.Adicionar(movimentacao);
+                movimentacaoRepository.Salvar();*/
+
+                caixa = new Caixa();
                 caixa.Status = "Fechado";
                 caixa.dataAbertura = dtpInicial.Value;
                 caixa.dataFechamento = dtpFinal.Value;
+
+                foreach (var item in movimentacaoRepository.ListarPorPeriodo(dataInicial, DateTime.Today))
+                {
+                    caixa.Movimentacoes.Add(item);
+                }
+                
 
                 /* Parte responsável por salvar os dados do fechamento de caixa no Banco de dados.
                 caixaRepository.Adicionar(caixa);

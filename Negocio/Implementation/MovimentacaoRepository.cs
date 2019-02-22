@@ -15,5 +15,10 @@ namespace Negocio.Implementation
         public MovimentacaoRepository(SalaoContext _contexto) : base(_contexto)
         {
         }
+
+        public List<Movimentacao> ListarPorPeriodo(DateTime dataInicial, DateTime dataFinal)
+        {
+            return entidade.Where(m => m.Data >= dataInicial && m.Data <= dataFinal).ToList();
+        }
     }
 }

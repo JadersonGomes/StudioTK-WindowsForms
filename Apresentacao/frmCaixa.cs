@@ -68,7 +68,6 @@ namespace Apresentacao
             this.Hide();
             resumo.Show();
         }
-
         
     }
 }

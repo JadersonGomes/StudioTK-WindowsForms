@@ -11,8 +11,12 @@ namespace Negocio.Models
     public class Faturamento 
     {
         public int Id { get; set; }
-        public int MyProperty { get; set; }
-
+        public Funcionario Colaborador { get; set; }
+        public DateTime Data { get; set; }
+        public int QntdServicos { get; set; }
+        public double faturamentoTotal { get; set; }
+        public Servico Servico { get; set; }
+        
 
     }
 }

@@ -42,12 +42,14 @@
             this.btnPesquisar = new System.Windows.Forms.Button();
             this.txtPesquisar = new System.Windows.Forms.TextBox();
             this.dataGridViewResumo = new System.Windows.Forms.DataGridView();
+            this.btnHistoricoCaixa = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewResumo)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnHistoricoCaixa);
             this.panel1.Controls.Add(this.lblDataUltimoFechamento);
             this.panel1.Controls.Add(this.lblUltimoFechamento);
             this.panel1.Controls.Add(this.label3);
@@ -120,7 +122,7 @@
             this.btnFecharCaixa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnFecharCaixa.ForeColor = System.Drawing.Color.Gray;
             this.btnFecharCaixa.Image = ((System.Drawing.Image)(resources.GetObject("btnFecharCaixa.Image")));
-            this.btnFecharCaixa.Location = new System.Drawing.Point(792, 560);
+            this.btnFecharCaixa.Location = new System.Drawing.Point(582, 560);
             this.btnFecharCaixa.Name = "btnFecharCaixa";
             this.btnFecharCaixa.Size = new System.Drawing.Size(189, 27);
             this.btnFecharCaixa.TabIndex = 6;
@@ -134,7 +136,7 @@
             // 
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelar.ForeColor = System.Drawing.Color.Gray;
-            this.btnCancelar.Location = new System.Drawing.Point(999, 560);
+            this.btnCancelar.Location = new System.Drawing.Point(998, 560);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(189, 27);
             this.btnCancelar.TabIndex = 5;
@@ -194,6 +196,19 @@
             this.dataGridViewResumo.Size = new System.Drawing.Size(1174, 496);
             this.dataGridViewResumo.TabIndex = 0;
             // 
+            // btnHistoricoCaixa
+            // 
+            this.btnHistoricoCaixa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnHistoricoCaixa.ForeColor = System.Drawing.Color.Gray;
+            this.btnHistoricoCaixa.Location = new System.Drawing.Point(790, 560);
+            this.btnHistoricoCaixa.Name = "btnHistoricoCaixa";
+            this.btnHistoricoCaixa.Size = new System.Drawing.Size(189, 27);
+            this.btnHistoricoCaixa.TabIndex = 13;
+            this.btnHistoricoCaixa.Text = "Histórico de Caixa";
+            this.btnHistoricoCaixa.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnHistoricoCaixa.UseVisualStyleBackColor = true;
+            this.btnHistoricoCaixa.Click += new System.EventHandler(this.btnHistoricoCaixa_Click);
+            // 
             // frmResumo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -229,5 +244,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblUltimoFechamento;
         private System.Windows.Forms.Label lblDataUltimoFechamento;
+        private System.Windows.Forms.Button btnHistoricoCaixa;
     }
 }
