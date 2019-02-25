@@ -137,7 +137,8 @@ namespace Apresentacao
 
         private void btnHistoricoCaixa_Click(object sender, EventArgs e)
         {
-
+            frmHistoricoCaixa historicoCaixa = new frmHistoricoCaixa();
+            historicoCaixa.Show();
         }
     }
 }

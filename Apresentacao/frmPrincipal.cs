@@ -1,5 +1,6 @@
 ﻿using AcessoBancoDados;
 using Negocio.Implementation;
+using Negocio.Interfaces;
 using Negocio.Models;
 using System;
 using System.Collections.Generic;
@@ -15,9 +16,8 @@ namespace Apresentacao
 {
     public partial class frmPrincipal : Form
     {
-
-        SalaoContext contexto = new SalaoContext();        
-        AgendaRepository agendarRepository;
+        
+        IAgendaRepository agendarRepository = new AgendaRepository(new SalaoContext());
 
         public frmPrincipal()
         {
@@ -74,7 +74,7 @@ namespace Apresentacao
         {
             try
             {
-                agendarRepository = new AgendaRepository(contexto);
+                
 
                 /*var listaAgendamentos = from agendamento in agendarRepository.ListarTodos()
                                         where agendamento.Data.Equals(DateTime.Today)
@@ -106,9 +106,9 @@ namespace Apresentacao
         private void btnPesquisarAgendamento_Click(object sender, EventArgs e)
         {
             try
-            {
-                agendarRepository = new AgendaRepository(contexto);
+            {                
                 dataGridViewPrincipal.DataSource = agendarRepository.BuscarPorNomeCliente(txtPesquisar.Text);
+
             }
             catch (Exception ex)
             {
@@ -125,13 +125,13 @@ namespace Apresentacao
         {
             string id = Convert.ToString(dataGridViewPrincipal.Rows[e.RowIndex].Cells[0].Value);
             string cliente = Convert.ToString(dataGridViewPrincipal.Rows[e.RowIndex].Cells[1].Value);
-            string data = (string)dataGridViewPrincipal.Rows[e.RowIndex].Cells[2].Value;
+            DateTime data = (DateTime)dataGridViewPrincipal.Rows[e.RowIndex].Cells[2].Value;
             string horario = (string)dataGridViewPrincipal.Rows[e.RowIndex].Cells[3].Value;
             Servico servico = (Servico)dataGridViewPrincipal.Rows[e.RowIndex].Cells[4].Value;
             Funcionario funcionario = (Funcionario)dataGridViewPrincipal.Rows[e.RowIndex].Cells[5].Value;
             
 
-            frmEditarAgendamento agendar = new frmEditarAgendamento(id, data, funcionario, cliente, horario, servico);
+            frmEditarAgendamento agendar = new frmEditarAgendamento(id, data.ToShortDateString(), funcionario, cliente, horario, servico);
             agendar.Show();
         }
     }

@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmResumo));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnHistoricoCaixa = new System.Windows.Forms.Button();
             this.lblDataUltimoFechamento = new System.Windows.Forms.Label();
             this.lblUltimoFechamento = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -42,7 +43,6 @@
             this.btnPesquisar = new System.Windows.Forms.Button();
             this.txtPesquisar = new System.Windows.Forms.TextBox();
             this.dataGridViewResumo = new System.Windows.Forms.DataGridView();
-            this.btnHistoricoCaixa = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewResumo)).BeginInit();
             this.SuspendLayout();
@@ -66,6 +66,19 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1203, 605);
             this.panel1.TabIndex = 0;
+            // 
+            // btnHistoricoCaixa
+            // 
+            this.btnHistoricoCaixa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnHistoricoCaixa.ForeColor = System.Drawing.Color.Gray;
+            this.btnHistoricoCaixa.Location = new System.Drawing.Point(790, 560);
+            this.btnHistoricoCaixa.Name = "btnHistoricoCaixa";
+            this.btnHistoricoCaixa.Size = new System.Drawing.Size(189, 27);
+            this.btnHistoricoCaixa.TabIndex = 13;
+            this.btnHistoricoCaixa.Text = "Histórico de Caixa";
+            this.btnHistoricoCaixa.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnHistoricoCaixa.UseVisualStyleBackColor = true;
+            this.btnHistoricoCaixa.Click += new System.EventHandler(this.btnHistoricoCaixa_Click);
             // 
             // lblDataUltimoFechamento
             // 
@@ -195,19 +208,6 @@
             this.dataGridViewResumo.Name = "dataGridViewResumo";
             this.dataGridViewResumo.Size = new System.Drawing.Size(1174, 496);
             this.dataGridViewResumo.TabIndex = 0;
-            // 
-            // btnHistoricoCaixa
-            // 
-            this.btnHistoricoCaixa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnHistoricoCaixa.ForeColor = System.Drawing.Color.Gray;
-            this.btnHistoricoCaixa.Location = new System.Drawing.Point(790, 560);
-            this.btnHistoricoCaixa.Name = "btnHistoricoCaixa";
-            this.btnHistoricoCaixa.Size = new System.Drawing.Size(189, 27);
-            this.btnHistoricoCaixa.TabIndex = 13;
-            this.btnHistoricoCaixa.Text = "Histórico de Caixa";
-            this.btnHistoricoCaixa.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnHistoricoCaixa.UseVisualStyleBackColor = true;
-            this.btnHistoricoCaixa.Click += new System.EventHandler(this.btnHistoricoCaixa_Click);
             // 
             // frmResumo
             // 

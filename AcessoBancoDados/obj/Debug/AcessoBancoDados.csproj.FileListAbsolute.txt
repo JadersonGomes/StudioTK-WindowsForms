@@ -8,3 +8,15 @@ d:\Users\jvieira\documents\visual studio 2015\Projects\appCabeleireiro\AcessoBan
 d:\Users\jvieira\documents\visual studio 2015\Projects\appCabeleireiro\AcessoBancoDados\obj\Debug\AcessoBancoDados.csprojResolveAssemblyReference.cache
 d:\Users\jvieira\documents\visual studio 2015\Projects\appCabeleireiro\AcessoBancoDados\obj\Debug\AcessoBancoDados.dll
 d:\Users\jvieira\documents\visual studio 2015\Projects\appCabeleireiro\AcessoBancoDados\obj\Debug\AcessoBancoDados.pdb
+C:\Users\jvieira\Documents\Visual Studio 2017\Projects\appCabeleireiro\AcessoBancoDados\bin\Debug\AcessoBancoDados.dll.config
+C:\Users\jvieira\Documents\Visual Studio 2017\Projects\appCabeleireiro\AcessoBancoDados\bin\Debug\AcessoBancoDados.dll
+C:\Users\jvieira\Documents\Visual Studio 2017\Projects\appCabeleireiro\AcessoBancoDados\bin\Debug\AcessoBancoDados.pdb
+C:\Users\jvieira\Documents\Visual Studio 2017\Projects\appCabeleireiro\AcessoBancoDados\bin\Debug\EntityFramework.dll
+C:\Users\jvieira\Documents\Visual Studio 2017\Projects\appCabeleireiro\AcessoBancoDados\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\jvieira\Documents\Visual Studio 2017\Projects\appCabeleireiro\AcessoBancoDados\bin\Debug\EntityFramework.xml
+C:\Users\jvieira\Documents\Visual Studio 2017\Projects\appCabeleireiro\AcessoBancoDados\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\jvieira\Documents\Visual Studio 2017\Projects\appCabeleireiro\AcessoBancoDados\obj\Debug\AcessoBancoDados.csprojAssemblyReference.cache
+C:\Users\jvieira\Documents\Visual Studio 2017\Projects\appCabeleireiro\AcessoBancoDados\obj\Debug\AcessoBancoDados.csproj.CoreCompileInputs.cache
+C:\Users\jvieira\Documents\Visual Studio 2017\Projects\appCabeleireiro\AcessoBancoDados\obj\Debug\AcessoBancoDados.csproj.CopyComplete
+C:\Users\jvieira\Documents\Visual Studio 2017\Projects\appCabeleireiro\AcessoBancoDados\obj\Debug\AcessoBancoDados.dll
+C:\Users\jvieira\Documents\Visual Studio 2017\Projects\appCabeleireiro\AcessoBancoDados\obj\Debug\AcessoBancoDados.pdb
