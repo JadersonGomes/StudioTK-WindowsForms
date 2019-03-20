@@ -1,12 +1,8 @@
-﻿using AcessoBancoDados;
-using AcessoBancoDados.Generics;
+﻿using AcessoBancoDados.Models;
+using Negocio.Generics;
 using Negocio.Interfaces;
-using Negocio.Models;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Negocio.Implementation
 {
@@ -41,14 +37,14 @@ namespace Negocio.Implementation
             endereco.Estado = "SP";
             endereco.Cidade = "São Paulo";
             endereco.Bairro = "Jardim 1";
-            endereco.Rua = "Rua Primeiro de Abril";
-            endereco.Numero = "512";
+            endereco.Logradouro = "Rua Primeiro de Abril";
+            endereco.Numero = 512;
 
             Funcionario funcionario = new Funcionario();
             funcionario.Id = 1;
             funcionario.Nome = "Karol";
             funcionario.Telefone = "011941474409";
-            funcionario.Comissao = "60%";
+            funcionario.Comissao = 60;
             funcionario.Endereco = endereco; 
 
             listaFuncionarios.Add(funcionario);

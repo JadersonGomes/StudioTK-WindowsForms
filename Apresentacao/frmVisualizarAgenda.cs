@@ -1,7 +1,7 @@
 ﻿using AcessoBancoDados;
+using AcessoBancoDados.Models;
 using Negocio.Implementation;
 using Negocio.Interfaces;
-using Negocio.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

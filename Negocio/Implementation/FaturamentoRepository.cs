@@ -1,12 +1,9 @@
-﻿using AcessoBancoDados.Generics;
+﻿using AcessoBancoDados.Models;
+using Negocio.Generics;
 using Negocio.Interfaces;
-using Negocio.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AcessoBancoDados;
 
 namespace Negocio.Implementation
 {
@@ -19,7 +16,7 @@ namespace Negocio.Implementation
 
         public double SomarValorTotalPorColaborador(string colaborador)
         {
-            return entidade.Where(f => f.Colaborador.Nome.Equals(colaborador)).Sum(v => v.Servico.Valor);
+            return entidade.Where(f => f.Funcionario.Nome.Equals(colaborador)).Sum(v => v.ValorTotal);
         }
 
         public double SomaFaturamentoTotal(List<Faturamento> lista)
@@ -28,7 +25,7 @@ namespace Negocio.Implementation
 
             foreach (var item in lista)
             {
-                valor += item.Servico.Valor;
+                valor += item.ValorTotal;
             }
 
             return valor;
@@ -42,7 +39,7 @@ namespace Negocio.Implementation
         public List<Faturamento> ListarPorColaboradorData(string colaborador, DateTime dataInicial, DateTime dataFinal)
         {
             var listaFaturamentoPordata = ListarPorPeriodo(dataInicial, dataFinal).ToList();
-            return listaFaturamentoPordata.Where(f => f.Colaborador.Equals(colaborador)).ToList();
+            return listaFaturamentoPordata.Where(f => f.Funcionario.Equals(colaborador)).ToList();
         }
 
         

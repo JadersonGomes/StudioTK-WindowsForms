@@ -1,7 +1,7 @@
 ﻿using AcessoBancoDados;
+using AcessoBancoDados.Models;
 using Negocio.Implementation;
 using Negocio.Interfaces;
-using Negocio.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -33,9 +33,8 @@ namespace Apresentacao
         {
             try
             {
-                movimentacao = new Movimentacao();                
-
-                movimentacao.nomeColaborador = txtNome.Text;
+                movimentacao = new Movimentacao();
+                
                 movimentacao.Data = dtpData.Value;
                 movimentacao.Valor = Convert.ToDouble(txtValor.Text);
                 movimentacao.Descricao = txtDescricao.Text;

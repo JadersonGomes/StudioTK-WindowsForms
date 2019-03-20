@@ -1,13 +1,9 @@
-﻿using AcessoBancoDados;
-using AcessoBancoDados.Generics;
+﻿using AcessoBancoDados.Models;
+using Negocio.Generics;
 using Negocio.Interfaces;
-using Negocio.Models;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Negocio.Implementation
 {
@@ -36,10 +32,9 @@ namespace Negocio.Implementation
 
             Servico servico = new Servico();
             servico.Id = 1;
-            servico.Nome = "Corte Masculino";
-            servico.Data = DateTime.Today;
-            servico.Valor = 25;            
-            servico.Cliente = cliente;
+            servico.Nome = "Corte Masculino";            
+            servico.Valor = 25;          
+            
 
             Agenda agenda = new Agenda();
 

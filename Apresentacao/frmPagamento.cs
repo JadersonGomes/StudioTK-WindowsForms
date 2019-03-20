@@ -1,7 +1,7 @@
 ﻿using AcessoBancoDados;
+using AcessoBancoDados.Models;
 using Negocio.Implementation;
 using Negocio.Interfaces;
-using Negocio.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -68,8 +68,7 @@ namespace Apresentacao
                     double valorPagamentoSemFormatacao = RemoverFormatacaoMoeda(txtValor.Text);
                     double valorRecebidoSemFormatacao = RemoverFormatacaoMoeda(txtRecebido.Text);
 
-                    pagamento.NomeCliente = txtNomeCliente.Text;
-                    pagamento.NomeFuncionario = cboFuncionario.Text;
+                    pagamento.NomeCliente = txtNomeCliente.Text;                    
                     pagamento.FormaPagamento = cboFormaPagamento.Text;
                     pagamento.DataPagamento = Convert.ToDateTime(dtpData.Text);
                     pagamento.ValorRecebido = valorRecebidoSemFormatacao;
@@ -106,7 +105,7 @@ namespace Apresentacao
                             //venda.Id = 1;
                             venda.Data = Convert.ToDateTime(dtpData.Text);
                             venda.Hora = DateTime.Now.ToShortTimeString();
-                            venda.Funcionario = cboFuncionario.Text; // TROCAR DEPOIS PARA RECUPERAR O FUNCIONARIO E NÃO O TEXTO DO COMBOBOX     
+                            venda.Funcionario = ((Funcionario)cboFuncionario.SelectedItem); // TROCAR DEPOIS PARA RECUPERAR O FUNCIONARIO E NÃO O TEXTO DO COMBOBOX     
                             venda.ValorDesconto = auxValor;
 
                             // Relaciona a venda com o pagamento realizado e depois adiciona na Lista auxiliar
@@ -144,7 +143,7 @@ namespace Apresentacao
                         //venda.Id = 1;
                         venda.Data = Convert.ToDateTime(dtpData.Text);
                         venda.Hora = DateTime.Now.ToShortTimeString();
-                        venda.Funcionario = cboFuncionario.Text; // TROCAR DEPOIS PARA RECUPERAR O FUNCIONARIO E NÃO O TEXTO DO COMBOBOX
+                        venda.Funcionario = ((Funcionario)cboFuncionario.SelectedItem); // TROCAR DEPOIS PARA RECUPERAR O FUNCIONARIO E NÃO O TEXTO DO COMBOBOX
                         venda.ValorDesconto = auxValor;
 
                         // Relaciona a venda com o pagamento realizado e depois adiciona na Lista auxiliar
@@ -374,12 +373,9 @@ namespace Apresentacao
                 {
                     if (!(cboFuncionario.SelectedIndex == -1))
                     {
-                        // Recuoera o Servico do ComboBox e depois adiciona na lista auxiliar para salvar no Faturamento.
+                        // Recupera o Servico do ComboBox e depois adiciona na lista auxiliar para salvar no Faturamento.
                         Servico servico = ((Servico)cboServico.SelectedItem);
-                        listaServicosFaturamento.Add(servico);
-
-                        if (txtQntd.Text != string.Empty)
-                            servico.Quantidade = Convert.ToInt32(txtQntd.Text);
+                        listaServicosFaturamento.Add(servico);                        
 
                         listaServicos.Add(servico);
 
@@ -422,11 +418,9 @@ namespace Apresentacao
                             txtValor.Text = String.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:C}", valorTotal);
 
                             Funcionario funcionario = (Funcionario)cboFuncionario.SelectedItem;
-                            faturamento.Colaborador = funcionario;
-                            faturamento.QntdServicos = 1;
-                            faturamento.faturamentoTotal = servico.Valor;
-                            faturamento.Data = DateTime.Today;
-                            faturamento.Servico = servico;
+                            faturamento.Funcionario = funcionario;                            
+                            faturamento.ValorTotal = servico.Valor;
+                            faturamento.Data = DateTime.Today;                            
 
                             faturamentoRepository.Adicionar(faturamento);
                             faturamentoRepository.Salvar();

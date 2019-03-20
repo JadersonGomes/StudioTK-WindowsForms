@@ -1,7 +1,7 @@
 ﻿using AcessoBancoDados;
 using Negocio.Implementation;
 using Negocio.Interfaces;
-using Negocio.Models;
+using AcessoBancoDados.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -31,7 +31,7 @@ namespace Apresentacao
             produto = new Produto();
             produto.Id = id;
             produto.Descricao = descricao;
-            produto.Quantidade = quantidade;
+            produto.QntdEstoque = quantidade;
             produto.Valor = valor;
             produto.Fornecedor = fornecedor;
 
@@ -44,7 +44,7 @@ namespace Apresentacao
 
             lblId.Text = produto.Id.ToString();
             txtDescricao.Text = produto.Descricao;
-            txtQuantidade.Text = Convert.ToString(produto.Quantidade);
+            txtQuantidade.Text = Convert.ToString(produto.QntdEstoque);
             txtValor.Text = Convert.ToString(produto.Valor);
             cboFornecedor.Text = produto.Fornecedor.Nome;
         }
@@ -101,7 +101,7 @@ namespace Apresentacao
                 produto = new Produto();
                 produto.Id = Convert.ToInt16(lblId.Text);
                 produto.Descricao = txtDescricao.Text;
-                produto.Quantidade = Convert.ToInt32(txtQuantidade.Text);
+                produto.QntdEstoque = Convert.ToInt32(txtQuantidade.Text);
                 produto.Valor = Convert.ToDouble(txtValor.Text);
                 produto.Fornecedor = fornecedor;
 

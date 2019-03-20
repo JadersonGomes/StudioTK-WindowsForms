@@ -1,7 +1,7 @@
 ﻿using AcessoBancoDados;
 using Negocio.Implementation;
 using Negocio.Interfaces;
-using Negocio.Models;
+using AcessoBancoDados.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -28,7 +28,7 @@ namespace Apresentacao
             InitializeComponent();
         }
 
-        public frmEditarColaborador(int id, string nome, string telefone, string comissao, Endereco endereco)
+        public frmEditarColaborador(int id, string nome, string telefone, double comissao, Endereco endereco)
         {
             InitializeComponent();
 
@@ -55,8 +55,8 @@ namespace Apresentacao
             cboEstados.Text = func.Endereco.Estado;
             txtCidade.Text = func.Endereco.Cidade;
             txtBairro.Text = func.Endereco.Bairro;
-            txtRua.Text = func.Endereco.Rua;
-            txtNumero.Text = func.Endereco.Numero;
+            txtRua.Text = func.Endereco.Logradouro;
+            txtNumero.Text = (func.Endereco.Numero).ToString();
 
             // ************* TERMINAR OS BOTOES DA TELA FRM EDITAR COLABORADOR ************* //
         }
@@ -113,14 +113,14 @@ namespace Apresentacao
                 endereco.Estado = cboEstados.Text;
                 endereco.Cidade = txtCidade.Text;
                 endereco.Bairro = txtBairro.Text;
-                endereco.Rua = txtRua.Text;
-                endereco.Numero = txtNumero.Text;
+                endereco.Logradouro = txtRua.Text;
+                endereco.Numero = Convert.ToInt16(txtNumero.Text);
 
                 funcionario = new Funcionario();
                 funcionario.Id = Convert.ToInt16(lblId.Text);
                 funcionario.Nome = txtNome.Text;
                 funcionario.Telefone = telefoneSemMascara;
-                funcionario.Comissao = cboComissao.Text;
+                funcionario.Comissao = Convert.ToDouble((cboComissao.Text).Replace("%", ""));
                 funcionario.Endereco = endereco;
 
                 funcionarioRepository.Atualizar(funcionario);

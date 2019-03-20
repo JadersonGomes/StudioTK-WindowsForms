@@ -1,7 +1,7 @@
 ﻿using AcessoBancoDados;
 using Negocio.Implementation;
 using Negocio.Interfaces;
-using Negocio.Models;
+using AcessoBancoDados.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -55,8 +55,8 @@ namespace Apresentacao
             cboEstados.Text = fornecedor.Endereco.Estado;
             txtCidade.Text = fornecedor.Endereco.Cidade;
             txtBairro.Text = fornecedor.Endereco.Bairro;
-            txtRua.Text = fornecedor.Endereco.Rua;
-            txtNumero.Text = fornecedor.Endereco.Numero;
+            txtRua.Text = fornecedor.Endereco.Logradouro;
+            txtNumero.Text = (fornecedor.Endereco.Numero).ToString();
 
 
         }
@@ -113,8 +113,8 @@ namespace Apresentacao
                 endereco.Estado = cboEstados.Text;
                 endereco.Cidade = txtCidade.Text;
                 endereco.Bairro = txtBairro.Text;
-                endereco.Rua = txtRua.Text;
-                endereco.Numero = txtNumero.Text;
+                endereco.Logradouro = txtRua.Text;
+                endereco.Numero = Convert.ToInt16(txtNumero.Text);
 
                 fornecedor = new Fornecedor();
                 fornecedor.Id = Convert.ToInt16(lblId.Text);

@@ -1,7 +1,7 @@
 ﻿using AcessoBancoDados;
 using Negocio.Implementation;
 using Negocio.Interfaces;
-using Negocio.Models;
+using AcessoBancoDados.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -53,8 +53,8 @@ namespace Apresentacao
                     endereco.Estado = txtEstado.Text;
                     endereco.Cidade = txtCidade.Text;
                     endereco.Bairro = txtBairro.Text;
-                    endereco.Rua = txtRua.Text;
-                    endereco.Numero = txtNumero.Text;
+                    endereco.Logradouro = txtRua.Text;
+                    endereco.Numero = Convert.ToInt16(txtNumero.Text);
 
                     //fornecedor.Endereco = endereco;
 

@@ -48,7 +48,7 @@
             // 
             // PagamentoBindingSource
             // 
-            this.PagamentoBindingSource.DataSource = typeof(Negocio.Models.Pagamento);
+            this.PagamentoBindingSource.DataSource = typeof(AcessoBancoDados.Models.Pagamento);
             // 
             // panel1
             // 

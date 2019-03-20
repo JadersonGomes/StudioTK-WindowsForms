@@ -50,7 +50,7 @@
             this.btnSair.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSair.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSair.ForeColor = System.Drawing.Color.White;
-            this.btnSair.Location = new System.Drawing.Point(56, 431);
+            this.btnSair.Location = new System.Drawing.Point(77, 431);
             this.btnSair.Name = "btnSair";
             this.btnSair.Size = new System.Drawing.Size(232, 28);
             this.btnSair.TabIndex = 17;
@@ -64,7 +64,7 @@
             this.btnEsqueciSenha.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEsqueciSenha.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEsqueciSenha.ForeColor = System.Drawing.Color.White;
-            this.btnEsqueciSenha.Location = new System.Drawing.Point(56, 399);
+            this.btnEsqueciSenha.Location = new System.Drawing.Point(77, 399);
             this.btnEsqueciSenha.Name = "btnEsqueciSenha";
             this.btnEsqueciSenha.Size = new System.Drawing.Size(232, 28);
             this.btnEsqueciSenha.TabIndex = 16;
@@ -77,7 +77,7 @@
             this.btnEntrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEntrar.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEntrar.ForeColor = System.Drawing.Color.White;
-            this.btnEntrar.Location = new System.Drawing.Point(56, 367);
+            this.btnEntrar.Location = new System.Drawing.Point(77, 367);
             this.btnEntrar.Name = "btnEntrar";
             this.btnEntrar.Size = new System.Drawing.Size(232, 28);
             this.btnEntrar.TabIndex = 15;
@@ -90,7 +90,7 @@
             this.txtNomeUsuario.BackColor = System.Drawing.Color.White;
             this.txtNomeUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNomeUsuario.ForeColor = System.Drawing.Color.Gray;
-            this.txtNomeUsuario.Location = new System.Drawing.Point(47, 253);
+            this.txtNomeUsuario.Location = new System.Drawing.Point(68, 253);
             this.txtNomeUsuario.Multiline = true;
             this.txtNomeUsuario.Name = "txtNomeUsuario";
             this.txtNomeUsuario.Size = new System.Drawing.Size(254, 25);
@@ -100,7 +100,7 @@
             // 
             this.txtSenha.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSenha.ForeColor = System.Drawing.Color.Gray;
-            this.txtSenha.Location = new System.Drawing.Point(47, 303);
+            this.txtSenha.Location = new System.Drawing.Point(68, 303);
             this.txtSenha.Multiline = true;
             this.txtSenha.Name = "txtSenha";
             this.txtSenha.PasswordChar = '*';
@@ -113,7 +113,7 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Gray;
-            this.label2.Location = new System.Drawing.Point(5, 531);
+            this.label2.Location = new System.Drawing.Point(47, 535);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(60, 13);
             this.label2.TabIndex = 19;
@@ -125,7 +125,7 @@
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.Gray;
-            this.label5.Location = new System.Drawing.Point(44, 287);
+            this.label5.Location = new System.Drawing.Point(65, 287);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(53, 16);
             this.label5.TabIndex = 22;
@@ -137,7 +137,7 @@
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.Gray;
-            this.label4.Location = new System.Drawing.Point(44, 237);
+            this.label4.Location = new System.Drawing.Point(65, 237);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(120, 16);
             this.label4.TabIndex = 21;
@@ -146,9 +146,9 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(56, 0);
+            this.pictureBox1.Location = new System.Drawing.Point(75, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(231, 197);
+            this.pictureBox1.Size = new System.Drawing.Size(231, 219);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 23;
             this.pictureBox1.TabStop = false;
@@ -174,7 +174,7 @@
             this.panel2.Controls.Add(this.txtNomeUsuario);
             this.panel2.Controls.Add(this.txtSenha);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel2.Location = new System.Drawing.Point(29, 0);
+            this.panel2.Location = new System.Drawing.Point(-9, 0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(353, 548);
             this.panel2.TabIndex = 25;
@@ -185,7 +185,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(382, 548);
+            this.ClientSize = new System.Drawing.Size(344, 548);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
             this.ForeColor = System.Drawing.Color.White;

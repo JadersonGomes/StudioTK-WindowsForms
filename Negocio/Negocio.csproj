@@ -51,11 +51,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Generics\AcessoDadosEntityFramework.cs" />
     <Compile Include="Implementation\AgendaRepository.cs" />
     <Compile Include="Implementation\CaixaRepository.cs" />
-    <Compile Include="Implementation\ClienteProdutoRepository.cs" />
     <Compile Include="Implementation\ClienteRepository.cs" />
-    <Compile Include="Implementation\ClienteServicoRepository.cs" />
     <Compile Include="Implementation\EnderecoRepository.cs" />
     <Compile Include="Implementation\FaturamentoRepository.cs" />
     <Compile Include="Implementation\FornecedorRepository.cs" />
@@ -70,9 +69,7 @@
     <Compile Include="Implementation\VendaRepository.cs" />
     <Compile Include="Interfaces\IAgendaRepository.cs" />
     <Compile Include="Interfaces\ICaixaRepository.cs" />
-    <Compile Include="Interfaces\IClienteProdutoRepository.cs" />
     <Compile Include="Interfaces\IClienteRepository.cs" />
-    <Compile Include="Interfaces\IClienteServicoRepository.cs" />
     <Compile Include="Interfaces\IEnderecoRepository.cs" />
     <Compile Include="Interfaces\IFaturamentoRepository.cs" />
     <Compile Include="Interfaces\IFornecedorRepository.cs" />
@@ -81,38 +78,22 @@
     <Compile Include="Interfaces\IMovimentacaoRepository.cs" />
     <Compile Include="Interfaces\IPagamentoRepository.cs" />
     <Compile Include="Interfaces\IProdutoRepository.cs" />
+    <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Interfaces\IServicoRepository.cs" />
     <Compile Include="Interfaces\IUsuarioRepository.cs" />
     <Compile Include="Interfaces\IValidacao.cs" />
     <Compile Include="Interfaces\IVendaRepository.cs" />
-    <Compile Include="Models\Agenda.cs" />
-    <Compile Include="Models\Caixa.cs" />
-    <Compile Include="Models\Cliente.cs" />
-    <Compile Include="Models\ClienteProduto.cs" />
-    <Compile Include="Models\ClienteServico.cs" />
-    <Compile Include="Models\Endereco.cs" />
-    <Compile Include="Models\Faturamento.cs" />
-    <Compile Include="Models\Fornecedor.cs" />
-    <Compile Include="Models\Funcionario.cs" />
-    <Compile Include="Models\FuncionarioServico.cs" />
-    <Compile Include="Models\Movimentacao.cs" />
-    <Compile Include="Models\Pagamento.cs" />
-    <Compile Include="Models\Produto.cs" />
-    <Compile Include="Models\Servico.cs" />
-    <Compile Include="Models\TipoMovimentacao.cs" />
-    <Compile Include="Models\Usuario.cs" />
-    <Compile Include="Models\Venda.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AcessoBancoDados\AcessoBancoDados.csproj">
       <Project>{965dfd9b-1622-4e07-b29a-21850d2ec8f6}</Project>
       <Name>AcessoBancoDados</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -30,18 +30,18 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCadastrar));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnCadastrarServico = new System.Windows.Forms.Button();
             this.btnCadastrarCliente = new System.Windows.Forms.Button();
             this.btnCadastrarFornecedor = new System.Windows.Forms.Button();
             this.btnCadasatrarColaborador = new System.Windows.Forms.Button();
             this.btnCadastrarProduto = new System.Windows.Forms.Button();
             this.btnCadastrarUsuario = new System.Windows.Forms.Button();
-            this.btnCadastrarServico = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -66,6 +66,87 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(675, 425);
             this.panel1.TabIndex = 1;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.Gray;
+            this.label6.Location = new System.Drawing.Point(528, 222);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(46, 15);
+            this.label6.TabIndex = 13;
+            this.label6.Text = "Cliente";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.Gray;
+            this.label5.Location = new System.Drawing.Point(302, 222);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(70, 15);
+            this.label5.TabIndex = 12;
+            this.label5.Text = "Fornecedor";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.Gray;
+            this.label4.Location = new System.Drawing.Point(99, 222);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(47, 15);
+            this.label4.TabIndex = 11;
+            this.label4.Text = "Serviço";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Gray;
+            this.label3.Location = new System.Drawing.Point(513, 30);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(76, 15);
+            this.label3.TabIndex = 10;
+            this.label3.Text = "Colaborador";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Gray;
+            this.label2.Location = new System.Drawing.Point(312, 30);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(50, 15);
+            this.label2.TabIndex = 9;
+            this.label2.Text = "Produto";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Gray;
+            this.label1.Location = new System.Drawing.Point(98, 30);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(51, 15);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "Usuário";
+            // 
+            // btnCadastrarServico
+            // 
+            this.btnCadastrarServico.BackColor = System.Drawing.Color.Transparent;
+            this.btnCadastrarServico.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCadastrarServico.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCadastrarServico.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCadastrarServico.ForeColor = System.Drawing.Color.White;
+            this.btnCadastrarServico.Image = ((System.Drawing.Image)(resources.GetObject("btnCadastrarServico.Image")));
+            this.btnCadastrarServico.Location = new System.Drawing.Point(38, 237);
+            this.btnCadastrarServico.Name = "btnCadastrarServico";
+            this.btnCadastrarServico.Size = new System.Drawing.Size(171, 157);
+            this.btnCadastrarServico.TabIndex = 7;
+            this.btnCadastrarServico.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.btnCadastrarServico.UseVisualStyleBackColor = false;
             // 
             // btnCadastrarCliente
             // 
@@ -147,87 +228,6 @@
             this.btnCadastrarUsuario.UseMnemonic = false;
             this.btnCadastrarUsuario.UseVisualStyleBackColor = false;
             this.btnCadastrarUsuario.Click += new System.EventHandler(this.btnCadastrarUsuario_Click);
-            // 
-            // btnCadastrarServico
-            // 
-            this.btnCadastrarServico.BackColor = System.Drawing.Color.Transparent;
-            this.btnCadastrarServico.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCadastrarServico.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCadastrarServico.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCadastrarServico.ForeColor = System.Drawing.Color.White;
-            this.btnCadastrarServico.Image = ((System.Drawing.Image)(resources.GetObject("btnCadastrarServico.Image")));
-            this.btnCadastrarServico.Location = new System.Drawing.Point(38, 237);
-            this.btnCadastrarServico.Name = "btnCadastrarServico";
-            this.btnCadastrarServico.Size = new System.Drawing.Size(171, 157);
-            this.btnCadastrarServico.TabIndex = 7;
-            this.btnCadastrarServico.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
-            this.btnCadastrarServico.UseVisualStyleBackColor = false;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Gray;
-            this.label1.Location = new System.Drawing.Point(98, 30);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(51, 15);
-            this.label1.TabIndex = 8;
-            this.label1.Text = "Usuário";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.Gray;
-            this.label2.Location = new System.Drawing.Point(312, 30);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(50, 15);
-            this.label2.TabIndex = 9;
-            this.label2.Text = "Produto";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.Gray;
-            this.label3.Location = new System.Drawing.Point(513, 30);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(76, 15);
-            this.label3.TabIndex = 10;
-            this.label3.Text = "Colaborador";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.Gray;
-            this.label4.Location = new System.Drawing.Point(99, 222);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(48, 15);
-            this.label4.TabIndex = 11;
-            this.label4.Text = "Vendas";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.Gray;
-            this.label5.Location = new System.Drawing.Point(302, 222);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(70, 15);
-            this.label5.TabIndex = 12;
-            this.label5.Text = "Fornecedor";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.Gray;
-            this.label6.Location = new System.Drawing.Point(528, 222);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(46, 15);
-            this.label6.TabIndex = 13;
-            this.label6.Text = "Cliente";
             // 
             // groupBox1
             // 

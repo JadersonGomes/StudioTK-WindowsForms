@@ -1,14 +1,8 @@
-﻿using AcessoBancoDados.Generics;
-using Negocio.Interfaces;
-using Negocio.Models;
+﻿using Negocio.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AcessoBancoDados;
-using System.Collections;
-using System.Globalization;
+using Negocio.Generics;
+using AcessoBancoDados.Models;
 
 namespace Negocio.Implementation
 {
@@ -34,35 +28,24 @@ namespace Negocio.Implementation
             funcionario.Id = 1;
             funcionario.Nome = "Karol";
             funcionario.Telefone = "011941474409";
-            funcionario.Comissao = "60%";
+            funcionario.Comissao = 60;
 
             Servico servico = new Servico();
             servico.Nome = "Corte Masculino";
             servico.Id = 1;
-            servico.Data = Convert.ToDateTime(DateTime.Today.ToShortDateString());
-            servico.Hora = DateTime.Now.ToShortTimeString();
             servico.Valor = 30;
-            servico.Cliente = cliente;
-            servico.Funcionario = funcionario;
 
             Servico servico2 = new Servico();            
             servico2.Nome = "Unha simples";
-            servico2.Id = 2;
-            servico2.Data = Convert.ToDateTime(DateTime.Today.ToShortDateString());
-            servico2.Hora = DateTime.Now.ToShortTimeString();
+            servico2.Id = 2;           
             servico2.Valor = 25;
-            servico2.Cliente = cliente;
-            servico2.Funcionario = funcionario;
+            
 
             Servico servico3 = new Servico();
             servico3.Nome = "Venda";
-            servico3.Id = 3;
-            servico3.Data = Convert.ToDateTime(DateTime.Today.ToShortDateString());
-            servico3.Hora = DateTime.Now.ToShortTimeString();
+            servico3.Id = 3;            
             servico3.Valor = 30; // Voltar para essa linha depois
-            servico3.Cliente = cliente;
-            servico3.Funcionario = funcionario;
-
+            
             listaServicos.Add(servico);
             listaServicos.Add(servico2);
             listaServicos.Add(servico3);
@@ -80,8 +63,8 @@ namespace Negocio.Implementation
             endereco.Estado = "São Paulo";
             endereco.Cidade = "SP";
             endereco.Bairro = "Jardim 1";
-            endereco.Rua = "Rua Primeiro de Abril";
-            endereco.Numero = "512";
+            endereco.Logradouro = "Rua Primeiro de Abril";
+            endereco.Numero = 512;
 
             Fornecedor fornecedor = new Fornecedor();
             fornecedor.Id = 1;
@@ -94,21 +77,21 @@ namespace Negocio.Implementation
             Produto produto = new Produto();
             produto.Id = 1;
             produto.Descricao = "Shampoo Desmaia Cabelo 300ml";
-            produto.Quantidade = 10;
+            produto.QntdEstoque = 10;
             produto.Valor = 25;
             produto.Fornecedor = fornecedor;
 
             Produto produto2 = new Produto();
             produto2.Id = 2;
             produto2.Descricao = "Condicionador Desmaia Cabelo 300ml";
-            produto2.Quantidade = 10;
+            produto2.QntdEstoque = 10;
             produto2.Valor = 20;
             produto2.Fornecedor = fornecedor;
 
             Produto produto3 = new Produto();
             produto3.Id = 3;
             produto3.Descricao = "Kit Desmaia Cabelo";
-            produto3.Quantidade = 10;
+            produto3.QntdEstoque = 10;
             produto3.Valor = 80;
             produto3.Fornecedor = fornecedor;
 

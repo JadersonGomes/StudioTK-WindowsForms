@@ -1,12 +1,7 @@
-﻿using AcessoBancoDados;
-using AcessoBancoDados.Generics;
+﻿using AcessoBancoDados.Models;
+using Negocio.Generics;
 using Negocio.Interfaces;
-using Negocio.Models;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Negocio.Implementation
 {

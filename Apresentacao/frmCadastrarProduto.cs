@@ -1,7 +1,7 @@
 ﻿using AcessoBancoDados;
 using Negocio.Implementation;
 using Negocio.Interfaces;
-using Negocio.Models;
+using AcessoBancoDados.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -36,7 +36,7 @@ namespace Apresentacao
                 var fornecedorSelecionado = (Fornecedor)cboFornecedor.SelectedValue;
 
                 produto.Descricao = txtDescricao.Text;
-                produto.Quantidade = Convert.ToInt16(txtQuantidade.Text);
+                produto.QntdEstoque = Convert.ToInt16(txtQuantidade.Text);
                 produto.Valor = Convert.ToDouble(txtValor.Text);
                 //produto.Fornecedor = fornecedor.BuscarPorId(fornecedorSelecionado.Id);
 

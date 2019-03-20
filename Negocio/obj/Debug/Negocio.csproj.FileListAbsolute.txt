@@ -25,3 +25,15 @@ C:\Users\jvieira\Documents\Visual Studio 2017\Projects\appCabeleireiro\Negocio\o
 C:\Users\jvieira\Documents\Visual Studio 2017\Projects\appCabeleireiro\Negocio\obj\Debug\Negocio.csproj.CopyComplete
 C:\Users\jvieira\Documents\Visual Studio 2017\Projects\appCabeleireiro\Negocio\obj\Debug\Negocio.dll
 C:\Users\jvieira\Documents\Visual Studio 2017\Projects\appCabeleireiro\Negocio\obj\Debug\Negocio.pdb
+C:\Users\jvieira\Documents\Visual Studio 2015\Projects\appCabeleireiro\Negocio\bin\Debug\Negocio.dll.config
+C:\Users\jvieira\Documents\Visual Studio 2015\Projects\appCabeleireiro\Negocio\bin\Debug\Negocio.dll
+C:\Users\jvieira\Documents\Visual Studio 2015\Projects\appCabeleireiro\Negocio\bin\Debug\Negocio.pdb
+C:\Users\jvieira\Documents\Visual Studio 2015\Projects\appCabeleireiro\Negocio\bin\Debug\AcessoBancoDados.dll
+C:\Users\jvieira\Documents\Visual Studio 2015\Projects\appCabeleireiro\Negocio\bin\Debug\EntityFramework.dll
+C:\Users\jvieira\Documents\Visual Studio 2015\Projects\appCabeleireiro\Negocio\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\jvieira\Documents\Visual Studio 2015\Projects\appCabeleireiro\Negocio\bin\Debug\AcessoBancoDados.pdb
+C:\Users\jvieira\Documents\Visual Studio 2015\Projects\appCabeleireiro\Negocio\bin\Debug\EntityFramework.xml
+C:\Users\jvieira\Documents\Visual Studio 2015\Projects\appCabeleireiro\Negocio\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\jvieira\Documents\Visual Studio 2015\Projects\appCabeleireiro\Negocio\obj\Debug\Negocio.csprojResolveAssemblyReference.cache
+C:\Users\jvieira\Documents\Visual Studio 2015\Projects\appCabeleireiro\Negocio\obj\Debug\Negocio.dll
+C:\Users\jvieira\Documents\Visual Studio 2015\Projects\appCabeleireiro\Negocio\obj\Debug\Negocio.pdb

@@ -1,7 +1,7 @@
 ﻿using AcessoBancoDados;
 using Negocio.Implementation;
 using Negocio.Interfaces;
-using Negocio.Models;
+using AcessoBancoDados.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -58,7 +58,7 @@ namespace Apresentacao
             int id = (int)dataGridViewFuncionarios.Rows[e.RowIndex].Cells[0].Value;
             string nome = dataGridViewFuncionarios.Rows[e.RowIndex].Cells[1].Value.ToString();            
             string telefone = dataGridViewFuncionarios.Rows[e.RowIndex].Cells[2].Value.ToString();
-            string comissao = dataGridViewFuncionarios.Rows[e.RowIndex].Cells[3].Value.ToString();
+            double comissao = (double)dataGridViewFuncionarios.Rows[e.RowIndex].Cells[3].Value;
             Endereco endereco = (Endereco)dataGridViewFuncionarios.Rows[e.RowIndex].Cells[4].Value;
 
             frmEditarColaborador editarColaborador = new frmEditarColaborador(id, nome, telefone, comissao, endereco);

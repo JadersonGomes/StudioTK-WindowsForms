@@ -1,12 +1,8 @@
-﻿using AcessoBancoDados;
-using AcessoBancoDados.Generics;
+﻿using AcessoBancoDados.Models;
+using Negocio.Generics;
 using Negocio.Interfaces;
-using Negocio.Models;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Negocio.Implementation
 {
@@ -39,8 +35,8 @@ namespace Negocio.Implementation
             endereco.Estado = "São Paulo";
             endereco.Cidade = "SP";
             endereco.Bairro = "Jardim 1";
-            endereco.Rua = "Rua Primeiro de Abril";
-            endereco.Numero = "512";
+            endereco.Logradouro = "Rua Primeiro de Abril";
+            endereco.Numero = 512;
 
             Fornecedor fornecedor = new Fornecedor();
             fornecedor.Id = 1;
@@ -53,7 +49,7 @@ namespace Negocio.Implementation
             Produto produto = new Produto();
             produto.Id = 1;
             produto.Descricao = "Shampoo 300ml Desmaia Cabelo";
-            produto.Quantidade = 10;
+            produto.QntdEstoque = 10;
             produto.Valor = 30;
             produto.Fornecedor = fornecedor;
 
