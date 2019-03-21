@@ -121,6 +121,7 @@ C:\Users\jvieira\Documents\Visual Studio 2015\Projects\appCabeleireiro\Apresenta
 C:\Users\jvieira\Documents\Visual Studio 2015\Projects\appCabeleireiro\Apresentacao\obj\Debug\Apresentacao.frmEditarColaborador.resources
 C:\Users\jvieira\Documents\Visual Studio 2015\Projects\appCabeleireiro\Apresentacao\obj\Debug\Apresentacao.frmEditarFornecedor.resources
 C:\Users\jvieira\Documents\Visual Studio 2015\Projects\appCabeleireiro\Apresentacao\obj\Debug\Apresentacao.frmEditarProduto.resources
+C:\Users\jvieira\Documents\Visual Studio 2015\Projects\appCabeleireiro\Apresentacao\obj\Debug\Apresentacao.frmEditarServico.resources
 C:\Users\jvieira\Documents\Visual Studio 2015\Projects\appCabeleireiro\Apresentacao\obj\Debug\Apresentacao.frmEditarUsuario.resources
 C:\Users\jvieira\Documents\Visual Studio 2015\Projects\appCabeleireiro\Apresentacao\obj\Debug\Apresentacao.frmFechamento.resources
 C:\Users\jvieira\Documents\Visual Studio 2015\Projects\appCabeleireiro\Apresentacao\obj\Debug\Apresentacao.frmFiltrarServico.resources
@@ -132,6 +133,7 @@ C:\Users\jvieira\Documents\Visual Studio 2015\Projects\appCabeleireiro\Apresenta
 C:\Users\jvieira\Documents\Visual Studio 2015\Projects\appCabeleireiro\Apresentacao\obj\Debug\Apresentacao.frmPesquisarFornecedor.resources
 C:\Users\jvieira\Documents\Visual Studio 2015\Projects\appCabeleireiro\Apresentacao\obj\Debug\Apresentacao.frmPesquisarFuncionario.resources
 C:\Users\jvieira\Documents\Visual Studio 2015\Projects\appCabeleireiro\Apresentacao\obj\Debug\Apresentacao.frmPesquisarProduto.resources
+C:\Users\jvieira\Documents\Visual Studio 2015\Projects\appCabeleireiro\Apresentacao\obj\Debug\Apresentacao.frmPesquisarServico.resources
 C:\Users\jvieira\Documents\Visual Studio 2015\Projects\appCabeleireiro\Apresentacao\obj\Debug\Apresentacao.frmPesquisarUsuario.resources
 C:\Users\jvieira\Documents\Visual Studio 2015\Projects\appCabeleireiro\Apresentacao\obj\Debug\Apresentacao.frmPrincipal.resources
 C:\Users\jvieira\Documents\Visual Studio 2015\Projects\appCabeleireiro\Apresentacao\obj\Debug\Apresentacao.frmResumo.resources
@@ -143,4 +145,3 @@ C:\Users\jvieira\Documents\Visual Studio 2015\Projects\appCabeleireiro\Apresenta
 C:\Users\jvieira\Documents\Visual Studio 2015\Projects\appCabeleireiro\Apresentacao\obj\Debug\Apresentacao.csproj.GenerateResource.Cache
 C:\Users\jvieira\Documents\Visual Studio 2015\Projects\appCabeleireiro\Apresentacao\obj\Debug\Apresentacao.exe
 C:\Users\jvieira\Documents\Visual Studio 2015\Projects\appCabeleireiro\Apresentacao\obj\Debug\Apresentacao.pdb
-C:\Users\jvieira\Documents\Visual Studio 2015\Projects\appCabeleireiro\Apresentacao\obj\Debug\Apresentacao.frmPesquisarServico.resources

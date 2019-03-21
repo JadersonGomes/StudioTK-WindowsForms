@@ -67,8 +67,8 @@ namespace Apresentacao
                 string senha = dataGridViewServicos.Rows[e.RowIndex].Cells[2].Value.ToString();
                 string email = dataGridViewServicos.Rows[e.RowIndex].Cells[3].Value.ToString();
 
-                frmEditarServico editarServico = new frmEditarServico(id, nomeUsuario, email, senha);
-                editarServico.Show();
+                //frmEditarServico editarServico = new frmEditarServico(id, nomeUsuario, email, senha);
+                //editarServico.Show();
             }
             catch (Exception ex)
             {

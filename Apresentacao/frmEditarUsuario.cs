@@ -32,7 +32,7 @@ namespace Apresentacao
             usuario = new Usuario();
             usuario.Id = pId;
             usuario.nomeUsuario = pNomeUsuario;
-            usuario.email = pEmail;
+            usuario.Email = pEmail;
             usuario.Senha = pSenha;
 
             listaUsuarios.Add(usuario);
@@ -46,7 +46,7 @@ namespace Apresentacao
             lblId.Text = usuario.Id.ToString();
             txtUsuario.Text = usuario.nomeUsuario;
             txtSenha.Text = usuario.Senha;
-            txtEmail.Text = usuario.email; 
+            txtEmail.Text = usuario.Email; 
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -97,7 +97,7 @@ namespace Apresentacao
                 usuario.Id = Convert.ToInt16(lblId.Text);
                 usuario.nomeUsuario = txtUsuario.Text;
                 usuario.Senha = txtSenha.Text;
-                usuario.email = txtEmail.Text;
+                usuario.Email = txtEmail.Text;
 
                 usuarioRepository.Atualizar(usuario);
                 usuarioRepository.Salvar();

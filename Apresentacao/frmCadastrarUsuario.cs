@@ -39,7 +39,7 @@ namespace Apresentacao
 
                     usuario.nomeUsuario = txtUsuario.Text;
                     //usuario.Senha = txtSenha.Text;
-                    usuario.email = txtEmail.Text;
+                    usuario.Email = txtEmail.Text;
 
                     usuarioRepository.Adicionar(usuario);
                     usuarioRepository.Salvar();
