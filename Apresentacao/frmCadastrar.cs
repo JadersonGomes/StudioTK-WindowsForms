@@ -46,5 +46,11 @@ namespace Apresentacao
             frmCadastrarUsuario cadastrarUsuario = new frmCadastrarUsuario();            
             cadastrarUsuario.Show();
         }
+
+        private void btnCadastrarServico_Click(object sender, EventArgs e)
+        {
+            frmCadastrarServico cadastrarServico = new frmCadastrarServico();
+            cadastrarServico.Show();
+        }
     }
 }

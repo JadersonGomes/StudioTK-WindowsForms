@@ -49,7 +49,7 @@ namespace Apresentacao
 
         private void frmPesquisarFuncionario_Load(object sender, EventArgs e)
         {            
-            dataGridViewFuncionarios.DataSource = funcionarioRepository.PopulaDataGrid();
+            dataGridViewFuncionarios.DataSource = funcionarioRepository.PopulaGrid();
 
         }
 

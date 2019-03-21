@@ -2,6 +2,7 @@
 using Negocio.Generics;
 using Negocio.Interfaces;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Negocio.Implementation
 {
@@ -12,8 +13,41 @@ namespace Negocio.Implementation
         {
         }
 
+        public IList<Usuario> BuscarPorNome(string nome)
+        {
+            var listaNome = entidade.ToList().Where(u => u.nomeUsuario.Equals(nome));
 
-        public List<Usuario> PopulaDataGrid()
+            var listaPersonalizada = (from lista in listaNome
+                                      select new Usuario
+                                      {
+                                          Id = lista.Id,
+                                          nomeUsuario = lista.nomeUsuario,
+                                          Email = lista.Email
+
+                                      }).ToList();
+
+            return listaPersonalizada;
+        }
+
+
+        public IList<Usuario> PopulaGrid()
+        {
+
+            var listaPersonalizada = (from lista in ListarTodos()
+                                      select new Usuario
+                                      {
+                                          Id = lista.Id,
+                                          nomeUsuario = lista.nomeUsuario,
+                                          Email = lista.Email
+
+                                      }).ToList();
+
+            return listaPersonalizada;
+
+        }
+
+
+        /*public List<Usuario> PopulaDataGrid()
         {
             List<Usuario> listaUsuarios = new List<Usuario>();            
 
@@ -31,7 +65,7 @@ namespace Negocio.Implementation
 
             return listaUsuarios;
 
-        }
+        }*/
 
     }
 }

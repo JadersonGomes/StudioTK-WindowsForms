@@ -5,9 +5,10 @@ namespace Negocio.Interfaces
 {
     public interface IFuncionarioRepository : IRepository<Funcionario>
     {
-        IEnumerable<Funcionario> ListarPorNome(string nomeFuncionario);
-        IEnumerable<Funcionario> ListarPorTelefone(string telefone);
-        List<Funcionario> PopulaDataGrid();
+        IList<Funcionario> ListarPorNome(string nomeFuncionario);
+        IList<Funcionario> ListarPorTelefone(string telefone);
+        IList<Funcionario> PopulaGrid();
+        //List<Funcionario> PopulaDataGrid();
 
     }
 }

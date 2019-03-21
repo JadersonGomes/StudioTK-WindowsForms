@@ -13,19 +13,43 @@ namespace Negocio.Implementation
         {
         }
 
-        public IEnumerable<Produto> ListarPorNome(string nomeProduto)
+        public IList<Produto> ListarPorNome(string nomeProduto)
         {
             // Fazer o teste se o entity busca mesmo com diferença de upper/ lower case
-            return entidade.Where(c => c.Descricao.Equals(nomeProduto));
+            var listaNome = entidade.Where(c => c.Descricao.Equals(nomeProduto));
+
+            var listaPersonalizada = (from lista in listaNome
+                                      select new Produto
+                                      {
+                                          Id = lista.Id,
+                                          Descricao = lista.Descricao,
+                                          QntdEstoque = lista.QntdEstoque,
+                                          Valor = lista.Valor
+
+                                      }).ToList();
+
+            return listaPersonalizada;
         }
 
-        /*public IEnumerable<Produto> ListarPorFornecedor(string nomeFornecedor)
+        public IList<Produto> PopulaGrid()
         {
-            return entidade.Where(c => c.Fornecedor.Nome.Equals(nomeFornecedor));
-        }*/
+
+            var listaPersonalizada = (from lista in ListarTodos()
+                                      select new Produto 
+                                      {
+                                          Id = lista.Id,
+                                          Descricao = lista.Descricao,
+                                          QntdEstoque = lista.QntdEstoque,
+                                          Valor = lista.Valor
+
+                                      }).ToList();
+
+            return listaPersonalizada;
+
+        }        
 
 
-        public List<Produto> PopulaDataGrid()
+        /*public List<Produto> PopulaDataGrid()
         {
             List<Produto> listaProdutos = new List<Produto>();
 
@@ -63,6 +87,6 @@ namespace Negocio.Implementation
 
             return listaProdutos;
 
-        }
+        }*/
     }
 }

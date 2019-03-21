@@ -8,26 +8,66 @@ namespace Negocio.Implementation
 {
     public class ClienteRepository : AcessoDadosEntityFramework<Cliente>, IClienteRepository
     {        
-
+        
         public ClienteRepository(SalaoContext _contexto) : base(_contexto)
         {
         }
 
-        public IEnumerable<Cliente> ListarPorNome(string nomeCliente)
+        public IList<Cliente> PopulaGrid()
         {
-            return entidade.Where(c => c.Nome.Equals(nomeCliente.ToLower()));
+            var listaPersonalizada = (from lista in ListarTodos()
+                                     select new Cliente
+                                     {
+                                         Id = lista.Id,
+                                         Nome = lista.Nome,
+                                         Email = lista.Email,
+                                         Telefone = lista.Telefone
+
+                                     }).ToList();
+
+            return listaPersonalizada;
+
         }
 
-        public IEnumerable<Cliente> ListarPorTelefone(string telefone)
+
+        public IList<Cliente> ListarPorNome(string nomeCliente)
+        {
+            var listaNome = entidade.Where(c => c.Nome.Equals(nomeCliente.ToLower()));
+
+            var listaPersonalizada = (from lista in listaNome
+                                      select new Cliente
+                                      {
+                                          Id = lista.Id,
+                                          Nome = lista.Nome,
+                                          Email = lista.Email,
+                                          Telefone = lista.Telefone
+
+                                      }).ToList();
+
+            return listaPersonalizada;
+        }
+
+        public IList<Cliente> ListarPorTelefone(string telefone)
         {
             // Verificar se essa expressão regular funciona
             telefone = telefone.Replace("[^0-9]", "");
-            return entidade.Where(c => c.Telefone.Equals(telefone));
+            var listaTelefone = entidade.Where(c => c.Telefone.Equals(telefone));
+
+            var listaPersonalizada = (from lista in listaTelefone
+                                      select new Cliente
+                                      {
+                                          Id = lista.Id,
+                                          Nome = lista.Nome,
+                                          Email = lista.Email,
+                                          Telefone = lista.Telefone
+
+                                      }).ToList();
+
+            return listaPersonalizada;
         }
 
 
-
-        public List<Cliente> PopulaDataGrid()
+        /*public List<Cliente> PopulaDataGrid()
         {
             List<Cliente> listaClientes = new List<Cliente>();            
 
@@ -45,6 +85,6 @@ namespace Negocio.Implementation
 
             return listaClientes;
 
-        }
+        }*/
     }
 }

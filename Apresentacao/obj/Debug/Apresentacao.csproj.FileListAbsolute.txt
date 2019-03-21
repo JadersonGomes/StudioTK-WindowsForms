@@ -143,3 +143,4 @@ C:\Users\jvieira\Documents\Visual Studio 2015\Projects\appCabeleireiro\Apresenta
 C:\Users\jvieira\Documents\Visual Studio 2015\Projects\appCabeleireiro\Apresentacao\obj\Debug\Apresentacao.csproj.GenerateResource.Cache
 C:\Users\jvieira\Documents\Visual Studio 2015\Projects\appCabeleireiro\Apresentacao\obj\Debug\Apresentacao.exe
 C:\Users\jvieira\Documents\Visual Studio 2015\Projects\appCabeleireiro\Apresentacao\obj\Debug\Apresentacao.pdb
+C:\Users\jvieira\Documents\Visual Studio 2015\Projects\appCabeleireiro\Apresentacao\obj\Debug\Apresentacao.frmPesquisarServico.resources

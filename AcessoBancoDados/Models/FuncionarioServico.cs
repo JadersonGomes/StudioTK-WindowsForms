@@ -1,5 +1,7 @@
-﻿namespace AcessoBancoDados.Models
-{
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace AcessoBancoDados.Models
+{    
     public class FuncionarioServico
     {
         public Funcionario Funcionario { get; set; }

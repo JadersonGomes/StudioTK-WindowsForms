@@ -19,8 +19,8 @@ namespace Apresentacao
 
         private void btnCadastrarServico_Click(object sender, EventArgs e)
         {
-            frmFiltrarServico filtrarServico = new frmFiltrarServico();
-            filtrarServico.Show();
+            frmPesquisarServico pesquisarServico = new frmPesquisarServico();
+            pesquisarServico.Show();
         }
 
         private void btnCadastrarCliente_Click(object sender, EventArgs e)

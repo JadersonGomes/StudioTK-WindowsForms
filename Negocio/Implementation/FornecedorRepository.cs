@@ -13,21 +13,67 @@ namespace Negocio.Implementation
         {
         }
 
-        public IEnumerable<Fornecedor> ListarPorNome(string nomeFornecedor)
+        public IList<Fornecedor> ListarPorNome(string nomeFornecedor)
         {
             // Fazer o teste se o entity busca mesmo com diferença de upper/ lower case
-            return entidade.Where(f => f.Nome.Equals(nomeFornecedor));
+            var listaNome =  entidade.Where(f => f.Nome.Equals(nomeFornecedor));
+
+            var listaPersonalizada = (from lista in listaNome
+                                      select new Fornecedor
+                                      {
+                                          Id = lista.Id,
+                                          Nome = lista.Nome,
+                                          Email = lista.Email,
+                                          Telefone = lista.Telefone,
+                                          Especialidade = lista.Especialidade
+
+                                      }).ToList();
+
+            return listaPersonalizada;
+
         }
 
-        public IEnumerable<Fornecedor> ListarPorTelefone(string telefone)
+        public IList<Fornecedor> ListarPorTelefone(string telefone)
         {
             // Verificar se essa expressão regular funciona
             telefone = telefone.Replace("[^0-9]", "");
-            return entidade.Where(f => f.Telefone.Equals(telefone));
+            var listaTelefone =  entidade.Where(f => f.Telefone.Equals(telefone));
+
+            var listaPersonalizada = (from lista in listaTelefone
+                                      select new Fornecedor
+                                      {
+                                          Id = lista.Id,
+                                          Nome = lista.Nome,
+                                          Email = lista.Email,
+                                          Telefone = lista.Telefone,
+                                          Especialidade = lista.Especialidade
+
+                                      }).ToList();
+
+            return listaPersonalizada;
+
         }
 
+        public IList<Fornecedor> PopulaGrid()
+        {
 
-        public List<Fornecedor> PopulaDataGrid()
+            var listaPersonalizada = (from lista in ListarTodos()
+                                      select new Fornecedor
+                                      {
+                                          Id = lista.Id,
+                                          Nome = lista.Nome,
+                                          Email = lista.Email,
+                                          Telefone = lista.Telefone,
+                                          Especialidade = lista.Especialidade
+
+                                      }).ToList();
+
+
+            return listaPersonalizada;
+
+        }
+
+        /*public List<Fornecedor> PopulaDataGrid()
         {
             List<Fornecedor> listaFornecedores = new List<Fornecedor>();
 
@@ -56,6 +102,6 @@ namespace Negocio.Implementation
 
             return listaFornecedores;
 
-        }
+        }*/
     }
 }

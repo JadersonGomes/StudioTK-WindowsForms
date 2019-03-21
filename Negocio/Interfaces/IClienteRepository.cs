@@ -5,9 +5,11 @@ namespace Negocio.Interfaces
 {
     public interface IClienteRepository : IRepository<Cliente>
     {
-        IEnumerable<Cliente> ListarPorNome(string nomeCliente);
-        IEnumerable<Cliente> ListarPorTelefone(string telefone);
-        List<Cliente> PopulaDataGrid();
+        IList<Cliente> ListarPorNome(string nomeCliente);
+        IList<Cliente> ListarPorTelefone(string telefone);
+        IList<Cliente> PopulaGrid();
+
+
 
     }
 }

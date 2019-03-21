@@ -147,6 +147,7 @@
             this.btnCadastrarServico.TabIndex = 7;
             this.btnCadastrarServico.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
             this.btnCadastrarServico.UseVisualStyleBackColor = false;
+            this.btnCadastrarServico.Click += new System.EventHandler(this.btnCadastrarServico_Click);
             // 
             // btnCadastrarCliente
             // 

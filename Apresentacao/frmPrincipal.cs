@@ -75,7 +75,6 @@ namespace Apresentacao
             try
             {
                 
-
                 /*var listaAgendamentos = from agendamento in agendarRepository.ListarTodos()
                                         where agendamento.Data.Equals(DateTime.Today)
                                         orderby agendamento.Data
@@ -87,11 +86,9 @@ namespace Apresentacao
                                             Serviço = agendamento.Servico.Nome,
                                             Horário = agendamento.Horario
                                         };*/
-
                 
                 
                 dataGridViewPrincipal.DataSource = agendarRepository.PopulaDataGrid();
-
                 
             }
             catch (Exception ex)

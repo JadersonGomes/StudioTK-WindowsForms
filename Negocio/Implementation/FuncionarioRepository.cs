@@ -13,21 +13,62 @@ namespace Negocio.Implementation
         {
         }
 
-        public IEnumerable<Funcionario> ListarPorNome(string nomeFuncionario)
+        public IList<Funcionario> ListarPorNome(string nomeFuncionario)
         {
             // Fazer o teste se o entity busca mesmo com diferença de upper/ lower case
-            return entidade.Where(f => f.Nome.Equals(nomeFuncionario));
+            var listaNome = entidade.Where(f => f.Nome.Equals(nomeFuncionario));
+
+            var listaPersonalizada = (from lista in listaNome
+                                      select new Funcionario
+                                      {
+                                          Id = lista.Id,
+                                          Nome = lista.Nome,
+                                          Telefone = lista.Telefone
+
+                                      }).ToList();
+
+
+            return listaPersonalizada;
         }
 
-        public IEnumerable<Funcionario> ListarPorTelefone(string telefone)
+        public IList<Funcionario> ListarPorTelefone(string telefone)
         {
             // Verificar se essa expressão regular funciona
             telefone = telefone.Replace("[^0-9]", "");
-            return entidade.Where(f => f.Telefone.Equals(telefone));
+            var listaTelefone = entidade.Where(f => f.Telefone.Equals(telefone));
+
+            var listaPersonalizada = (from lista in listaTelefone
+                                      select new Funcionario
+                                      {
+                                          Id = lista.Id,
+                                          Nome = lista.Nome,
+                                          Telefone = lista.Telefone
+
+                                      }).ToList();
+
+
+            return listaPersonalizada;
         }
 
+        public IList<Funcionario> PopulaGrid()
+        {
 
-        public List<Funcionario> PopulaDataGrid()
+            var listaPersonalizada = (from lista in ListarTodos()
+                                      select new Funcionario
+                                      {
+                                          Id = lista.Id,
+                                          Nome = lista.Nome,
+                                          Telefone = lista.Telefone
+
+                                      }).ToList();
+
+
+            return listaPersonalizada;
+
+
+        }
+
+        /*public List<Funcionario> PopulaDataGrid()
         {
             List<Funcionario> listaFuncionarios = new List<Funcionario>();
 
@@ -55,6 +96,6 @@ namespace Negocio.Implementation
 
             return listaFuncionarios;
 
-        }
+        }*/
     }
 }

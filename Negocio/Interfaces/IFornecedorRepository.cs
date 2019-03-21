@@ -5,9 +5,11 @@ namespace Negocio.Interfaces
 {
     public interface IFornecedorRepository : IRepository<Fornecedor>
     {
-        IEnumerable<Fornecedor> ListarPorNome(string nomeFornecedor);
-        IEnumerable<Fornecedor> ListarPorTelefone(string telefone);
-        List<Fornecedor> PopulaDataGrid();
+        IList<Fornecedor> ListarPorTelefone(string telefone);
+        IList<Fornecedor> ListarPorNome(string nomeFornecedor);
+        IList<Fornecedor> PopulaGrid();
+
+        //List<Fornecedor> PopulaDataGrid();
 
     }
 }

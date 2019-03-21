@@ -36,7 +36,8 @@ namespace Apresentacao
             {
                 try
                 {
-                    var t = Convert.ToInt64(txtPesquisar.Text);
+                    // Duas opções de busca (Nome e Telefone). Tenta converter para inteiro o valor, caso não consiga ele busca por nome.
+                    var telefone = Convert.ToInt64(txtPesquisar.Text);
                     dataGridViewClientes.DataSource = clienteRepository.ListarPorTelefone(txtPesquisar.Text); 
                 }
                 catch (Exception ex)
@@ -50,7 +51,7 @@ namespace Apresentacao
 
         private void frmPesquisarCliente_Load(object sender, EventArgs e)
         {
-            dataGridViewClientes.DataSource = clienteRepository.PopulaDataGrid();
+            dataGridViewClientes.DataSource = clienteRepository.PopulaGrid();
 
         }
 

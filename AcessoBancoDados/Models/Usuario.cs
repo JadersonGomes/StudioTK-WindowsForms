@@ -17,7 +17,7 @@ namespace AcessoBancoDados.Models
 
         [Required(ErrorMessage = "O e-mail é obrigatório.")]
         [EmailAddress(ErrorMessage = "E-mail inválido.")]
-        public string email { get; set; }
+        public string Email { get; set; }
 
     }
 }

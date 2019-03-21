@@ -5,8 +5,8 @@ namespace Negocio.Interfaces
 {
     public interface IUsuarioRepository : IRepository<Usuario>
     {
-
-        List<Usuario> PopulaDataGrid();
+        IList<Usuario> PopulaGrid();
+        IList<Usuario> BuscarPorNome(string nome);
 
     }
 

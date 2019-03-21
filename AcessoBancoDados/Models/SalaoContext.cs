@@ -4,6 +4,11 @@ namespace AcessoBancoDados.Models
 {
     public class SalaoContext: DbContext
     {
+        public SalaoContext(): base("DbStudioTK")
+        {
+        }
+
+
         public DbSet<Agenda> Agendamento { get; set; }
         public DbSet<Caixa> Caixa { get; set; }
         public DbSet<Cliente> Cliente { get; set; }

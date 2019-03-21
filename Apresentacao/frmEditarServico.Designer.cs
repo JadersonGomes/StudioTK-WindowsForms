@@ -1,6 +1,6 @@
 ﻿namespace Apresentacao
 {
-    partial class frmCadastrarServico
+    partial class frmEditarServico
     {
         /// <summary>
         /// Required designer variable.
@@ -28,18 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCadastrarServico));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEditarServico));
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnCancelar = new System.Windows.Forms.Button();
+            this.btnExcluir = new System.Windows.Forms.Button();
             this.btnSalvar = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.cboFuncionarios = new System.Windows.Forms.ComboBox();
+            this.txtValor = new System.Windows.Forms.TextBox();
+            this.txtDescricao = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.lblId = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -47,42 +50,58 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.btnCancelar);
+            this.panel1.Controls.Add(this.btnExcluir);
             this.panel1.Controls.Add(this.btnSalvar);
             this.panel1.Controls.Add(this.groupBox1);
-            this.panel1.Location = new System.Drawing.Point(2, 2);
+            this.panel1.Location = new System.Drawing.Point(4, 3);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(560, 244);
-            this.panel1.TabIndex = 0;
+            this.panel1.TabIndex = 1;
             // 
             // btnCancelar
             // 
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelar.ForeColor = System.Drawing.Color.Gray;
-            this.btnCancelar.Location = new System.Drawing.Point(432, 208);
+            this.btnCancelar.Location = new System.Drawing.Point(361, 200);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(117, 23);
-            this.btnCancelar.TabIndex = 2;
+            this.btnCancelar.Size = new System.Drawing.Size(127, 23);
+            this.btnCancelar.TabIndex = 3;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            // 
+            // btnExcluir
+            // 
+            this.btnExcluir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExcluir.ForeColor = System.Drawing.Color.Gray;
+            this.btnExcluir.Location = new System.Drawing.Point(217, 200);
+            this.btnExcluir.Name = "btnExcluir";
+            this.btnExcluir.Size = new System.Drawing.Size(127, 23);
+            this.btnExcluir.TabIndex = 2;
+            this.btnExcluir.Text = "Excluir";
+            this.btnExcluir.UseVisualStyleBackColor = true;
+            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
             // btnSalvar
             // 
             this.btnSalvar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSalvar.ForeColor = System.Drawing.Color.Gray;
-            this.btnSalvar.Location = new System.Drawing.Point(300, 208);
+            this.btnSalvar.Location = new System.Drawing.Point(73, 200);
             this.btnSalvar.Name = "btnSalvar";
-            this.btnSalvar.Size = new System.Drawing.Size(117, 23);
+            this.btnSalvar.Size = new System.Drawing.Size(127, 23);
             this.btnSalvar.TabIndex = 1;
-            this.btnSalvar.Text = "Salvar";
+            this.btnSalvar.Text = "Salvar alterações";
             this.btnSalvar.UseVisualStyleBackColor = true;
+            this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.button2);
+            this.groupBox1.Controls.Add(this.lblId);
             this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Controls.Add(this.comboBox1);
-            this.groupBox1.Controls.Add(this.textBox3);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.cboFuncionarios);
+            this.groupBox1.Controls.Add(this.txtValor);
+            this.groupBox1.Controls.Add(this.txtDescricao);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
@@ -102,27 +121,27 @@
             this.button1.TabIndex = 7;
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // comboBox1
+            // cboFuncionarios
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(21, 105);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(280, 21);
-            this.comboBox1.TabIndex = 6;
+            this.cboFuncionarios.FormattingEnabled = true;
+            this.cboFuncionarios.Location = new System.Drawing.Point(21, 105);
+            this.cboFuncionarios.Name = "cboFuncionarios";
+            this.cboFuncionarios.Size = new System.Drawing.Size(280, 21);
+            this.cboFuncionarios.TabIndex = 6;
             // 
-            // textBox3
+            // txtValor
             // 
-            this.textBox3.Location = new System.Drawing.Point(338, 105);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(176, 20);
-            this.textBox3.TabIndex = 5;
+            this.txtValor.Location = new System.Drawing.Point(360, 105);
+            this.txtValor.Name = "txtValor";
+            this.txtValor.Size = new System.Drawing.Size(154, 20);
+            this.txtValor.TabIndex = 5;
             // 
-            // textBox1
+            // txtDescricao
             // 
-            this.textBox1.Location = new System.Drawing.Point(21, 43);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(493, 20);
-            this.textBox1.TabIndex = 3;
+            this.txtDescricao.Location = new System.Drawing.Point(21, 43);
+            this.txtDescricao.Name = "txtDescricao";
+            this.txtDescricao.Size = new System.Drawing.Size(493, 20);
+            this.txtDescricao.TabIndex = 3;
             // 
             // label3
             // 
@@ -136,7 +155,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(335, 89);
+            this.label2.Location = new System.Drawing.Point(357, 89);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(31, 13);
             this.label2.TabIndex = 1;
@@ -151,7 +170,27 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Descrição";
             // 
-            // frmCadastrarServico
+            // lblId
+            // 
+            this.lblId.AutoSize = true;
+            this.lblId.Location = new System.Drawing.Point(250, 16);
+            this.lblId.Name = "lblId";
+            this.lblId.Size = new System.Drawing.Size(35, 13);
+            this.lblId.TabIndex = 8;
+            this.lblId.Text = "label4";
+            this.lblId.Visible = false;
+            // 
+            // button2
+            // 
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
+            this.button2.Location = new System.Drawing.Point(322, 105);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(24, 21);
+            this.button2.TabIndex = 9;
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // frmEditarServico
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -159,10 +198,10 @@
             this.ClientSize = new System.Drawing.Size(569, 251);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
-            this.MaximizeBox = false;
-            this.Name = "frmCadastrarServico";
+            this.Name = "frmEditarServico";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Cadastrar Serviço";
+            this.Text = "Editar Serviço";
+            this.Load += new System.EventHandler(this.frmEditarServico_Load);
             this.panel1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -173,15 +212,18 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button btnExcluir;
+        private System.Windows.Forms.Button btnSalvar;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ComboBox cboFuncionarios;
+        private System.Windows.Forms.TextBox txtValor;
+        private System.Windows.Forms.TextBox txtDescricao;
+        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button btnCancelar;
-        private System.Windows.Forms.Button btnSalvar;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.Label lblId;
+        private System.Windows.Forms.Button button2;
     }
 }

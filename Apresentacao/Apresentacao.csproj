@@ -139,6 +139,12 @@
     <Compile Include="frmEditarProduto.Designer.cs">
       <DependentUpon>frmEditarProduto.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmEditarServico.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEditarServico.Designer.cs">
+      <DependentUpon>frmEditarServico.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmEditarUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -204,6 +210,12 @@
     </Compile>
     <Compile Include="frmPesquisarProduto.Designer.cs">
       <DependentUpon>frmPesquisarProduto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPesquisarServico.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPesquisarServico.Designer.cs">
+      <DependentUpon>frmPesquisarServico.cs</DependentUpon>
     </Compile>
     <Compile Include="frmPesquisarUsuario.cs">
       <SubType>Form</SubType>
@@ -294,6 +306,9 @@
     <EmbeddedResource Include="frmEditarProduto.resx">
       <DependentUpon>frmEditarProduto.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmEditarServico.resx">
+      <DependentUpon>frmEditarServico.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmEditarUsuario.resx">
       <DependentUpon>frmEditarUsuario.cs</DependentUpon>
     </EmbeddedResource>
@@ -326,6 +341,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmPesquisarProduto.resx">
       <DependentUpon>frmPesquisarProduto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPesquisarServico.resx">
+      <DependentUpon>frmPesquisarServico.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmPesquisarUsuario.resx">
       <DependentUpon>frmPesquisarUsuario.cs</DependentUpon>

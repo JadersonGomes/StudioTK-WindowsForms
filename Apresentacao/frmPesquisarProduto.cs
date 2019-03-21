@@ -16,8 +16,7 @@ namespace Apresentacao
 {
     public partial class frmPesquisarProduto : Form
     {
-        IProdutoRepository produtoRepository = new ProdutoRepository(new SalaoContext());
-        Produto produto;        
+        IProdutoRepository produtoRepository = new ProdutoRepository(new SalaoContext());             
 
         public frmPesquisarProduto()
         {
@@ -25,8 +24,7 @@ namespace Apresentacao
         }
 
         private void btnPesquisar_Click(object sender, EventArgs e)
-        {
-            produto = new Produto();
+        {           
 
             if (txtPesquisar.Text == "")
             {
@@ -40,7 +38,7 @@ namespace Apresentacao
 
         private void frmPesquisarProduto_Load(object sender, EventArgs e)
         {            
-            dataGridViewProdutos.DataSource = produtoRepository.PopulaDataGrid();
+            dataGridViewProdutos.DataSource = produtoRepository.PopulaGrid();
 
         }
 

@@ -35,7 +35,7 @@ namespace Apresentacao
             {
                 try
                 {
-                    var t = Convert.ToInt64(txtPesquisar.Text);
+                    var telefone = Convert.ToInt64(txtPesquisar.Text);
                     dataGridViewFornecedores.DataSource = fornecedorRepository.ListarPorTelefone(txtPesquisar.Text);
                 }
                 catch (Exception ex)
@@ -49,7 +49,7 @@ namespace Apresentacao
 
         private void frmPesquisarFornecedor_Load(object sender, EventArgs e)
         {            
-            dataGridViewFornecedores.DataSource = fornecedorRepository.PopulaDataGrid();
+            dataGridViewFornecedores.DataSource = fornecedorRepository.PopulaGrid();
 
         }
 
