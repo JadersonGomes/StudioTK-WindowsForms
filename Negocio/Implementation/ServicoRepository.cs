@@ -23,7 +23,8 @@ namespace Negocio.Implementation
                                       {
                                           Id = lista.Id,
                                           Nome = lista.Nome,
-                                          Valor = lista.Valor
+                                          Valor = lista.Valor,
+                                          Funcionarios = lista.Funcionarios
 
                                       }).ToList();
 

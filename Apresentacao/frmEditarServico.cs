@@ -20,13 +20,14 @@ namespace Apresentacao
         Servico servico;
 
         List<Servico> listaServicos = new List<Servico>();
+        List<Funcionario> listaFuncionarios = new List<Funcionario>();
 
         public frmEditarServico()
         {
             InitializeComponent();
         }
 
-        public frmEditarServico(int pId, string pNome, Funcionario pFuncionario, double pValor)
+        public frmEditarServico(int pId, string pNome, double pValor)
         {
             InitializeComponent();
 
@@ -89,8 +90,11 @@ namespace Apresentacao
 
                 }
 
-                
-                
+                servicoRepository.Atualizar(servico);
+                servicoRepository.Salvar();
+
+                MessageBox.Show("Alterações realizadas com sucesso!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
             }
             catch (Exception ex)
             {
@@ -103,7 +107,23 @@ namespace Apresentacao
         {
             try
             {
+                int id = Convert.ToInt16(lblId.Text);
 
+                if (id > 0)
+                {
+                    DialogResult resultadoEscolha = MessageBox.Show("Tem certeza que deseja excluir este item?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+
+                    if (resultadoEscolha == DialogResult.Yes)
+                    {
+                        servicoRepository.ExcluirPorId(id);
+                        servicoRepository.Salvar();
+
+                    }
+                    else if (resultadoEscolha == DialogResult.No)
+                    {
+
+                    }
+                }
             }
             catch (Exception ex)
             {
@@ -117,6 +137,30 @@ namespace Apresentacao
             this.Close();
         }
 
-        
+        private void txtAtrelarServicoAoFuncionario_Click(object sender, EventArgs e)
+        {
+            Funcionario funcionario = (Funcionario)cboFuncionarios.SelectedItem;
+            listaFuncionarios.Add(funcionario);
+        }
+
+        private void RemoverFuncionarioServico_Click(object sender, EventArgs e)
+        {
+            int id = Convert.ToInt16(lblId.Text);
+
+            if (id > 0)
+            {
+                DialogResult resultadoEscolha = MessageBox.Show("Tem certeza que deseja remover este Colaborador da lista?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+
+                if (resultadoEscolha == DialogResult.Yes)
+                {
+                    cboFuncionarios.Items.Remove(cboFuncionarios.SelectedIndex);
+
+                }
+                else if (resultadoEscolha == DialogResult.No)
+                {
+
+                }
+            }
+        }
     }
 }

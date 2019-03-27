@@ -33,10 +33,10 @@
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnSalvar = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.btnAtrelarServicoAoUsuario = new System.Windows.Forms.Button();
+            this.cboFuncionarios = new System.Windows.Forms.ComboBox();
+            this.txtValor = new System.Windows.Forms.TextBox();
+            this.txtDescricao = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -76,13 +76,14 @@
             this.btnSalvar.TabIndex = 1;
             this.btnSalvar.Text = "Salvar";
             this.btnSalvar.UseVisualStyleBackColor = true;
+            this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Controls.Add(this.comboBox1);
-            this.groupBox1.Controls.Add(this.textBox3);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.btnAtrelarServicoAoUsuario);
+            this.groupBox1.Controls.Add(this.cboFuncionarios);
+            this.groupBox1.Controls.Add(this.txtValor);
+            this.groupBox1.Controls.Add(this.txtDescricao);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
@@ -92,37 +93,38 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
-            // button1
+            // btnAtrelarServicoAoUsuario
             // 
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.Location = new System.Drawing.Point(300, 105);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(23, 21);
-            this.button1.TabIndex = 7;
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnAtrelarServicoAoUsuario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAtrelarServicoAoUsuario.Image = ((System.Drawing.Image)(resources.GetObject("btnAtrelarServicoAoUsuario.Image")));
+            this.btnAtrelarServicoAoUsuario.Location = new System.Drawing.Point(300, 105);
+            this.btnAtrelarServicoAoUsuario.Name = "btnAtrelarServicoAoUsuario";
+            this.btnAtrelarServicoAoUsuario.Size = new System.Drawing.Size(23, 21);
+            this.btnAtrelarServicoAoUsuario.TabIndex = 7;
+            this.btnAtrelarServicoAoUsuario.UseVisualStyleBackColor = true;
+            this.btnAtrelarServicoAoUsuario.Click += new System.EventHandler(this.btnAtrelarServicoAoUsuario_Click);
             // 
-            // comboBox1
+            // cboFuncionarios
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(21, 105);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(280, 21);
-            this.comboBox1.TabIndex = 6;
+            this.cboFuncionarios.FormattingEnabled = true;
+            this.cboFuncionarios.Location = new System.Drawing.Point(21, 105);
+            this.cboFuncionarios.Name = "cboFuncionarios";
+            this.cboFuncionarios.Size = new System.Drawing.Size(280, 21);
+            this.cboFuncionarios.TabIndex = 6;
             // 
-            // textBox3
+            // txtValor
             // 
-            this.textBox3.Location = new System.Drawing.Point(338, 105);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(176, 20);
-            this.textBox3.TabIndex = 5;
+            this.txtValor.Location = new System.Drawing.Point(338, 105);
+            this.txtValor.Name = "txtValor";
+            this.txtValor.Size = new System.Drawing.Size(176, 20);
+            this.txtValor.TabIndex = 5;
             // 
-            // textBox1
+            // txtDescricao
             // 
-            this.textBox1.Location = new System.Drawing.Point(21, 43);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(493, 20);
-            this.textBox1.TabIndex = 3;
+            this.txtDescricao.Location = new System.Drawing.Point(21, 43);
+            this.txtDescricao.Name = "txtDescricao";
+            this.txtDescricao.Size = new System.Drawing.Size(493, 20);
+            this.txtDescricao.TabIndex = 3;
             // 
             // label3
             // 
@@ -177,11 +179,11 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtDescricao;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnSalvar;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.Button btnAtrelarServicoAoUsuario;
+        private System.Windows.Forms.ComboBox cboFuncionarios;
+        private System.Windows.Forms.TextBox txtValor;
     }
 }

@@ -37,8 +37,18 @@ namespace Apresentacao
         }
 
         private void frmPesquisarProduto_Load(object sender, EventArgs e)
-        {            
-            dataGridViewProdutos.DataSource = produtoRepository.PopulaGrid();
+        {
+            try
+            {
+                dataGridViewProdutos.DataSource = produtoRepository.PopulaGrid();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Algo deu errado ao tentar abrir a nova janela. Tente novamente ou contate o administrador do sistema. \n\n\nDetalhes: \n" + ex.Message, "ATENÇÃO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+            
 
         }
 

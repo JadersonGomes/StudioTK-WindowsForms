@@ -19,8 +19,8 @@ namespace Apresentacao
         IAgendaRepository agendaRepository = new AgendaRepository(new SalaoContext());
 
         // As variáveis abaixo servem para recuperar parametros passados pelo construtor
-        private DateTime data;
-        private string colaborador;
+        private DateTime dataAgendamento;
+        private string colaboradorAgendado;
 
         public frmVisualizarAgenda()
         {
@@ -30,8 +30,8 @@ namespace Apresentacao
         public frmVisualizarAgenda(DateTime pData, string pColaborador)
         {
             InitializeComponent();
-            this.data = pData;
-            this.colaborador = pColaborador;
+            this.dataAgendamento = pData;
+            this.colaboradorAgendado = pColaborador;
         }
 
         private void frmVisualizarAgenda_Load(object sender, EventArgs e)
@@ -40,16 +40,16 @@ namespace Apresentacao
             {
                 // O código abaixo traduz o dia da semana recuperado para português
                 var culture = new System.Globalization.CultureInfo("pt-PT");
-                var diaSemana = culture.DateTimeFormat.GetDayName(data.DayOfWeek);
+                var diaSemana = culture.DateTimeFormat.GetDayName(dataAgendamento.DayOfWeek);
 
-                lblAgendamento.Text = "AGENDA DIA " + data.Date.ToShortDateString() + " - " + diaSemana.ToUpper();
+                lblAgendamento.Text = "AGENDA DIA " + dataAgendamento.Date.ToShortDateString() + " - " + diaSemana.ToUpper();
 
                 // O código abaixo serve para centralizar o Label dinamicamente
                 lblAgendamento.Top = (panel1.Height - lblAgendamento.Height) / 2;
                 lblAgendamento.Left = (panel1.Width - lblAgendamento.Width) / 2;
                 
                 // Perguntar p Karol como ela prefere que a Agenda seja exibida (Agenda de todos ou Agenda do colaborador selecionado)
-                dataGridView1.DataSource = agendaRepository.ListarPorDataColaborador(data, colaborador);
+                dataGridView.DataSource = agendaRepository.ListarPorDataColaborador(dataAgendamento, colaboradorAgendado);
             }
             catch (Exception ex)
             {

@@ -104,7 +104,7 @@ namespace Negocio.Implementation
         }
         
 
-        public double SomarValorTotal(IEnumerable<Pagamento> lista)
+        public double SomarValorTotal(IList<Faturamento> lista)
         {
             double valorTotal = 0;
 

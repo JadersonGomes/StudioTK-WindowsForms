@@ -10,9 +10,9 @@ namespace Negocio.Interfaces
         List<string> PopulaComboHora(DateTime diaSelecionado, string horaInicial/*, string horaFinal*/);
         List<Servico> PopulaServico();        
         List<Funcionario> PopulaColaborador();
-        List<string> AtualizarHorario(string horaInicial, string horaFinal);
-        IEnumerable<Agenda> BuscarPorNomeCliente(string nomeCliente);
-        List<Agenda> ListarPorDataColaborador(DateTime dataAgendamento, string colaborador);
+        IList<string> AtualizarHorario(string horaInicial, string horaFinal);
+        IList<Agenda> BuscarPorNomeCliente(string nomeCliente);
+        IList<Agenda> ListarPorDataColaborador(DateTime dataAgendamento, string colaborador);
         List<Agenda> PopulaDataGrid();
 
 

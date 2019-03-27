@@ -14,7 +14,7 @@ namespace Negocio.Interfaces
         IEnumerable<Pagamento> ListarPorPeriodoColaboradorServico(string data, string colaborador, string servico);
         IList<Pagamento> ListarFechamentoDiario(string funcionario, string dataInicial);
         IList<Pagamento> ListarFechamentoPeriodo(string funcionario, string dataInicial, string dataFinal);*/
-        double SomarValorTotal(IEnumerable<Pagamento> lista);
+        double SomarValorTotal(IList<Faturamento> lista);
         List<Servico> PopulaServico();
         List<Produto> PopulaProduto();
         double calculaDesconto(double auxValor, double valor, double porcentagem);

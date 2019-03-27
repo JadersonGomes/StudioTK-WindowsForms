@@ -16,6 +16,7 @@ namespace Apresentacao
 {
     public partial class frmFechamento : Form
     {
+        IPagamentoRepository pagamentoRepository = new PagamentoRepository(new SalaoContext());
         ICaixaRepository caixaRepository = new CaixaRepository(new SalaoContext());
         IFuncionarioRepository funcionarioRepository = new FuncionarioRepository(new SalaoContext());
         IVendaRepository vendaRepository = new VendaRepository(new SalaoContext());
@@ -46,26 +47,21 @@ namespace Apresentacao
         private void frmFechamento_Load(object sender, EventArgs e)
         {
             try
-            {                
-                pagamento = new Pagamento();
+            {
+                dtpInicial.Value = dataInicial.Date;
+                dtpFinal.Value = dataFinal.Date;
 
                 // Carregar campos do comboBox de colaborador.                
                 cboFuncionario.DataSource = funcionarioRepository.ListarTodos();
-                cboFuncionario.SelectedIndex = -1;
+                cboFuncionario.SelectedIndex = -1;                
 
-                dtpInicial.Value = dataInicial;
-                dtpFinal.Value = dataFinal;
+                var lista = faturamentoRepository.ListarPorPeriodo(dataInicial, dataFinal);
 
-                var listaFaturamento = faturamentoRepository.ListarPorPeriodo(dataInicial, dataFinal); 
-                
-
-                dataGridView1.DataSource = listaFaturamento;                                
+                dataGridView.DataSource = lista;
 
 
-                // Carregar dados para o dataGridView e somar o valor total para atribuir ao textBox ValorTotal
-                //IEnumerable<Pagamento> lista = pagamento.ListarPorPeriodo(DateTime.Today.Date.ToString());
-
-                //txtValorTotal.Text = Convert.ToString(pagamento.SomarValorTotal(lista));
+                //Soma o valor total de Faturamento no período selecionado e exibe no Label
+                lblValorTotal.Text = (pagamentoRepository.SomarValorTotal(lista)).ToString("C");
             }
             catch (Exception ex)
             {
@@ -126,7 +122,7 @@ namespace Apresentacao
             try
             {
                 var lista = faturamentoRepository.ListarPorColaboradorData(cboFuncionario.Text, dataInicial, dataFinal);
-                dataGridView1.DataSource = lista;
+                dataGridView.DataSource = lista;
             }
             catch (Exception ex)
             {
@@ -138,11 +134,10 @@ namespace Apresentacao
         private void dtpFinal_ValueChanged(object sender, EventArgs e)
         {
             try
-            {
-                
+            {                
                 if (dtpInicial.Value <= dtpFinal.Value)
                 {
-                    dataGridView1.DataSource = faturamentoRepository.ListarPorPeriodo(dataInicial, dataFinal);
+                    dataGridView.DataSource = faturamentoRepository.ListarPorPeriodo(dataInicial, dataFinal);
 
                 }
                 else
@@ -159,19 +154,46 @@ namespace Apresentacao
             
         }
 
-        private void btnFecharCaixa_Click(object sender, EventArgs e)
+        private void btnBuscar_Click(object sender, EventArgs e)
         {
             try
             {
-                
+                if (dtpInicial.Value <= dtpFinal.Value)
+                {
+                    if (cboFuncionario.SelectedIndex == -1)
+                    {
+                        dataGridView.DataSource = faturamentoRepository.ListarPorPeriodo(dataInicial, dataFinal);
+                    }
+                    else
+                    {
+                        dataGridView.DataSource = faturamentoRepository.ListarPorColaboradorData(cboFuncionario.Text, dataInicial, dataFinal);
+                    }
+
+                } else
+                {
+                    MessageBox.Show("Por gentileza, insira uma data final maior que a data inicial.", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Algo deu errado. Tente novamente ou contate o administrador do sistema. \n\n\nDetalhes: \n" + ex.Message, "ATENÇÃO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnFecharCaixa_Click(object sender, EventArgs e)
+        {
+            try
+            {                
 
                 movimentacao = new Movimentacao();
                 movimentacao.Data = DateTime.Today;
                 movimentacao.Descricao = "Fechamento de caixa";
                 movimentacao.Valor = faturamentoRepository.SomaFaturamentoTotal(faturamentoRepository.ListarPorPeriodo(dtpInicial.Value, dtpFinal.Value));
 
-                /*movimentacaoRepository.Adicionar(movimentacao);
-                movimentacaoRepository.Salvar();*/
+                movimentacaoRepository.Adicionar(movimentacao);
+                movimentacaoRepository.Salvar();
 
                 caixa = new Caixa();
                 caixa.Status = "Fechado";
@@ -184,9 +206,9 @@ namespace Apresentacao
                 }
                 
 
-                /* Parte responsável por salvar os dados do fechamento de caixa no Banco de dados.
+                // Parte responsável por salvar os dados do fechamento de caixa no Banco de dados.
                 caixaRepository.Adicionar(caixa);
-                caixaRepository.Salvar();*/
+                caixaRepository.Salvar();
 
                 MessageBox.Show("Fechamento realizado com sucesso!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
 

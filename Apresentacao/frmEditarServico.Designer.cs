@@ -34,15 +34,15 @@
             this.btnExcluir = new System.Windows.Forms.Button();
             this.btnSalvar = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.RemoverFuncionarioServico = new System.Windows.Forms.Button();
+            this.lblId = new System.Windows.Forms.Label();
+            this.txtAtrelarServicoAoFuncionario = new System.Windows.Forms.Button();
             this.cboFuncionarios = new System.Windows.Forms.ComboBox();
             this.txtValor = new System.Windows.Forms.TextBox();
             this.txtDescricao = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.lblId = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -62,9 +62,9 @@
             // 
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelar.ForeColor = System.Drawing.Color.Gray;
-            this.btnCancelar.Location = new System.Drawing.Point(361, 200);
+            this.btnCancelar.Location = new System.Drawing.Point(370, 200);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(127, 23);
+            this.btnCancelar.Size = new System.Drawing.Size(151, 23);
             this.btnCancelar.TabIndex = 3;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
@@ -74,9 +74,9 @@
             // 
             this.btnExcluir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExcluir.ForeColor = System.Drawing.Color.Gray;
-            this.btnExcluir.Location = new System.Drawing.Point(217, 200);
+            this.btnExcluir.Location = new System.Drawing.Point(205, 200);
             this.btnExcluir.Name = "btnExcluir";
-            this.btnExcluir.Size = new System.Drawing.Size(127, 23);
+            this.btnExcluir.Size = new System.Drawing.Size(151, 23);
             this.btnExcluir.TabIndex = 2;
             this.btnExcluir.Text = "Excluir";
             this.btnExcluir.UseVisualStyleBackColor = true;
@@ -86,9 +86,9 @@
             // 
             this.btnSalvar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSalvar.ForeColor = System.Drawing.Color.Gray;
-            this.btnSalvar.Location = new System.Drawing.Point(73, 200);
+            this.btnSalvar.Location = new System.Drawing.Point(40, 200);
             this.btnSalvar.Name = "btnSalvar";
-            this.btnSalvar.Size = new System.Drawing.Size(127, 23);
+            this.btnSalvar.Size = new System.Drawing.Size(151, 23);
             this.btnSalvar.TabIndex = 1;
             this.btnSalvar.Text = "Salvar alterações";
             this.btnSalvar.UseVisualStyleBackColor = true;
@@ -96,9 +96,9 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.button2);
+            this.groupBox1.Controls.Add(this.RemoverFuncionarioServico);
             this.groupBox1.Controls.Add(this.lblId);
-            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.txtAtrelarServicoAoFuncionario);
             this.groupBox1.Controls.Add(this.cboFuncionarios);
             this.groupBox1.Controls.Add(this.txtValor);
             this.groupBox1.Controls.Add(this.txtDescricao);
@@ -111,15 +111,37 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
-            // button1
+            // RemoverFuncionarioServico
             // 
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.Location = new System.Drawing.Point(300, 105);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(23, 21);
-            this.button1.TabIndex = 7;
-            this.button1.UseVisualStyleBackColor = true;
+            this.RemoverFuncionarioServico.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.RemoverFuncionarioServico.Image = ((System.Drawing.Image)(resources.GetObject("RemoverFuncionarioServico.Image")));
+            this.RemoverFuncionarioServico.Location = new System.Drawing.Point(322, 105);
+            this.RemoverFuncionarioServico.Name = "RemoverFuncionarioServico";
+            this.RemoverFuncionarioServico.Size = new System.Drawing.Size(24, 21);
+            this.RemoverFuncionarioServico.TabIndex = 9;
+            this.RemoverFuncionarioServico.UseVisualStyleBackColor = true;
+            this.RemoverFuncionarioServico.Click += new System.EventHandler(this.RemoverFuncionarioServico_Click);
+            // 
+            // lblId
+            // 
+            this.lblId.AutoSize = true;
+            this.lblId.Location = new System.Drawing.Point(250, 16);
+            this.lblId.Name = "lblId";
+            this.lblId.Size = new System.Drawing.Size(102, 13);
+            this.lblId.TabIndex = 8;
+            this.lblId.Text = "Label que recebe Id";
+            this.lblId.Visible = false;
+            // 
+            // txtAtrelarServicoAoFuncionario
+            // 
+            this.txtAtrelarServicoAoFuncionario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.txtAtrelarServicoAoFuncionario.Image = ((System.Drawing.Image)(resources.GetObject("txtAtrelarServicoAoFuncionario.Image")));
+            this.txtAtrelarServicoAoFuncionario.Location = new System.Drawing.Point(300, 105);
+            this.txtAtrelarServicoAoFuncionario.Name = "txtAtrelarServicoAoFuncionario";
+            this.txtAtrelarServicoAoFuncionario.Size = new System.Drawing.Size(23, 21);
+            this.txtAtrelarServicoAoFuncionario.TabIndex = 7;
+            this.txtAtrelarServicoAoFuncionario.UseVisualStyleBackColor = true;
+            this.txtAtrelarServicoAoFuncionario.Click += new System.EventHandler(this.txtAtrelarServicoAoFuncionario_Click);
             // 
             // cboFuncionarios
             // 
@@ -170,26 +192,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Descrição";
             // 
-            // lblId
-            // 
-            this.lblId.AutoSize = true;
-            this.lblId.Location = new System.Drawing.Point(250, 16);
-            this.lblId.Name = "lblId";
-            this.lblId.Size = new System.Drawing.Size(35, 13);
-            this.lblId.TabIndex = 8;
-            this.lblId.Text = "label4";
-            this.lblId.Visible = false;
-            // 
-            // button2
-            // 
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
-            this.button2.Location = new System.Drawing.Point(322, 105);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(24, 21);
-            this.button2.TabIndex = 9;
-            this.button2.UseVisualStyleBackColor = true;
-            // 
             // frmEditarServico
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -215,7 +217,7 @@
         private System.Windows.Forms.Button btnExcluir;
         private System.Windows.Forms.Button btnSalvar;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button txtAtrelarServicoAoFuncionario;
         private System.Windows.Forms.ComboBox cboFuncionarios;
         private System.Windows.Forms.TextBox txtValor;
         private System.Windows.Forms.TextBox txtDescricao;
@@ -224,6 +226,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Label lblId;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button RemoverFuncionarioServico;
     }
 }

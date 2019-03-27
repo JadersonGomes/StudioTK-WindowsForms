@@ -37,7 +37,8 @@ namespace Apresentacao
                 {
                     if (dtpInicial.Text == dtpFinal.Text)
                     {
-                        IEnumerable<Venda> lista = vendaRepository.ListarPorData(dtpInicial.Text);
+                        IList<Venda> lista = vendaRepository.ListarPorData(dtpInicial.Text);
+                        
                         dataGridViewResumo.DataSource = lista;
 
                         //txtValorTotal.Text = string.Format("{0:C}", 652.35/*Convert.ToString(pagamento.SomarValorTotal(lista)*/);
@@ -139,6 +140,11 @@ namespace Apresentacao
         {
             frmHistoricoCaixa historicoCaixa = new frmHistoricoCaixa();
             historicoCaixa.Show();
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

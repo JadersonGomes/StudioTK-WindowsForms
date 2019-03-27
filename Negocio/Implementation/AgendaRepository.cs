@@ -10,7 +10,7 @@ namespace Negocio.Implementation
     public class AgendaRepository : AcessoDadosEntityFramework<Agenda>, IAgendaRepository
     {
 
-        List<string> listaHora = new List<string>();        
+        List<string> listaHora = new List<string>();
 
         public AgendaRepository(SalaoContext _contexto) : base(_contexto)
         {
@@ -32,9 +32,9 @@ namespace Negocio.Implementation
 
             Servico servico = new Servico();
             servico.Id = 1;
-            servico.Nome = "Corte Masculino";            
-            servico.Valor = 25;          
-            
+            servico.Nome = "Corte Masculino";
+            servico.Valor = 25;
+
 
             Agenda agenda = new Agenda();
 
@@ -128,43 +128,30 @@ namespace Negocio.Implementation
         }
 
 
-        public List<string> AtualizarHorario(string horaInicial, string horaFinal)
+        public IList<string> AtualizarHorario(string horaInicial, string horaFinal)
         {
-
             int posHoraInicial = 0, posHoraFinal = 0;
-            using (SalaoContext contexto = new SalaoContext())
+            IList<Agenda> lista = ListarTodos().Where(a => a.Data.Equals(DateTime.Now.ToString())).ToList();
+
+            /*for (int i = 0; i < lista.Count; i++)
             {
-                AgendaRepository repositorio = new AgendaRepository(contexto);
-                ICollection<Agenda> lista = repositorio.ListarTodos().Where(a => a.Data.Equals(DateTime.Now.ToString())).ToList();
-
-                for (int i = 0; i < lista.Count; i++)
+                if (listaHora[i].Equals(lista.agendar.HorarioInicial))
                 {
-
-                    /*if (listaHora[i].Equals(lista.agendar.HorarioInicial))
-                    {
-                        posHoraInicial = i;
-                        //listaHora[i] = "Horário indisponível";
-
-                    }
-                    else if (listaHora[i].Equals(agendar.HorarioFinal))
-                    {
-                        posHoraFinal = i;
-                    }*/
-
+                    posHoraInicial = i;
+                    //listaHora[i] = "Horário indisponível";
                 }
-
-                int posRemovida = posHoraInicial;
-                while (posHoraInicial <= posHoraFinal)
+                else if (listaHora[i].Equals(agendar.HorarioFinal))
                 {
-
-                    listaHora.RemoveAt(posRemovida);
-                    posHoraInicial++;
+                    posHoraFinal = i;
                 }
+            }*/
 
-
+            int posRemovida = posHoraInicial;
+            while (posHoraInicial <= posHoraFinal)
+            {
+                listaHora.RemoveAt(posRemovida);
+                posHoraInicial++;
             }
-
-
 
             return listaHora;
         }
@@ -177,19 +164,17 @@ namespace Negocio.Implementation
             {
                 listaHora = PreencheListaHorarios(DateTime.Now.Hour);
                 //listaHora = AtualizarHorario(horaInicial, horaFinal);
-
             }
             else
             {
                 listaHora = PreencheListaHorarios(6);
-
             }
 
             return listaHora;
 
         }
 
-       
+
 
         public List<Servico> PopulaServico()
         {
@@ -226,14 +211,44 @@ namespace Negocio.Implementation
             return listaColaborador;
         }
 
-        public IEnumerable<Agenda> BuscarPorNomeCliente(string nomeCliente)
+        public IList<Agenda> BuscarPorNomeCliente(string nomeCliente)
         {
-            return this.ListarTodos().Where(a => a.NomeCliente.Contains(nomeCliente));
+            var lista = this.ListarTodos().Where(a => a.NomeCliente.Contains(nomeCliente));
+
+            var listaPersonalizada = (from list in lista
+                                      select new Agenda
+                                      {
+
+                                          Id = list.Id,
+                                          Data = list.Data,
+                                          Funcionario = list.Funcionario,
+                                          NomeCliente = list.NomeCliente,
+                                          Horario = list.Horario,
+                                          Servico = list.Servico
+
+                                      }).ToList();
+
+            return listaPersonalizada;
         }
 
-        public List<Agenda> ListarPorDataColaborador(DateTime dataAgendamento, string colaborador)
+        public IList<Agenda> ListarPorDataColaborador(DateTime dataAgendamento, string colaborador)
         {
-            return ListarTodos().Where(a => a.Data.Equals(dataAgendamento)).Where(a => a.Funcionario.Equals(colaborador)).ToList();
+            var lista =  ListarTodos().Where(a => a.Data.Equals(dataAgendamento)).Where(a => a.Funcionario.Equals(colaborador)).ToList();
+
+            var listaPersonalizada = (from list in lista
+                                      select new Agenda {
+
+                                          Id = list.Id,
+                                          Data = list.Data,
+                                          Funcionario = list.Funcionario,
+                                          NomeCliente = list.NomeCliente,
+                                          Horario = list.Horario,
+                                          Servico = list.Servico
+
+                                      }).ToList();
+
+            return listaPersonalizada;
+
         }
     }
 }

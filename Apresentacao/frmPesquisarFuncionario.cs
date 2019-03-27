@@ -48,8 +48,18 @@ namespace Apresentacao
         }
 
         private void frmPesquisarFuncionario_Load(object sender, EventArgs e)
-        {            
-            dataGridViewFuncionarios.DataSource = funcionarioRepository.PopulaGrid();
+        {
+            try
+            {
+                dataGridViewFuncionarios.DataSource = funcionarioRepository.PopulaGrid();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Algo deu errado ao tentar abrir a nova janela. Tente novamente ou contate o administrador do sistema. \n\n\nDetalhes: \n" + ex.Message, "ATENÇÃO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+            
 
         }
 

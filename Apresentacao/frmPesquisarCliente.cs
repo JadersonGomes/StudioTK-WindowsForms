@@ -51,7 +51,17 @@ namespace Apresentacao
 
         private void frmPesquisarCliente_Load(object sender, EventArgs e)
         {
-            dataGridViewClientes.DataSource = clienteRepository.PopulaGrid();
+            try
+            {
+                dataGridViewClientes.DataSource = clienteRepository.PopulaGrid();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Algo deu errado ao tentar abrir a nova janela. Tente novamente ou contate o administrador do sistema. \n\n\nDetalhes: \n" + ex.Message, "ATENÇÃO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+            
 
         }
 

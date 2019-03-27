@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmResumo));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnHistoricoCaixa = new System.Windows.Forms.Button();
             this.lblDataUltimoFechamento = new System.Windows.Forms.Label();
@@ -43,6 +44,12 @@
             this.btnPesquisar = new System.Windows.Forms.Button();
             this.txtPesquisar = new System.Windows.Forms.TextBox();
             this.dataGridViewResumo = new System.Windows.Forms.DataGridView();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Data = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Hora = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Produtos = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.Servicos = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.ValorTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewResumo)).BeginInit();
             this.SuspendLayout();
@@ -155,6 +162,7 @@
             this.btnCancelar.TabIndex = 5;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // dtpFinal
             // 
@@ -204,10 +212,75 @@
             // 
             this.dataGridViewResumo.BackgroundColor = System.Drawing.Color.White;
             this.dataGridViewResumo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewResumo.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Id,
+            this.Data,
+            this.Hora,
+            this.Produtos,
+            this.Servicos,
+            this.ValorTotal});
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Gray;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.LightSkyBlue;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewResumo.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewResumo.Location = new System.Drawing.Point(14, 58);
+            this.dataGridViewResumo.MultiSelect = false;
             this.dataGridViewResumo.Name = "dataGridViewResumo";
+            this.dataGridViewResumo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewResumo.Size = new System.Drawing.Size(1174, 496);
             this.dataGridViewResumo.TabIndex = 0;
+            // 
+            // Id
+            // 
+            this.Id.DataPropertyName = "Id";
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            this.Id.Width = 60;
+            // 
+            // Data
+            // 
+            this.Data.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Data.DataPropertyName = "Data";
+            this.Data.HeaderText = "Data";
+            this.Data.Name = "Data";
+            this.Data.ReadOnly = true;
+            // 
+            // Hora
+            // 
+            this.Hora.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Hora.DataPropertyName = "Hora";
+            this.Hora.HeaderText = "Hora";
+            this.Hora.Name = "Hora";
+            this.Hora.ReadOnly = true;
+            // 
+            // Produtos
+            // 
+            this.Produtos.DataPropertyName = "Produtos";
+            this.Produtos.HeaderText = "Produtos Vendidos";
+            this.Produtos.Name = "Produtos";
+            this.Produtos.ReadOnly = true;
+            this.Produtos.Width = 320;
+            // 
+            // Servicos
+            // 
+            this.Servicos.DataPropertyName = "Servicos";
+            this.Servicos.HeaderText = "Serviços Realizados";
+            this.Servicos.Name = "Servicos";
+            this.Servicos.ReadOnly = true;
+            this.Servicos.Width = 320;
+            // 
+            // ValorTotal
+            // 
+            this.ValorTotal.DataPropertyName = "ValorTotal";
+            this.ValorTotal.HeaderText = "Valor Total";
+            this.ValorTotal.Name = "ValorTotal";
+            this.ValorTotal.ReadOnly = true;
+            this.ValorTotal.Width = 150;
             // 
             // frmResumo
             // 
@@ -245,5 +318,11 @@
         private System.Windows.Forms.Label lblUltimoFechamento;
         private System.Windows.Forms.Label lblDataUltimoFechamento;
         private System.Windows.Forms.Button btnHistoricoCaixa;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Data;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Hora;
+        private System.Windows.Forms.DataGridViewComboBoxColumn Produtos;
+        private System.Windows.Forms.DataGridViewComboBoxColumn Servicos;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ValorTotal;
     }
 }

@@ -21,16 +21,46 @@ namespace Negocio.Implementation
 
         public IEnumerable<Venda> ListarPorIntervaloPeriodo(string dataInicial, string dataFinal)
         {
-            return entidade.Where(p => p.Data >= Convert.ToDateTime(dataInicial) && p.Data <= Convert.ToDateTime(dataFinal)).ToList();
+            var lista = entidade.Where(p => p.Data >= Convert.ToDateTime(dataInicial) && p.Data <= Convert.ToDateTime(dataFinal)).ToList();
+
+            var listaPersonalizada = (from list in lista
+                                      select new Venda
+                                      {
+                                          Id = list.Id,
+                                          Data = list.Data,
+                                          Hora = list.Hora,
+                                          Produtos = list.Produtos,
+                                          Servicos = list.Servicos,
+                                          ValorTotal = list.ValorTotal
+                                          // Refletir essas variaveis no datagridviewl
+
+                                      }).ToList();
+
+            return listaPersonalizada;
         }
 
         public IEnumerable<Venda> ListarPorFuncionario(string funcionario)
         {
             return entidade.Where(v => v.Funcionario.Equals(funcionario)).OrderBy(v => v.Data);
         }
-        public IEnumerable<Venda> ListarPorData(string data)
+        public IList<Venda> ListarPorData(string data)
         {
-            return entidade.Where(p => p.Data == Convert.ToDateTime(data));
+            var lista = entidade.Where(p => p.Data == Convert.ToDateTime(data));
+
+            var listaPersonalizada = (from list in lista
+                     select new Venda
+                     {
+                         Id = list.Id,
+                         Data = list.Data,
+                         Hora = list.Hora,
+                         Produtos = list.Produtos,
+                         Servicos = list.Servicos,
+                         ValorTotal = list.ValorTotal
+                         // Refletir essas variaveis no datagridviewl
+
+                     }).ToList();
+
+            return listaPersonalizada;
         }
 
         public dynamic RecuperaProdutosVendidosPorData(DateTime dataInicial, DateTime dataFinal)

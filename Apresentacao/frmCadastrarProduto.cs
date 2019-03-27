@@ -62,12 +62,7 @@ namespace Apresentacao
             txtValor.Clear();
             cboFornecedor.SelectedIndex = -1;
         }
-
-        private void frmCadastrarProduto_Load(object sender, EventArgs e)
-        {
-            cboFornecedor.DataSource = produtoRepository.ListarTodos();
-
-        }
+       
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {

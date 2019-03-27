@@ -63,12 +63,12 @@ namespace Apresentacao
             try
             {
                 int id = (int)dataGridViewServicos.Rows[e.RowIndex].Cells[0].Value;
-                string nomeUsuario = dataGridViewServicos.Rows[e.RowIndex].Cells[1].Value.ToString();
-                string senha = dataGridViewServicos.Rows[e.RowIndex].Cells[2].Value.ToString();
-                string email = dataGridViewServicos.Rows[e.RowIndex].Cells[3].Value.ToString();
+                string descricao = dataGridViewServicos.Rows[e.RowIndex].Cells[1].Value.ToString();
+                double valor = (double)dataGridViewServicos.Rows[e.RowIndex].Cells[2].Value;
+                //string email = dataGridViewServicos.Rows[e.RowIndex].Cells[3].Value.ToString();
 
-                //frmEditarServico editarServico = new frmEditarServico(id, nomeUsuario, email, senha);
-                //editarServico.Show();
+                frmEditarServico editarServico = new frmEditarServico(id, descricao, valor);
+                editarServico.Show();
             }
             catch (Exception ex)
             {

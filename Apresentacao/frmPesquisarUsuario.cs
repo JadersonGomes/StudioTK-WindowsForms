@@ -24,8 +24,17 @@ namespace Apresentacao
         }
 
         private void frmPesquisarUsuario_Load(object sender, EventArgs e)
-        {            
-            dataGridViewUsuarios.DataSource = usuarioRepository.PopulaGrid();
+        {   
+            try
+            {
+                dataGridViewUsuarios.DataSource = usuarioRepository.PopulaGrid();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Algo deu errado ao tentar abrir a nova janela. Tente novamente ou contate o administrador do sistema. \n\n\nDetalhes: \n" + ex.Message, "ATENÇÃO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
         }
 
         private void dataGridViewClientes_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
