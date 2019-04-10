@@ -1,6 +1,6 @@
 ﻿namespace Apresentacao
 {
-    partial class frmResumo
+    partial class frmResumoVenda
     {
         /// <summary>
         /// Required designer variable.
@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmResumo));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmResumoVenda));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnHistoricoCaixa = new System.Windows.Forms.Button();
             this.lblDataUltimoFechamento = new System.Windows.Forms.Label();
@@ -47,8 +47,6 @@
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Data = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Hora = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Produtos = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.Servicos = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.ValorTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewResumo)).BeginInit();
@@ -216,17 +214,15 @@
             this.Id,
             this.Data,
             this.Hora,
-            this.Produtos,
-            this.Servicos,
             this.ValorTotal});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Gray;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.LightSkyBlue;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewResumo.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Gray;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.LightSkyBlue;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewResumo.DefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewResumo.Location = new System.Drawing.Point(14, 58);
             this.dataGridViewResumo.MultiSelect = false;
             this.dataGridViewResumo.Name = "dataGridViewResumo";
@@ -258,22 +254,6 @@
             this.Hora.Name = "Hora";
             this.Hora.ReadOnly = true;
             // 
-            // Produtos
-            // 
-            this.Produtos.DataPropertyName = "Produtos";
-            this.Produtos.HeaderText = "Produtos Vendidos";
-            this.Produtos.Name = "Produtos";
-            this.Produtos.ReadOnly = true;
-            this.Produtos.Width = 320;
-            // 
-            // Servicos
-            // 
-            this.Servicos.DataPropertyName = "Servicos";
-            this.Servicos.HeaderText = "Serviços Realizados";
-            this.Servicos.Name = "Servicos";
-            this.Servicos.ReadOnly = true;
-            this.Servicos.Width = 320;
-            // 
             // ValorTotal
             // 
             this.ValorTotal.DataPropertyName = "ValorTotal";
@@ -282,7 +262,7 @@
             this.ValorTotal.ReadOnly = true;
             this.ValorTotal.Width = 150;
             // 
-            // frmResumo
+            // frmResumoVenda
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -291,9 +271,9 @@
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
-            this.Name = "frmResumo";
+            this.Name = "frmResumoVenda";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Resumo";
+            this.Text = "Resumo de Vendas";
             this.Load += new System.EventHandler(this.frmResumo_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -321,8 +301,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn Data;
         private System.Windows.Forms.DataGridViewTextBoxColumn Hora;
-        private System.Windows.Forms.DataGridViewComboBoxColumn Produtos;
-        private System.Windows.Forms.DataGridViewComboBoxColumn Servicos;
         private System.Windows.Forms.DataGridViewTextBoxColumn ValorTotal;
     }
 }

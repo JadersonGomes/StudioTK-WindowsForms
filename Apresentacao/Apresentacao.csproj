@@ -229,11 +229,17 @@
     <Compile Include="frmPrincipal.Designer.cs">
       <DependentUpon>frmPrincipal.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmResumo.cs">
+    <Compile Include="frmResumoCaixa.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmResumo.Designer.cs">
-      <DependentUpon>frmResumo.cs</DependentUpon>
+    <Compile Include="frmResumoCaixa.Designer.cs">
+      <DependentUpon>frmResumoCaixa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmResumoVenda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmResumoVenda.Designer.cs">
+      <DependentUpon>frmResumoVenda.cs</DependentUpon>
     </Compile>
     <Compile Include="frmSuprimento.cs">
       <SubType>Form</SubType>
@@ -351,8 +357,11 @@
     <EmbeddedResource Include="frmPrincipal.resx">
       <DependentUpon>frmPrincipal.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmResumo.resx">
-      <DependentUpon>frmResumo.cs</DependentUpon>
+    <EmbeddedResource Include="frmResumoCaixa.resx">
+      <DependentUpon>frmResumoCaixa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmResumoVenda.resx">
+      <DependentUpon>frmResumoVenda.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmSuprimento.resx">
       <DependentUpon>frmSuprimento.cs</DependentUpon>

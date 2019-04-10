@@ -14,13 +14,13 @@ using System.Windows.Forms;
 
 namespace Apresentacao
 {
-    public partial class frmResumo : Form
+    public partial class frmResumoVenda : Form
     {                   
         IVendaRepository vendaRepository = new VendaRepository(new SalaoContext());
         ICaixaRepository caixaRepository = new CaixaRepository(new SalaoContext());
 
 
-        public frmResumo()
+        public frmResumoVenda()
         {
             InitializeComponent();
         }
@@ -35,9 +35,9 @@ namespace Apresentacao
 
                 if (txtPesquisar.Text.Equals("") || txtPesquisar.Text.Equals(" "))
                 {
-                    if (dtpInicial.Text == dtpFinal.Text)
+                    if (dtpInicial.Value == dtpFinal.Value)
                     {
-                        IList<Venda> lista = vendaRepository.ListarPorData(dtpInicial.Text);
+                        IList<Venda> lista = vendaRepository.ListarPorData(dtpInicial.Value);
                         
                         dataGridViewResumo.DataSource = lista;
 
@@ -46,7 +46,7 @@ namespace Apresentacao
                     }
                     else if (dtpInicial.Value.Date < dtpFinal.Value.Date)
                     {
-                        IEnumerable<Venda> lista = vendaRepository.ListarPorIntervaloPeriodo(dtpInicial.Text, dtpFinal.Text);
+                        IEnumerable<Venda> lista = vendaRepository.ListarPorIntervaloPeriodo(dtpInicial.Value, dtpFinal.Value);
                         dataGridViewResumo.DataSource = lista;
 
                         //txtValorTotal.Text = Convert.ToString(pagamento.SomarValorTotal(lista));

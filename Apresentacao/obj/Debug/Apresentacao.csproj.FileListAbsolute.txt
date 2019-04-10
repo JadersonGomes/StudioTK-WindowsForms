@@ -136,7 +136,6 @@ C:\Users\jvieira\Documents\Visual Studio 2015\Projects\appCabeleireiro\Apresenta
 C:\Users\jvieira\Documents\Visual Studio 2015\Projects\appCabeleireiro\Apresentacao\obj\Debug\Apresentacao.frmPesquisarServico.resources
 C:\Users\jvieira\Documents\Visual Studio 2015\Projects\appCabeleireiro\Apresentacao\obj\Debug\Apresentacao.frmPesquisarUsuario.resources
 C:\Users\jvieira\Documents\Visual Studio 2015\Projects\appCabeleireiro\Apresentacao\obj\Debug\Apresentacao.frmPrincipal.resources
-C:\Users\jvieira\Documents\Visual Studio 2015\Projects\appCabeleireiro\Apresentacao\obj\Debug\Apresentacao.frmResumo.resources
 C:\Users\jvieira\Documents\Visual Studio 2015\Projects\appCabeleireiro\Apresentacao\obj\Debug\Apresentacao.frmSuprimento.resources
 C:\Users\jvieira\Documents\Visual Studio 2015\Projects\appCabeleireiro\Apresentacao\obj\Debug\Apresentacao.frmVale.resources
 C:\Users\jvieira\Documents\Visual Studio 2015\Projects\appCabeleireiro\Apresentacao\obj\Debug\Apresentacao.frmVisualizarAgenda.resources
@@ -145,3 +144,5 @@ C:\Users\jvieira\Documents\Visual Studio 2015\Projects\appCabeleireiro\Apresenta
 C:\Users\jvieira\Documents\Visual Studio 2015\Projects\appCabeleireiro\Apresentacao\obj\Debug\Apresentacao.csproj.GenerateResource.Cache
 C:\Users\jvieira\Documents\Visual Studio 2015\Projects\appCabeleireiro\Apresentacao\obj\Debug\Apresentacao.exe
 C:\Users\jvieira\Documents\Visual Studio 2015\Projects\appCabeleireiro\Apresentacao\obj\Debug\Apresentacao.pdb
+C:\Users\jvieira\Documents\Visual Studio 2015\Projects\appCabeleireiro\Apresentacao\obj\Debug\Apresentacao.frmResumoCaixa.resources
+C:\Users\jvieira\Documents\Visual Studio 2015\Projects\appCabeleireiro\Apresentacao\obj\Debug\Apresentacao.frmResumoVenda.resources

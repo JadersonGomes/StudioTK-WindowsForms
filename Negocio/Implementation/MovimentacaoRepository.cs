@@ -15,7 +15,20 @@ namespace Negocio.Implementation
 
         public List<Movimentacao> ListarPorPeriodo(DateTime dataInicial, DateTime dataFinal)
         {
-            return entidade.Where(m => m.Data >= dataInicial && m.Data <= dataFinal).ToList();
+            var listaMovimentacao = entidade.Where(m => m.Data >= dataInicial && m.Data <= dataFinal).ToList();
+
+            var listaPersonalizada = (from lista in listaMovimentacao
+                                      select new Movimentacao
+                                      {
+                                          Data = lista.Data,
+                                          Descricao = lista.Descricao,
+                                          TipoMovimentacao = lista.TipoMovimentacao,
+                                          Valor = lista.Valor
+
+                                      }).ToList();
+
+
+            return listaPersonalizada;
         }
     }
 }

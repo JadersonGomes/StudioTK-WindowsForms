@@ -33,7 +33,9 @@ namespace Apresentacao
         private void btnAtrelarServicoAoUsuario_Click(object sender, EventArgs e)
         {
             Funcionario funcionario = (Funcionario)cboFuncionarios.SelectedItem;
-            listaFuncionarios.Add(funcionario);            
+            listaFuncionarios.Add(funcionario);
+            // Verificar depois se realmente será excluído do combo após a execução da linha de baixo
+            cboFuncionarios.Items.Remove(this);      
 
         }
 

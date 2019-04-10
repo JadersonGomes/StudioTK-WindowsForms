@@ -19,7 +19,7 @@ namespace Apresentacao
 
         private void btnResumo_Click(object sender, EventArgs e)
         {
-            frmResumo resumo = new frmResumo();
+            frmResumoCaixa resumo = new frmResumoCaixa();
             this.Hide();
             resumo.Show();
         }
@@ -64,7 +64,7 @@ namespace Apresentacao
 
         private void btnFecharCaixa_Click(object sender, EventArgs e)
         {
-            frmResumo resumo = new frmResumo();
+            frmResumoVenda resumo = new frmResumoVenda();
             this.Hide();
             resumo.Show();
         }

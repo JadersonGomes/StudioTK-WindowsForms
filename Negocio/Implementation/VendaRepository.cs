@@ -19,9 +19,9 @@ namespace Negocio.Implementation
             return entidade.ToList().OrderBy(v => v.Data);
         }
 
-        public IEnumerable<Venda> ListarPorIntervaloPeriodo(string dataInicial, string dataFinal)
+        public IEnumerable<Venda> ListarPorIntervaloPeriodo(DateTime dataInicial, DateTime dataFinal)
         {
-            var lista = entidade.Where(p => p.Data >= Convert.ToDateTime(dataInicial) && p.Data <= Convert.ToDateTime(dataFinal)).ToList();
+            var lista = entidade.Where(p => p.Data >= dataInicial && p.Data <= dataFinal).ToList();
 
             var listaPersonalizada = (from list in lista
                                       select new Venda
@@ -43,9 +43,9 @@ namespace Negocio.Implementation
         {
             return entidade.Where(v => v.Funcionario.Equals(funcionario)).OrderBy(v => v.Data);
         }
-        public IList<Venda> ListarPorData(string data)
+        public IList<Venda> ListarPorData(DateTime data)
         {
-            var lista = entidade.Where(p => p.Data == Convert.ToDateTime(data));
+            var lista = entidade.Where(p => p.Data == data);
 
             var listaPersonalizada = (from list in lista
                      select new Venda
@@ -59,6 +59,7 @@ namespace Negocio.Implementation
                          // Refletir essas variaveis no datagridviewl
 
                      }).ToList();
+            
 
             return listaPersonalizada;
         }
