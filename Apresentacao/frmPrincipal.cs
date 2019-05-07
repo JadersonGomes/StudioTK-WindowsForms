@@ -16,7 +16,7 @@ namespace Apresentacao
 {
     public partial class frmPrincipal : Form
     {
-        
+        // Commit para resolver os problemas de versão ocorridos anteriormente.
         IAgendaRepository agendarRepository = new AgendaRepository(new SalaoContext());
 
         public frmPrincipal()
@@ -96,7 +96,7 @@ namespace Apresentacao
                 MessageBox.Show("Algo deu errado. Tente novamente ou contate o administrador do sistema. \n\n\nDetalhes: \n" + ex.Message, "ATENÇÃO", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             
-
+               
 
         }
 
